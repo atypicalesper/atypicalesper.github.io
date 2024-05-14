@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clickable Text</title>
+  <style>
+    /* Style the clickable text container */
+    .clickable-container {
+      display: inline-block;
+      /* Make it inline-block to fit text width */
+      position: relative;
+      /* Position for pseudo-element */
+    }
+
+    /* Style the clickable text */
+    .clickable {
+      color: #fff;
+      /* White color */
+      background-color: #007bff;
+      /* Blue color */
+      padding: 8px 16px;
+      /* Add padding for better click area */
+      border-radius: 5px;
+      /* Rounded corners */
+      text-decoration: none;
+      /* Remove underline */
+      font-family: Arial, sans-serif;
+      /* Use a common font */
+      transition: background-color 0.3s ease;
+      /* Smooth transition */
+      cursor: pointer;
+      /* Change cursor to pointer on hover */
+      display: inline-block;
+      /* Make it inline-block to fit text width */
+    }
+
+    /* Change background color when hovered */
+    .clickable:hover {
+      background-color: #0056b3;
+      /* Darker blue color */
+    }
+
+    /* Style the decorative element */
+    .decorative-element::after {
+      content: "-";
+      /* Content of the pseudo-element */
+      position: absolute;
+      /* Position it absolutely */
+      top: 50%;
+      /* Align it vertically */
+      right: -8px;
+      /* Adjust position */
+      transform: translateY(-50%);
+      /* Center vertically */
+      color: #999;
+      /* Gray color */
+      font-size: 24px;
+      /* Adjust size */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Clickable text container -->
+  <div class="clickable-container">
+    <!-- Clickable text -->
+    <span class="clickable">Text</span>
+    <!-- Decorative element -->
+    <span class="decorative-element"></span>
+  </div>
+
+</body>
+
+</html>
