@@ -9,7 +9,9 @@ const Work = () => {
       <p>
         <strong>
           <a className="work-link" href="https://www.github.com/atypicalesper">github&mdash;</a>
+          <a className="work-link" href="https://www.naukri.com/code360/profile/atypicalesper">Coding Ninjas&mdash;</a>
           <a className="work-link" href="https://www.leetcode.com/atypicalesper/">leetcode&mdash;</a>
+
         </strong>
       </p>
 
