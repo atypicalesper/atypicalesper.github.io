@@ -3,6 +3,7 @@ import '../styles/main.css';
 import Navbar from '../components/Navbar';
 import Background from '../components/Background';
 import PageWrapper from '../components/PageWrapper';
+import Cursor from '../components/Cursor';
 
 export const metadata = {
   title: 'Tarun Singh',
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <Cursor />
         <Background />
         <div className="container">
           <Navbar />

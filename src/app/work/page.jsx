@@ -1,4 +1,5 @@
 import Card from '../../components/Card';
+import AnimatedGrid from '../../components/AnimatedGrid';
 
 const Work = () => {
   return (
@@ -14,7 +15,7 @@ const Work = () => {
         </strong>
       </p>
 
-      <div className="grid">
+      <AnimatedGrid className="grid">
         <Card
           title="Drumkit"
           description="A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments."
@@ -35,7 +36,7 @@ const Work = () => {
           link="https://github.com/atypicalesper/games-games"
           tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
         />
-      </div>
+      </AnimatedGrid>
     </section>
   );
 };

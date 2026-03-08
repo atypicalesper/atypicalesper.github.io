@@ -1,14 +1,14 @@
+import AnimatedText from '../components/AnimatedText';
+
 const Home = () => {
   return (
     <section className="about">
-      <p>
-        Hi! This is <b>Tarun</b> (he/him).
-        <br />
-        Your friendly neighbourhood <strong> programmer</strong>.
-        <br />
-        <strong>Backend</strong> wizard, adept at creative problem-solving, <br /> conquering challenges
-        with, logic and innovation.<br />
-      </p>
+      <AnimatedText>
+        Hi! This is <b>Tarun</b> (he/him).{' '}
+        Your friendly neighbourhood <strong>programmer</strong>.{' '}
+        <strong>Backend</strong> wizard, adept at creative problem-solving,
+        conquering challenges with logic and innovation.
+      </AnimatedText>
 
       <strong>
         <a target="blank" href="mailto:atypicalesper@gmail.com" className="about-link">email&mdash;</a>
