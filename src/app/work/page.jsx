@@ -16,25 +16,17 @@ const Work = () => {
 
       <div className="grid">
         <Card
-          title="Drumkit Game"
-          description="A browser-based drum kit that maps keyboard keys to drum sounds using the Web Audio API. Press keys to play beats."
-          imageSrc="./assets/images/drumkit.png"
-          link="https://github.com/atypicalesper/drumkit"
-          tags={['JavaScript', 'HTML', 'CSS', 'Web Audio API']}
+          title="Drumkit"
+          description="A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments."
+          link="https://atypicalesper.github.io/drumkit/"
+          tags={['JavaScript', 'HTML', 'CSS', 'jQuery']}
         />
 
         <Card
-          title="REST API"
-          description="A backend REST API with authentication, CRUD operations, and clean architecture patterns."
-          tags={['Node.js', 'Express', 'MongoDB']}
-          comingSoon
-        />
-
-        <Card
-          title="CLI Tool"
-          description="A command-line utility built to automate repetitive dev tasks and improve local workflow."
-          tags={['Python', 'Shell']}
-          comingSoon
+          title="Finance Tracker"
+          description="A personal finance REST API with JWT auth, RBAC, Redis caching, rate limiting, and Swagger docs. Backed by PostgreSQL."
+          link="https://github.com/atypicalesper/finance-tracker"
+          tags={['Node.js', 'Express', 'PostgreSQL', 'Redis', 'JWT', 'Swagger']}
         />
 
         <Card
