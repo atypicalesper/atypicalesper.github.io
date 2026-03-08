@@ -2,6 +2,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Average");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amiri&display=swap");
+/* custom cursor — hidden on touch devices */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: #b999ff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  top: -2.5px;
+  left: -2.5px;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid rgba(185, 153, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  top: -14px;
+  left: -14px;
+  opacity: 0.7;
+}
+
 ::-moz-selection {
   background: #b999ff;
 }
