@@ -457,3 +457,64 @@ a:hover {
 .card--soon:hover .card-content {
   opacity: 0.75;
 }
+
+/* resume page */
+.resume-company {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.resume-role {
+  font-size: 1.15rem;
+  color: white;
+}
+
+.resume-meta {
+  font-size: 0.95rem;
+  color: #b999ff;
+  opacity: 0.8;
+}
+
+.resume-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.skill-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  width: 60%;
+}
+
+@media (max-width: 800px) {
+  .skill-row {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}
+
+.skill-label {
+  font-size: 0.8rem;
+  color: #b999ff;
+  opacity: 0.7;
+  min-width: 80px;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  font-size: 0.9rem;
+  color: #ccc;
+}
