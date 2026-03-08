@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Arvo");
+
+.drumkit-page {
+  text-align: center;
+}
+
+.drumkit-page h1 {
+  font-size: 5rem;
+  color: #dbedf3;
+  font-family: "Arvo", cursive;
+  text-shadow: 3px 0 #da0463;
+  margin: 0 0 0 0;
+}
+
+.set {
+  margin: 5% auto;
+}
+
+.drum {
+  outline: none;
+  border: 10px solid #b999ff;
+  font-size: 5rem;
+  font-family: "Arvo", cursive;
+  line-height: 2;
+  font-weight: 900;
+  color: #8d62dc;
+  text-shadow: 3px 0 #dbedf3;
+  border-radius: 15px;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  margin: 10px;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.drum.pressed {
+  box-shadow: 0 3px 4px 0 #dbedf3;
+  opacity: 0.5;
+}

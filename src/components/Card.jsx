@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Card = ({ title, description, imageSrc, link, tags = [], comingSoon = false }) => {
   const cardContent = (
     <div className={`card${comingSoon ? ' card--soon' : ''}`}>
@@ -16,12 +18,13 @@ const Card = ({ title, description, imageSrc, link, tags = [], comingSoon = fals
     </div>
   );
 
-  return link ? (
-    <a href={link} target="_blank" rel="noopener noreferrer">
-      {cardContent}
-    </a>
+  if (!link) return cardContent;
+
+  const isInternal = link.startsWith('/');
+  return isInternal ? (
+    <Link href={link}>{cardContent}</Link>
   ) : (
-    cardContent
+    <a href={link} target="_blank" rel="noopener noreferrer">{cardContent}</a>
   );
 };
 
