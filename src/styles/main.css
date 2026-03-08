@@ -131,12 +131,6 @@ a:hover {
   color: #ccc;
   text-decoration: none;
 }
-.nav .title {
-  margin-left: 1rem;
-  float: center;
-  text-transform: lowercase;
-  font-size: 1.5rem;
-}
 
 .nav .nav-item {
   margin-right: 0.5rem;
