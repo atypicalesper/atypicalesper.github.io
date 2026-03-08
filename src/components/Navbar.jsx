@@ -20,7 +20,7 @@ const Navbar = () => {
         <span>Tarun Singh</span>
       </div>
       <div className="nav-items">
-        <a className="nav-item bonus" href="https://atypicalesper.github.io/drumkit/">bonus</a>
+        <Link href="/drumkit" className={navClass('/drumkit') + ' bonus'}>bonus</Link>
         <Link href="/about" className={navClass('/about')}>about</Link>
         <Link href="/work" className={navClass('/work')}>work</Link>
         <Link href="/" className={navClass('/')}>intro</Link>
