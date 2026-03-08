@@ -25,7 +25,55 @@ strong {
 body {
   width: 100%;
   background: black;
+  background-image: radial-gradient(circle, rgba(185, 153, 255, 0.055) 1px, transparent 1px);
+  background-size: 36px 36px;
   color: white;
+}
+
+/* background orbs */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.11;
+}
+
+.orb-1 {
+  width: 520px;
+  height: 520px;
+  background: #b999ff;
+  top: -160px;
+  left: -120px;
+}
+
+.orb-2 {
+  width: 420px;
+  height: 420px;
+  background: #5522cc;
+  bottom: -120px;
+  right: 5%;
+}
+
+.orb-3 {
+  width: 360px;
+  height: 360px;
+  background: #330099;
+  top: 35%;
+  left: 55%;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 a {
@@ -38,10 +86,6 @@ a:hover {
 
 .light-text {
   color: #ddd;
-}
-
-.container {
-  width: 100%;
 }
 
 .nav {
@@ -207,13 +251,6 @@ a:hover {
   opacity: 1;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 10px;
-  padding: 10px;
-  overflow: hidden; /* Hide scrollbars */
-}
 
 .card {
   position: relative;
