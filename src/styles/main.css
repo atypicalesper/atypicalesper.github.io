@@ -138,12 +138,6 @@ a:hover {
   font-size: 1rem;
   text-decoration: none;
 }
-.content {
-  display: inline-block;
-  margin: 0 1rem 0 0;
-  font-size: 1rem;
-  text-decoration: none;
-}
 @media (max-width: 800px) {
   .content .work-link {
     margin: 0 0.5rem 0 0;
