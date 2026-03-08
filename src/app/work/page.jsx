@@ -30,10 +30,10 @@ const Work = () => {
         />
 
         <Card
-          title="Coming Soon"
-          description="Something interesting is cooking."
-          tags={['TBA']}
-          comingSoon
+          title="GameZone"
+          description="Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo."
+          link="https://github.com/atypicalesper/games-games"
+          tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
         />
       </div>
     </section>
