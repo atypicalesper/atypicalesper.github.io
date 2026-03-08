@@ -1,3 +1,5 @@
+import AnimatedList from '../../components/AnimatedList';
+
 const skills = [
   { label: 'backend',   items: ['Node.js', 'NestJS', 'Express', 'TypeScript', 'Python', 'Django'] },
   { label: 'databases', items: ['PostgreSQL', 'MongoDB', 'Supabase', 'Pinecone', 'MySQL', 'Redis'] },
@@ -5,37 +7,44 @@ const skills = [
   { label: 'auth/test', items: ['JWT', 'OAuth2', 'Bcrypt', 'Jest', 'Selenium', 'Mocha'] },
 ];
 
-const projects = [
+const experience = [
   {
-    title: 'Loan Management System',
-    stack: 'NestJS · MySQL · Redis · AWS · Docker',
-    desc: 'Fintech NBFC platform — migrated PHP monolith to microservices (+40% efficiency), built KYC/risk assessment, UMS with RBAC, and high-traffic financial APIs.',
+    role: 'Senior Fullstack Engineer',
+    company: 'Crownstack Technologies',
+    period: 'Jan 2026 – present',
+    location: 'Noida, UP',
+    summary: 'Product company — fullstack engineering across client-facing features and internal systems.',
   },
   {
-    title: "That's My Jam",
-    stack: 'Node.js · WebSocket · Stripe · NodeCron',
-    desc: 'Real-time music bidding platform for live events. WebSocket-driven song requests, competitive battle modes, Stripe payments — contributed to 20% revenue increase.',
+    role: 'Software Engineer',
+    company: 'Kasar Credit and Capital Finance Pvt. Ltd.',
+    period: 'Jul 2025 – Dec 2025',
+    location: 'Delhi',
+    summary: 'NBFC fintech — microservice architecture, KYC/verification APIs, loan decisioning, and compliance infrastructure.',
   },
   {
-    title: 'First Fire',
-    stack: 'Node.js · MQTT · EMQX · PostgreSQL · AWS · Twilio',
-    desc: 'IoT fire detection system for US garbage trucks. Real-time sensor processing via MQTT/EMQX, multi-channel alerts through Twilio and AWS SNS.',
+    role: 'Software Developer',
+    company: 'Copper Digital India Pvt. Ltd.',
+    period: 'Dec 2022 – May 2025',
+    location: 'Gurugram, HR',
+    summary: 'Client-work agency — IoT, healthcare, fintech, and AI projects for US and Indian markets. Led code reviews and mentored juniors.',
   },
   {
-    title: 'Direct Care Staffing',
-    stack: 'Node.js · PostgreSQL · Sequelize · PostGIS',
-    desc: 'HIPAA-compliant healthcare staffing platform — credential management, PostGIS location-based workforce deployment, encrypted API layers.',
-  },
-  {
-    title: 'Dave Steel Company',
-    stack: 'Node.js · PostgreSQL · Sequelize · AWS EC2 · Nginx',
-    desc: 'Construction HRMS — payroll, project-based staffing, Tekla Structures integration, Nginx/EC2 deployment. Achieved 40% performance gain via query optimisation.',
+    role: 'Software Development Intern',
+    company: 'Copper Digital India Pvt. Ltd.',
+    period: 'Sept 2022 – Dec 2022',
+    location: 'Gurugram, HR',
+    summary: 'Built RESTful APIs with Swagger/Postman docs. Contributed to code reviews, standups, and sprint planning.',
   },
 ];
 
-const certs = [
-  { name: 'The Joy of Computing Using Python', issuer: 'NPTEL · IIT Madras' },
-  { name: 'Certificate of Excellence — Data Structures in C++', issuer: 'Coding Ninjas' },
+const education = [
+  {
+    degree: 'B.Tech — Computer Science & Engineering',
+    institution: 'J C Bose University of Science & Technology, YMCA',
+    period: 'Aug 2018 – Aug 2022',
+    note: 'CGPA: 8.268 / 10.00',
+  },
 ];
 
 const Resume = () => {
@@ -44,23 +53,20 @@ const Resume = () => {
 
       <div className="section">
         <h2 className="small-margin">experience</h2>
-        <div className="resume-company">
-          <span className="resume-role">Senior Fullstack Engineer</span>
-          <span className="resume-meta">Crownstack Technologies &middot; 2026–present &middot; Noida, UP</span>
-        </div>
-
-        {projects.map((p) => (
-          <div className="subsection" key={p.title}>
-            <p className="title">{p.title}</p>
-            <p className="date">{p.stack}</p>
-            <p className="desc">{p.desc}</p>
-          </div>
-        ))}
+        <AnimatedList>
+          {experience.map((job) => (
+            <div className="subsection" key={job.role + job.company}>
+              <p className="title">{job.company}</p>
+              <p className="date">{job.role} &middot; {job.period} &middot; {job.location}</p>
+              <p className="desc">{job.summary}</p>
+            </div>
+          ))}
+        </AnimatedList>
       </div>
 
       <div className="section">
         <h2>skills</h2>
-        <div className="resume-skills">
+        <AnimatedList className="resume-skills" delay={0.15}>
           {skills.map(({ label, items }) => (
             <div className="skill-row" key={label}>
               <span className="skill-label">{label}</span>
@@ -71,17 +77,20 @@ const Resume = () => {
               </span>
             </div>
           ))}
-        </div>
+        </AnimatedList>
       </div>
 
       <div className="section">
-        <h2>certifications</h2>
-        {certs.map((c) => (
-          <div className="subsection" key={c.name}>
-            <p className="title">{c.name}</p>
-            <p className="date">{c.issuer}</p>
-          </div>
-        ))}
+        <h2>education</h2>
+        <AnimatedList delay={0.1}>
+          {education.map((e) => (
+            <div className="resume-company" key={e.institution}>
+              <span className="resume-role">{e.degree}</span>
+              <span className="resume-meta">{e.institution} &middot; {e.period}</span>
+              <span className="resume-meta">{e.note}</span>
+            </div>
+          ))}
+        </AnimatedList>
       </div>
 
     </section>

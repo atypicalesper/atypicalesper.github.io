@@ -30,8 +30,8 @@ const Navbar = () => {
       <div className="nav-items">
         <Link href="/drumkit" className={navClass('/drumkit') + ' bonus'}>bonus</Link>
         <Link href="/about" className={navClass('/about')}>about</Link>
-        <Link href="/resume" className={navClass('/resume')}>resume</Link>
         <Link href="/work" className={navClass('/work')}>work</Link>
+        <Link href="/resume" className={navClass('/resume')}>experience</Link>
         <Link href="/" className={navClass('/')}>intro</Link>
       </div>
     </div>
