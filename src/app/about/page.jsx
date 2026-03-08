@@ -2,7 +2,7 @@ const About = () => {
   return (
     <section className="about">
       <p>
-        I currently work as a <strong> Software Developer </strong> in <strong>Gurugram, India </strong>.<br />
+        I currently work as a <strong>Software Developer</strong> in <strong>Gurugram, India</strong>.<br />
         My passion burns the brightest for Backend Engineering. <br />
         I am fervently tuned to songs, soaking up their vibes. <br />
       </p>
