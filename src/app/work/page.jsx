@@ -1,5 +1,39 @@
 import Card from '../../components/Card';
 import AnimatedGrid from '../../components/AnimatedGrid';
+import AnimatedList from '../../components/AnimatedList';
+
+const professionalProjects = [
+  {
+    title: 'Loan Management System',
+    stack: 'NestJS · MySQL · TypeORM · Redis · AWS · Docker · Microservices',
+    desc: 'Migrated PHP monolith to NestJS microservices (+40% scalability). UMS with RBAC, session control, and audit logs for high-trust financial ops.',
+  },
+  {
+    title: 'KYC & Verification APIs',
+    stack: 'Aadhaar eKYC · PAN · eNACH · CIBIL · Account Aggregator · Digilocker · SSE',
+    desc: 'Microservices for Aadhaar eKYC, PAN, eNACH bank verification, CIBIL check, Account Aggregator, and bank statement analysis — instant loan decisioning.',
+  },
+  {
+    title: "That's My Jam",
+    stack: 'Node.js · WebSocket · Stripe · NodeCron',
+    desc: 'Real-time song-bidding for live events — Stripe integration drove 20% revenue increase; WebSocket battle modes, automated sync via cron.',
+  },
+  {
+    title: 'First Fire',
+    stack: 'Node.js · MQTT · EMQX · PostgreSQL · AWS SNS · Twilio',
+    desc: 'IoT fire detection for US garbage trucks — MQTT pub/sub for real-time sensor alerts, multi-channel notifications via Twilio and AWS SNS.',
+  },
+  {
+    title: 'Direct Care Staffing',
+    stack: 'Node.js · PostgreSQL · Sequelize · PostGIS · AWS S3',
+    desc: 'HIPAA-compliant healthcare staffing — encrypted APIs, PostGIS location-based workforce deployment, secure video uploads via AWS S3.',
+  },
+  {
+    title: 'RAG Chatbot POC',
+    stack: 'Node.js · OpenAI · Pinecone · LLMs',
+    desc: 'Context-aware document QA framework — document ingestion pipeline, vector search via Pinecone, LLM-driven responses.',
+  },
+];
 
 const Work = () => {
   return (
@@ -37,6 +71,19 @@ const Work = () => {
           tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
         />
       </AnimatedGrid>
+
+      <div className="section">
+        <h2>client work</h2>
+        <AnimatedList>
+          {professionalProjects.map((p) => (
+            <div className="subsection" key={p.title}>
+              <p className="title">{p.title}</p>
+              <p className="date">{p.stack}</p>
+              <p className="desc">{p.desc}</p>
+            </div>
+          ))}
+        </AnimatedList>
+      </div>
     </section>
   );
 };
