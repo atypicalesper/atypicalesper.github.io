@@ -1,12 +1,30 @@
-# React + Vite
+# atypicalesper.github.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Tarun Singh** — [atypicalesper.github.io](https://atypicalesper.github.io)
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Next.js 15** — App Router, static export
+- **GSAP** — page transitions, staggered lists, background orbs, custom cursor
+- **CSS** — no UI library, hand-rolled styles
 
-## Expanding the ESLint configuration
+## Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Route | Description |
+|---|---|
+| `/` | Intro |
+| `/about` | About |
+| `/work` | Personal projects + client work |
+| `/experience` | Work history, skills, education |
+| `/drumkit` | Drum machine (bonus) |
+
+## Dev
+
+```bash
+npm install
+npm run dev
+```
+
+## Deploy
+
+Pushes to `main` trigger a GitHub Actions workflow that builds and deploys to GitHub Pages via `actions/deploy-pages`.
