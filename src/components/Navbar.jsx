@@ -11,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     gsap.fromTo(
-      navRef.current.querySelectorAll('.emblem, .title, .nav-item'),
+      navRef.current.querySelectorAll('.emblem, .nav-item'),
       { opacity: 0, y: -10 },
       { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out' }
     );
@@ -26,9 +26,6 @@ const Navbar = () => {
     <div className="nav" ref={navRef}>
       <div>
         <Link href="/" className="emblem">/ˈtɑːruːn/</Link>
-      </div>
-      <div className="title">
-        <span>Tarun Singh</span>
       </div>
       <div className="nav-items">
         <Link href="/drumkit" className={navClass('/drumkit') + ' bonus'}>bonus</Link>
