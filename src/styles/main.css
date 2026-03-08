@@ -374,3 +374,29 @@ a:hover {
     margin: 0;
   }
 } */
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.card-tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border: 1px solid rgba(4, 51, 78, 0.6);
+  border-radius: 2px;
+  color: rgb(4, 51, 78);
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+}
+
+.card--soon .card-content {
+  opacity: 0.35;
+}
+
+.card--soon:hover .card-content {
+  opacity: 0.75;
+}

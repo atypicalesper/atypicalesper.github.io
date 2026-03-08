@@ -11,9 +11,8 @@ const Home = () => {
       </p>
 
       <strong>
-        <a target="blank" href="mailto:atypicalesper@gmail.com" className='about-link'>email&mdash;</a>
-        <a target="blank" href="https://www.linkedin.com/in/atypicalesper/"
-          className='about-link'>linkedin&mdash;</a>
+        <a target="blank" href="mailto:atypicalesper@gmail.com" className="about-link">email&mdash;</a>
+        <a target="blank" href="https://www.linkedin.com/in/atypicalesper/" className="about-link">linkedin&mdash;</a>
       </strong>
     </section>
   );
