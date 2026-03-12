@@ -51,6 +51,13 @@ const Work = () => {
 
       <AnimatedGrid className="grid">
         <Card
+          title="Node.js SWE Interview Prep"
+          description="Comprehensive open-source interview guide for Node.js engineers — 120+ deep-dive files covering JS internals, TypeScript, system design, databases, DevOps, and more."
+          link="https://atypicalesper.github.io/job-prep"
+          tags={['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown']}
+        />
+
+        <Card
           title="Drumkit"
           description="A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments."
           link="/drumkit"
