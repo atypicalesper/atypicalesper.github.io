@@ -12,7 +12,7 @@ export const metadata = {
   authors: [{ name: 'Tarun Singh' }],
 };
 
-const CLARITY_ID = 'vuib7s6gsr';
+const CLARITY_ID = 'vupd82dak0';
 
 export default function RootLayout({ children }) {
   return (
