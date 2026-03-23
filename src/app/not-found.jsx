@@ -144,7 +144,7 @@ export default function NotFound() {
   const taglineRef = useRef(null);
   const subRef = useRef(null);
   const btnWrapRef = useRef(null);
-  const emojiRef = useRef(null);
+  const pulseRef = useRef(null);
   const scanlineRef = useRef(null);
 
   useEffect(() => {
@@ -152,37 +152,47 @@ export default function NotFound() {
 
     gsap.set(digits, { opacity: 0, y: -120 });
     gsap.set([taglineRef.current, subRef.current, btnWrapRef.current], { opacity: 0, y: 24 });
-    gsap.set(emojiRef.current, { opacity: 0, scale: 0, rotation: -180 });
+    gsap.set(pulseRef.current, { opacity: 0, scale: 0 });
     gsap.set(scanlineRef.current, { opacity: 0 });
 
     const tl = gsap.timeline({ defaults: { ease: 'bounce.out' } });
 
-    tl.to(d1.current, { opacity: 1, y: 0, rotation: -6, duration: 0.7 })
-      .to(d0.current, { opacity: 1, y: 0, rotation: 10, duration: 0.7 }, '-=0.4')
-      .to(d2.current, { opacity: 1, y: 0, rotation: -4, duration: 0.7 }, '-=0.4')
+    tl.to(d1.current, { opacity: 1, y: 0, rotation: -6, duration: 0.4 })
+      .to(d0.current, { opacity: 1, y: 0, rotation: 10, duration: 0.4 }, '-=0.25')
+      .to(d2.current, { opacity: 1, y: 0, rotation: -4, duration: 0.4 }, '-=0.25')
       .to(digits, {
         skewX: 'random(-18, 18)',
         x: 'random(-10, 10)',
         color: '#ff4dff',
-        duration: 0.04,
-        repeat: 7,
+        duration: 0.03,
+        repeat: 5,
         yoyo: true,
         ease: 'none',
         stagger: 0.01,
       })
-      .to(digits, { skewX: 0, x: 0, color: '#ffffff', duration: 0.15, ease: 'power2.out' })
-      .to(scanlineRef.current, { opacity: 1, duration: 0.05 }, '<')
-      .to(scanlineRef.current, { opacity: 0, duration: 0.3 }, '+=0.05')
-      .to(emojiRef.current, { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(2)' }, '-=0.1')
-      .to(taglineRef.current, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, '+=0.05')
-      .to(subRef.current,   { opacity: 1, y: 0, duration: 0.4,  ease: 'power3.out' }, '-=0.2')
-      .to(btnWrapRef.current, { opacity: 1, y: 0, duration: 0.5, ease: 'back.out(2)' }, '-=0.1')
-      .from(btnWrapRef.current, { scale: 0.6, duration: 0.5, ease: 'back.out(2)' }, '<');
+      .to(digits, { skewX: 0, x: 0, color: '#ffffff', duration: 0.1, ease: 'power2.out' })
+      .to(scanlineRef.current, { opacity: 1, duration: 0.04 }, '<')
+      .to(scanlineRef.current, { opacity: 0, duration: 0.15 }, '+=0.04')
+      .to(pulseRef.current, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, '+=0.02')
+      .to(taglineRef.current, { opacity: 1, y: 0, duration: 0.25, ease: 'power3.out' }, '-=0.05')
+      .to(subRef.current,   { opacity: 1, y: 0, duration: 0.22, ease: 'power3.out' }, '-=0.1')
+      .to(btnWrapRef.current, { opacity: 1, y: 0, duration: 0.28, ease: 'back.out(2)' }, '-=0.08')
+      .from(btnWrapRef.current, { scale: 0.6, duration: 0.28, ease: 'back.out(2)' }, '<');
 
-    gsap.to(d1.current, { y: -10, rotation: -9, duration: 2.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.6 });
-    gsap.to(d0.current, { y: -16, rotation: 14, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.9 });
-    gsap.to(d2.current, { y: -8,  rotation: -6, duration: 2.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2.1 });
-    gsap.to(emojiRef.current, { rotation: 360, duration: 6, repeat: -1, ease: 'none', delay: 1.5 });
+    // repeating radar ping — scale up + fade out
+    gsap.to(pulseRef.current, {
+      scale: 2.6,
+      opacity: 0,
+      duration: 2,
+      repeat: -1,
+      ease: 'power2.out',
+      delay: 0.8,
+      onRepeat() { gsap.set(pulseRef.current, { scale: 1, opacity: 0.5 }); },
+    });
+
+    gsap.to(d1.current, { y: -10, rotation: -9, duration: 2.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.0 });
+    gsap.to(d0.current, { y: -16, rotation: 14, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.2 });
+    gsap.to(d2.current, { y: -8,  rotation: -6, duration: 2.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.1 });
   }, []);
 
   const onEnter = () => gsap.to(btnWrapRef.current, { scale: 1.06, duration: 0.2, ease: 'power2.out' });
@@ -198,7 +208,7 @@ export default function NotFound() {
         <span ref={d2} style={s.digit}>4</span>
       </div>
 
-      <span ref={emojiRef} style={s.emoji}>💀</span>
+      <div ref={pulseRef} style={s.pulse} />
 
       <p ref={taglineRef} style={s.tagline}>page not found</p>
 
@@ -249,11 +259,15 @@ const s = {
     textShadow: '0 0 40px rgba(185,153,255,0.35)',
     userSelect: 'none',
   },
-  emoji: {
-    display: 'inline-block',
-    fontSize: 'clamp(2rem, 5vw, 2.8rem)',
+  pulse: {
+    width: '48px',
+    height: '48px',
+    borderRadius: '50%',
+    border: '1.5px solid #b999ff',
+    boxShadow: '0 0 12px rgba(185,153,255,0.4)',
     position: 'relative',
     zIndex: 2,
+    flexShrink: 0,
   },
   tagline: {
     fontFamily: 'Jost, sans-serif',
