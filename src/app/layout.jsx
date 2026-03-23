@@ -8,11 +8,11 @@ import Cursor from '../components/Cursor';
 export const metadata = {
   title: 'Tarun Singh',
   description:
-    "Tarun Singh's (aka atypicalesper) portfolio. He loves technology, music, and is a self proclaimed anime connoisseur.",
+    "Tarun Singh's portfolio. He loves technology, music, and is a self proclaimed anime connoisseur.",
   authors: [{ name: 'Tarun Singh' }],
 };
 
-const CLARITY_ID = 'vupd82dak0';
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export default function RootLayout({ children }) {
   return (
