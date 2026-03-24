@@ -282,6 +282,11 @@ a:hover {
 }
 
 
+a:has(> .card) {
+  text-decoration: none;
+  color: inherit;
+}
+
 .card {
   position: relative;
   width: 260px;
