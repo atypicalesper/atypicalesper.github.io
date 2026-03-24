@@ -51,13 +51,6 @@ const Work = () => {
 
       <AnimatedGrid className="grid">
         <Card
-          title="Node.js SWE Interview Prep"
-          description="Comprehensive open-source interview guide for Node.js engineers — 120+ deep-dive files covering JS internals, TypeScript, system design, databases, DevOps, and more."
-          link="https://atypicalesper.github.io/job-prep"
-          tags={['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown']}
-        />
-
-        <Card
           title="Drumkit"
           description="A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments."
           link="/drumkit"
@@ -76,6 +69,20 @@ const Work = () => {
           description="Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo."
           link="https://github.com/atypicalesper/games-games"
           tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
+        />
+
+        <Card
+          title="dev-atlas"
+          description="Open-source developer knowledge base — deep-dive docs on JS internals, TypeScript, system design, databases, DevOps, and more. Built for engineers who want to actually understand the stack."
+          link="https://atypicalesper.github.io/dev-atlas"
+          tags={['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown']}
+        />
+
+        <Card
+          title="RAG Chat"
+          description="Multi-tenant RAG chatbot frontend with SSE streaming, document upload, and per-tenant context isolation. Paired with a FastAPI + LangChain + Chroma backend."
+          link="https://github.com/atypicalesper/COMET-fy-q4-25-26"
+          tags={['Next.js', 'React', 'TypeScript', 'Tailwind', 'SSE', 'FastAPI', 'LangChain']}
         />
       </AnimatedGrid>
 
