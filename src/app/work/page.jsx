@@ -14,7 +14,7 @@ const professionalProjects = [
   {
     title: 'KYC & Verification APIs',
     domain: 'fintech',
-    tags: ['Aadhaar eKYC', 'PAN', 'eNACH', 'CIBIL', 'Account Aggregator', 'SSE'],
+    tags: ['Node.js', 'NestJS', 'TypeORM', 'Redis', 'AWS', 'Docker'],
     desc: 'Microservices for Aadhaar eKYC, PAN, eNACH bank verification, CIBIL check, Account Aggregator, and bank statement analysis — instant loan decisioning.',
   },
   {
@@ -97,7 +97,7 @@ const Work = () => {
         />
       </AnimatedGrid>
 
-      <div className="section">
+      <div className="section client-work-section">
         <h2>client work</h2>
         <AnimatedList>
           {professionalProjects.map((p, i) => (

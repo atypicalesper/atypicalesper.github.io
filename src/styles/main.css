@@ -247,6 +247,9 @@ a:hover {
   .content .section .subsection {
     width: 75%;
   }
+  .content .section.client-work-section .subsection {
+    width: 100%;
+  }
 }
 @media (max-width: 800px) {
   .content .section .subsection {
@@ -353,7 +356,6 @@ a:has(> .card) {
 .card {
   position: relative;
   width: 100%;
-  height: 100%;
   background: rgba(185, 153, 255, 0.03);
   border: 1px solid rgba(185, 153, 255, 0.13);
   padding: 1.5rem;
@@ -370,17 +372,9 @@ a:has(> .card) {
 }
 
 .card .card-content {
-  position: static;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  background: none;
-  opacity: 1;
-  padding: 0;
-  flex: 1;
-}
-
-.card p {
+  width: 100%;
   flex: 1;
 }
 
@@ -408,9 +402,8 @@ a:has(> .card) {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  grid-auto-rows: 1fr;
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .client-grid {
@@ -525,7 +518,8 @@ a:has(> .card) {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
   justify-content: flex-start;
 }
 
@@ -631,6 +625,10 @@ a:has(> .card) {
   text-transform: lowercase;
   margin-left: 0.75rem;
   vertical-align: middle;
+}
+
+.content .section.client-work-section .subsection {
+  width: 100%;
 }
 
 .client-desc {
