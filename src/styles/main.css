@@ -338,6 +338,29 @@ a:has(> .card) {
   flex-wrap: wrap;
   gap: 1.5rem;
 }
+.collapsible {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.collapsible.open {
+  max-height: 500px;
+}
+
+.job-header {
+  transition: opacity 0.2s ease;
+}
+
+.job-header:hover {
+  opacity: 0.7;
+}
+
+.expand-icon {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
 /* 
 .content .container-grid {
   display: grid;
