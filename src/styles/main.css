@@ -237,7 +237,7 @@ a:hover {
   color: white;
   display: block;
   width: 50%;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1rem 0;
 }
 @media (max-width: 1200px) {
   .content .section .subsection {

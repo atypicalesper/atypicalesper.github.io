@@ -5,8 +5,8 @@ import ExperienceAccordion from './ExperienceAccordion'
 export default function ResumePage() {
   return (
     <section className="resume">
-      <Skills />
       <ExperienceAccordion />
+      <Skills />
       <Education />
     </section>
   )
