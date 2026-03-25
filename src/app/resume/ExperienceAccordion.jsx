@@ -54,28 +54,25 @@ export default function ExperienceAccordion() {
 
       <AnimatedList>
         {experience.map((job, i) => (
-          <div key={job.company} className="subsection">
-            <div
-              className="job-header"
-              onClick={() => toggle(i)}
-              style={{ cursor: 'pointer' }}
-            >
-              <p className="title">{job.company}</p>
+          <div key={job.company} className={`subsection exp-item${open === i ? ' exp-open' : ''}`}>
+            <div className="job-header" onClick={() => toggle(i)}>
+              <p className="title">
+                {i === 0 && <span className="current-dot" />}
+                {job.company}
+              </p>
               <p className="date">
-                {job.role} · {job.period} · {job.location}
-                <span style={{ marginLeft: 10 }}>
-                  {open === i ? '−' : '+'}
-                </span>
+                <span className="exp-meta">{job.role} · {job.period} · {job.location}</span>
+                <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
               </p>
             </div>
 
-            {open === i && (
+            <div className={`desc-collapse${open === i ? ' desc-collapse--open' : ''}`}>
               <ul className="desc-list">
                 {job.points.map((p, idx) => (
                   <li key={idx}>{p}</li>
                 ))}
               </ul>
-            )}
+            </div>
           </div>
         ))}
       </AnimatedList>

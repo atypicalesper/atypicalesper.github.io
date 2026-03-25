@@ -252,33 +252,92 @@ a:hover {
 .content .section .subsection .title {
   margin: 0;
   font-size: 1.15rem;
-  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.2s ease;
 }
 .content .section .subsection .date {
-  margin: 0.15rem 0 0 0;
-  font-size: 1rem;
+  margin: 0.2rem 0 0 0;
+  font-size: 0.9rem;
   color: #b999ff;
-  transition: all 0.25s ease;
-  opacity: 0.8;
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .content .section .subsection .desc {
   font-size: 1rem;
   margin: 0.25rem 0 1rem 0;
   width: 100%;
-  transition: all 0.25s ease;
   color: #bbb;
   opacity: 0.8;
 }
 .content .section .subsection:hover .title {
-  transform: translateY(0.75rem);
+  color: #e8d8ff;
 }
-.content .section .subsection:hover .date {
-  transform: translateY(-0.5rem);
-  opacity: 0;
+
+/* current-role pulsing dot */
+.current-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b999ff;
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-in-out infinite;
 }
-.content .section .subsection:hover .desc {
-  transform: translateY(-0.75rem);
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(185, 153, 255, 0.5); }
+  50%       { opacity: 0.7; box-shadow: 0 0 0 5px rgba(185, 153, 255, 0); }
+}
+
+/* experience accordion */
+.exp-item {
+  border-left: 1px solid rgba(185, 153, 255, 0.08);
+  padding-left: 1rem;
+  transition: border-color 0.25s ease;
+}
+.exp-item.exp-open,
+.exp-item:hover {
+  border-left-color: rgba(185, 153, 255, 0.3);
+}
+
+.job-header {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.job-header:hover {
   opacity: 1;
+}
+
+.exp-meta {
+  font-size: 0.88rem;
+}
+
+.exp-chevron {
+  font-size: 1.1rem;
+  color: rgba(185, 153, 255, 0.5);
+  transition: transform 0.25s ease, color 0.2s ease;
+  display: inline-block;
+  line-height: 1;
+}
+.exp-chevron--open {
+  transform: rotate(90deg);
+  color: #b999ff;
+}
+
+/* smooth accordion collapse */
+.desc-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.desc-collapse--open {
+  grid-template-rows: 1fr;
+}
+.desc-collapse > ul {
+  overflow: hidden;
 }
 
 
@@ -532,8 +591,39 @@ a:has(> .card) {
 }
 
 .skill-tag {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 9px;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.skill-tag:hover {
+  border-color: rgba(185, 153, 255, 0.4);
+  color: #e0d0ff;
+}
+
+.desc-list {
+  margin: 0.75rem 0 0.5rem 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.desc-list li {
+  font-size: 0.92rem;
+  color: #aaa;
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.55;
+}
+.desc-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(185, 153, 255, 0.4);
+  font-size: 0.8rem;
 }
 
 /* ── Mobile nav ── */
