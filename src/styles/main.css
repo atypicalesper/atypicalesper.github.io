@@ -38,13 +38,26 @@
 
 ::-moz-selection {
   background: #b999ff;
+  color: #0a0010;
 }
 ::selection {
   background: #b999ff;
+  color: #0a0010;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+.card-back-body::-webkit-scrollbar {
+  display: block;
+  width: 3px;
+}
+.card-back-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.card-back-body::-webkit-scrollbar-thumb {
+  background: rgba(185, 153, 255, 0.25);
+  border-radius: 2px;
 }
 
 html {
@@ -215,6 +228,7 @@ a:hover {
   margin: 0 1rem 0 0;
   font-size: 1rem;
   text-decoration: none;
+  text-transform: lowercase;
 }
 @media (max-width: 800px) {
   .content .work-link {
@@ -228,6 +242,25 @@ a:hover {
 .content .section h2 {
   font-size: 3rem;
   margin: 5rem 0 2rem 0;
+}
+/* first heading on each page — no extra top gap, nav padding is enough */
+/* selector accounts for PageWrapper <div> between .content and <section> */
+.content > div > section > .section:first-child > h2:first-child {
+  margin-top: 0;
+}
+
+/* work page h1 — match the h2 style used elsewhere */
+.work h1 {
+  font-size: 3rem;
+  font-weight: 100;
+  margin: 0 0 0.5rem 0;
+  font-family: "Work Sans", sans-serif;
+  text-transform: lowercase;
+}
+
+/* home + about pages — consistent top spacing */
+.content > section.about > p:first-child {
+  margin-top: 0;
 }
 .content .section h2.small-margin {
   margin: 0rem 0 2rem 0;
@@ -247,7 +280,8 @@ a:hover {
   .content .section .subsection {
     width: 75%;
   }
-  .content .section.client-work-section .subsection {
+  .content .section.client-work-section .subsection,
+  .content .section.exp-section .subsection {
     width: 100%;
   }
 }
@@ -348,62 +382,155 @@ a:hover {
 }
 
 
-a:has(> .card) {
+a:has(> .card-flip) {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
+@keyframes float-card {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* float lives on the link/wrapper so it doesn't conflict with the flip transform */
+.grid > * {
+  animation: float-card 5s ease-in-out infinite;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+}
+.grid > *:hover {
+  animation-play-state: paused;
+}
+
+/* stagger so cards bob at different offsets */
+.grid > *:nth-child(1) { animation-delay: 0s; }
+.grid > *:nth-child(2) { animation-delay: -1s; }
+.grid > *:nth-child(3) { animation-delay: -2s; }
+.grid > *:nth-child(4) { animation-delay: -3s; }
+.grid > *:nth-child(5) { animation-delay: -0.5s; }
+.grid > *:nth-child(6) { animation-delay: -1.5s; }
+
+/* flip container */
+.card-flip {
   position: relative;
   width: 100%;
-  background: rgba(185, 153, 255, 0.03);
-  border: 1px solid rgba(185, 153, 255, 0.13);
+  flex: 1;
+  min-height: 280px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.grid > *:hover .card-flip {
+  transform: rotateY(180deg);
+}
+.card--soon {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* shared face styles */
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(185, 153, 255, 0.13);
+  background: rgba(185, 153, 255, 0.03);
 }
 
-.card:hover {
-  border-color: rgba(185, 153, 255, 0.45);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 36px rgba(185, 153, 255, 0.07);
+/* front — title + hint centered */
+.card-face--front {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
 }
-
-.card .card-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex: 1;
-}
-
-.card h2 {
-  font-size: 1rem;
+.card-face--front h2 {
+  font-size: 1.15rem;
   font-weight: 500;
   color: white;
-  text-align: left;
-  margin: 0 0 0.6rem 0;
-  letter-spacing: 0.01em;
+  margin: 0;
+  text-transform: lowercase;
+}
+.card-flip-hint {
+  font-size: 0.72rem;
+  color: rgba(185, 153, 255, 0.4);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+.grid > *:hover .card-flip-hint {
+  color: rgba(185, 153, 255, 0.7);
 }
 
-.card p {
+/* back — pinned title + scrollable body + pinned tags */
+.card-face--back {
+  transform: rotateY(180deg);
+  background: rgba(185, 153, 255, 0.06);
+  border-color: rgba(185, 153, 255, 0.3);
+  box-shadow: 0 16px 48px rgba(185, 153, 255, 0.09);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  overflow: hidden;
+  gap: 0;
+}
+.card-back-title {
   font-size: 0.85rem;
-  color: #999;
-  text-align: left;
+  font-weight: 500;
+  color: rgba(185, 153, 255, 0.85);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  flex-shrink: 0;
+  width: 100%;
+}
+.card-back-body {
+  flex: 0 1 auto;
+  max-height: 160px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 153, 255, 0.25) transparent;
+}
+.card-back-body p {
+  font-size: 0.83rem;
+  color: #aaa;
   margin: 0;
   line-height: 1.6;
+  width: 100%;
+  text-align: center;
+}
+.card-back-footer {
+  flex-shrink: 0;
+  justify-content: center;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(185, 153, 255, 0.1);
+  width: 100%;
 }
 
-.card:hover p {
-  color: #bbb;
-}
+
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .client-grid {
@@ -537,15 +664,6 @@ a:has(> .card) {
   color: rgba(185, 153, 255, 0.85);
 }
 
-.card--soon {
-  opacity: 0.45;
-  pointer-events: none;
-}
-
-.card--soon:hover {
-  opacity: 0.6;
-  pointer-events: auto;
-}
 
 /* resume page */
 .resume-company {
@@ -616,6 +734,19 @@ a:has(> .card) {
   color: #e0d0ff;
 }
 
+.exp-role-badge {
+  font-size: 0.72rem;
+  padding: 3px 9px;
+  border: 1px solid rgba(185, 153, 255, 0.45);
+  background: rgba(185, 153, 255, 0.08);
+  color: rgba(185, 153, 255, 0.9);
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+  font-weight: 400;
+}
+
 .client-domain-badge {
   font-size: 0.68rem;
   padding: 2px 7px;
@@ -627,7 +758,8 @@ a:has(> .card) {
   vertical-align: middle;
 }
 
-.content .section.client-work-section .subsection {
+.content .section.client-work-section .subsection,
+.content .section.exp-section .subsection {
   width: 100%;
 }
 

@@ -36,10 +36,9 @@ const Navbar = () => {
         {/* Desktop links */}
         <div className="nav-items nav-items--desktop">
           <Link href="/drumkit" className={navClass('/drumkit') + ' bonus'}>bonus</Link>
-          <Link href="/about" className={navClass('/about')}>about</Link>
           <Link href="/work" className={navClass('/work')}>work</Link>
           <Link href="/resume" className={navClass('/resume')}>experience</Link>
-          <Link href="/" className={navClass('/')}>intro</Link>
+          <Link href="/" className={navClass('/')}>about</Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -66,8 +65,7 @@ const Navbar = () => {
       {/* Mobile dropdown */}
       {mobileOpen && (
         <div className="nav-mobile-menu">
-          <Link href="/" className={navClass('/')} onClick={() => setMobileOpen(false)}>intro</Link>
-          <Link href="/about" className={navClass('/about')} onClick={() => setMobileOpen(false)}>about</Link>
+          <Link href="/" className={navClass('/')} onClick={() => setMobileOpen(false)}>about</Link>
           <Link href="/work" className={navClass('/work')} onClick={() => setMobileOpen(false)}>work</Link>
           <Link href="/resume" className={navClass('/resume')} onClick={() => setMobileOpen(false)}>experience</Link>
           <Link href="/drumkit" className={navClass('/drumkit') + ' bonus'} onClick={() => setMobileOpen(false)}>bonus</Link>
