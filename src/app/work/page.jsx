@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import Card from '../../components/Card';
 import AnimatedGrid from '../../components/AnimatedGrid';
 import AnimatedList from '../../components/AnimatedList';
@@ -5,37 +7,46 @@ import AnimatedList from '../../components/AnimatedList';
 const professionalProjects = [
   {
     title: 'Loan Management System',
-    stack: 'NestJS · MySQL · TypeORM · Redis · AWS · Docker · Microservices',
+    domain: 'fintech',
+    tags: ['NestJS', 'MySQL', 'TypeORM', 'Redis', 'AWS', 'Docker', 'Microservices'],
     desc: 'Migrated PHP monolith to NestJS microservices (+40% scalability). UMS with RBAC, session control, and audit logs for high-trust financial ops.',
   },
   {
     title: 'KYC & Verification APIs',
-    stack: 'Aadhaar eKYC · PAN · eNACH · CIBIL · Account Aggregator · Digilocker · SSE',
+    domain: 'fintech',
+    tags: ['Aadhaar eKYC', 'PAN', 'eNACH', 'CIBIL', 'Account Aggregator', 'SSE'],
     desc: 'Microservices for Aadhaar eKYC, PAN, eNACH bank verification, CIBIL check, Account Aggregator, and bank statement analysis — instant loan decisioning.',
   },
   {
     title: "That's My Jam",
-    stack: 'Node.js · WebSocket · Stripe · NodeCron',
+    domain: 'entertainment',
+    tags: ['Node.js', 'WebSocket', 'Stripe', 'NodeCron'],
     desc: 'Real-time song-bidding for live events — Stripe integration drove 20% revenue increase; WebSocket battle modes, automated sync via cron.',
   },
   {
     title: 'First Fire',
-    stack: 'Node.js · MQTT · EMQX · PostgreSQL · AWS SNS · Twilio',
+    domain: 'IoT',
+    tags: ['Node.js', 'MQTT', 'EMQX', 'PostgreSQL', 'AWS SNS', 'Twilio'],
     desc: 'IoT fire detection for US garbage trucks — MQTT pub/sub for real-time sensor alerts, multi-channel notifications via Twilio and AWS SNS.',
   },
   {
     title: 'Direct Care Staffing',
-    stack: 'Node.js · PostgreSQL · Sequelize · PostGIS · AWS S3',
+    domain: 'healthcare',
+    tags: ['Node.js', 'PostgreSQL', 'PostGIS', 'AWS S3', 'HIPAA'],
     desc: 'HIPAA-compliant healthcare staffing — encrypted APIs, PostGIS location-based workforce deployment, secure video uploads via AWS S3.',
   },
   {
     title: 'RAG Chatbot POC',
-    stack: 'Node.js · OpenAI · Pinecone · LLMs',
+    domain: 'AI',
+    tags: ['Node.js', 'OpenAI', 'Pinecone', 'LLMs'],
     desc: 'Context-aware document QA framework — document ingestion pipeline, vector search via Pinecone, LLM-driven responses.',
   },
 ];
 
 const Work = () => {
+  const [open, setOpen] = useState(null);
+  const toggle = (i) => setOpen(open === i ? null : i);
+
   return (
     <section className="work">
       <h1>
@@ -89,11 +100,21 @@ const Work = () => {
       <div className="section">
         <h2>client work</h2>
         <AnimatedList>
-          {professionalProjects.map((p) => (
-            <div className="subsection" key={p.title}>
-              <p className="title">{p.title}</p>
-              <p className="date">{p.stack}</p>
-              <p className="desc">{p.desc}</p>
+          {professionalProjects.map((p, i) => (
+            <div key={p.title} className={`subsection exp-item${open === i ? ' exp-open' : ''}`}>
+              <div className="job-header" onClick={() => toggle(i)}>
+                <p className="title">
+                  {p.title}
+                  <span className="client-domain-badge">{p.domain}</span>
+                </p>
+                <p className="date">
+                  <span className="exp-meta">{p.tags.join(' · ')}</span>
+                  <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
+                </p>
+              </div>
+              <div className={`desc-collapse${open === i ? ' desc-collapse--open' : ''}`}>
+                <p className="client-desc">{p.desc}</p>
+              </div>
             </div>
           ))}
         </AnimatedList>

@@ -11,10 +11,10 @@ export default function Cursor() {
     // Respect user's motion preference
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const dotX = gsap.quickTo(dot.current, 'x', { duration: 0.15, ease: 'power3' });
-    const dotY = gsap.quickTo(dot.current, 'y', { duration: 0.15, ease: 'power3' });
-    const ringX = gsap.quickTo(ring.current, 'x', { duration: 0.45, ease: 'power3' });
-    const ringY = gsap.quickTo(ring.current, 'y', { duration: 0.45, ease: 'power3' });
+    const dotX = gsap.quickTo(dot.current, 'x', { duration: 0.04, ease: 'none' });
+    const dotY = gsap.quickTo(dot.current, 'y', { duration: 0.04, ease: 'none' });
+    const ringX = gsap.quickTo(ring.current, 'x', { duration: 0.3, ease: 'power2.out' });
+    const ringY = gsap.quickTo(ring.current, 'y', { duration: 0.3, ease: 'power2.out' });
 
     const move = (e) => {
       dotX(e.clientX);
