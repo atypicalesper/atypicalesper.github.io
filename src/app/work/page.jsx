@@ -9,7 +9,6 @@ const professionalProjects = [
     title: 'Loan Management System',
     domain: 'fintech',
     tags: ['NestJS', 'MySQL', 'TypeORM', 'Redis', 'AWS', 'Docker', 'Microservices'],
-    desc: 'A technology-driven NBFC platform for instant digital loans and end-to-end credit lifecycle management — seamless onboarding, real-time KYC, automated approvals, disbursement, and repayment tracking.',
     points: [
       'Migrated legacy PHP monolith to a NestJS-based microservices architecture, improving scalability, maintainability, and deployment efficiency by ~40%.',
       'Built KYC and risk assessment services integrating Aadhaar eKYC, PAN verification, Account Aggregator, and bank statement analysis for instant, compliant loan decisioning.',
@@ -21,7 +20,6 @@ const professionalProjects = [
     title: "That's My Jam",
     domain: 'entertainment',
     tags: ['Node.js', 'WebSocket', 'Stripe', 'NodeCron'],
-    desc: 'A real-time music engagement platform where audiences bid on songs for DJs or bands at live events — live interactions, dynamic slot scheduling, secure payments, and competitive battle modes.',
     points: [
       'Built a real-time event-driven bidding platform using WebSockets, enabling live song requests, slot scheduling, and competitive battle modes for DJs and bands.',
       'Designed modular APIs with role-based access control and activity tracking for patrons and performers (MDBs).',
@@ -33,7 +31,6 @@ const professionalProjects = [
     title: 'First Fire',
     domain: 'IoT',
     tags: ['Node.js', 'MQTT', 'EMQX', 'PostgreSQL', 'AWS SNS', 'Twilio'],
-    desc: 'An IoT-driven safety and incident management platform that detects fire hazards in garbage trucks across the United States, processing real-time sensor data and triggering multi-channel alerts.',
     points: [
       'Built a real-time IoT alerting system using MQTT and EMQX to process sensor data from garbage trucks and detect fire incidents.',
       'Implemented automated multi-channel notifications via Twilio (SMS/Calls) and AWS SNS for instant incident response.',
@@ -45,7 +42,6 @@ const professionalProjects = [
     title: 'Direct Care Staffing',
     domain: 'healthcare',
     tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'PostGIS'],
-    desc: 'A healthcare staffing platform streamlining nurse onboarding, credential management, certification tracking, and workforce deployment with HIPAA-compliant data handling.',
     points: [
       'Designed and optimized data models and schemas to manage complex healthcare records, credentials, and certifications.',
       'Implemented secure API layers with encryption and access controls to ensure HIPAA-compliant handling of sensitive data.',
@@ -57,7 +53,6 @@ const professionalProjects = [
     title: 'Dave Steel Company',
     domain: 'construction',
     tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'AWS EC2', 'Nginx'],
-    desc: 'A custom HRMS for a construction company managing payroll, workforce operations, and integrations with third-party structural design tools — supporting project-based staffing and approval workflows.',
     points: [
       'Modernized and optimized a construction-focused HRMS, improving scalability, performance, and third-party tool integrations.',
       'Refactored legacy modules and optimized database queries and indexing, achieving a 40% performance improvement.',
@@ -73,9 +68,7 @@ const Work = () => {
 
   return (
     <section className="work">
-      <h1>
-        <b>Projects</b>
-      </h1>
+      <h1>Projects</h1>
       <p>
         <strong>
           <a className="work-link" href="https://www.naukri.com/code360/profile/atypicalesper">Coding Ninjas&mdash;</a>

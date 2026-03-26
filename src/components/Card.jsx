@@ -1,11 +1,22 @@
+'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 
 const Card = ({ title, description, link, tags = [], comingSoon = false }) => {
+  const [flipped, setFlipped] = useState(false);
+
+  const handleClick = (e) => {
+    if (e.pointerType === 'touch' && !flipped) {
+      e.preventDefault();
+      setFlipped(true);
+    }
+  };
+
   const inner = (
-    <div className={`card-flip${comingSoon ? ' card--soon' : ''}`}>
+    <div className={`card-flip${comingSoon ? ' card--soon' : ''}${flipped ? ' card-flip--flipped' : ''}`}>
       <div className="card-face card-face--front">
         <h2>{title}</h2>
-        <span className="card-flip-hint">hover to explore</span>
+        <span className="card-flip-hint">explore</span>
       </div>
       <div className="card-face card-face--back">
         <h2 className="card-back-title">{title}</h2>
@@ -27,9 +38,9 @@ const Card = ({ title, description, link, tags = [], comingSoon = false }) => {
 
   const isInternal = link.startsWith('/');
   return isInternal ? (
-    <Link href={link}>{inner}</Link>
+    <Link href={link} onClick={handleClick}>{inner}</Link>
   ) : (
-    <a href={link} target="_blank" rel="noopener noreferrer">{inner}</a>
+    <a href={link} target="_blank" rel="noopener noreferrer" onClick={handleClick}>{inner}</a>
   );
 };
 
