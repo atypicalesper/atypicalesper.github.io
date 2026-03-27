@@ -60,6 +60,17 @@ const professionalProjects = [
       'Deployed and maintained the application on AWS EC2, configuring Nginx for scalable and reliable production environments.',
     ],
   },
+  {
+    title: 'Biotech Imaging Platform',
+    domain: 'biotech',
+    tags: ['React', 'TypeScript', 'Vite', 'MUI', 'Plotly.js', 'Python', 'Flask', 'GCP'],
+    points: [
+      'Built a React 18 + TypeScript frontend for visualizing cell sorting and imaging data, migrated from Create React App to Vite for significantly faster builds and HMR.',
+      'Developed REST APIs using Python Flask, integrated with Google App Engine Flex, Cloud Endpoints, and Cloud Run for scalable cell data processing.',
+      'Implemented interactive biological data visualizations using a custom Plotly.js bundle, enabling researchers to explore large-scale imaging datasets with minimal bundle overhead.',
+      'Integrated Auth0 authentication and Datadog observability, enforcing secure access control and real-time performance monitoring across the platform.',
+    ],
+  },
 ];
 
 export default function WorkClient() {
