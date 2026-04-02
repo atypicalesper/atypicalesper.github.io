@@ -91,7 +91,7 @@ export default function WorkClient() {
         <Card
           title="Drumkit"
           description="A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments."
-          link="/drumkit"
+          link="/bonus"
           tags={['JavaScript', 'HTML', 'CSS', 'jQuery']}
         />
 

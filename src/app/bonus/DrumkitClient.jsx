@@ -4,13 +4,13 @@ import { useEffect } from 'react';
 import './drumkit.css';
 
 const keys = [
-  { key: 'w', sound: '/drumkit/sounds/crash.mp3',    image: '/drumkit/images/crash.png' },
-  { key: 'a', sound: '/drumkit/sounds/kick-bass.mp3', image: '/drumkit/images/kick.png' },
-  { key: 's', sound: '/drumkit/sounds/snare.mp3',     image: '/drumkit/images/snare.png' },
-  { key: 'd', sound: '/drumkit/sounds/tom-1.mp3',     image: '/drumkit/images/tom1.png' },
-  { key: 'j', sound: '/drumkit/sounds/tom-2.mp3',     image: '/drumkit/images/tom2.png' },
-  { key: 'k', sound: '/drumkit/sounds/tom-3.mp3',     image: '/drumkit/images/tom3.png' },
-  { key: 'l', sound: '/drumkit/sounds/tom-4.mp3',     image: '/drumkit/images/tom4.png' },
+  { key: 'w', sound: '/bonus/sounds/crash.mp3',    image: '/bonus/images/crash.png' },
+  { key: 'a', sound: '/bonus/sounds/kick-bass.mp3', image: '/bonus/images/kick.png' },
+  { key: 's', sound: '/bonus/sounds/snare.mp3',     image: '/bonus/images/snare.png' },
+  { key: 'd', sound: '/bonus/sounds/tom-1.mp3',     image: '/bonus/images/tom1.png' },
+  { key: 'j', sound: '/bonus/sounds/tom-2.mp3',     image: '/bonus/images/tom2.png' },
+  { key: 'k', sound: '/bonus/sounds/tom-3.mp3',     image: '/bonus/images/tom3.png' },
+  { key: 'l', sound: '/bonus/sounds/tom-4.mp3',     image: '/bonus/images/tom4.png' },
 ];
 
 function makeSound(key) {

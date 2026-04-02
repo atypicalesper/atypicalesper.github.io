@@ -7,6 +7,6 @@ export default function sitemap() {
     { url: `${BASE}/`,        lastModified: new Date(), changeFrequency: 'monthly', priority: 1.0 },
     { url: `${BASE}/work/`,   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/resume/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/drumkit/`,lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
+    { url: `${BASE}/bonus/`,lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
   ];
 }
