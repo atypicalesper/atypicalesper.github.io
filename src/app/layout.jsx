@@ -6,6 +6,7 @@ import Cube from '../components/Cube';
 import PageWrapper from '../components/PageWrapper';
 import Cursor from '../components/Cursor';
 import { ThemeProvider } from '../components/ThemeProvider';
+import ThemeToggle from '../components/ThemeToggle';
 
 export const metadata = {
   metadataBase: new URL('https://atypicalesper.github.io'),
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
           <Cursor />
           <Background />
           <Cube />
+          <ThemeToggle />
           <div className="container">
             <Navbar />
             <main className="content">

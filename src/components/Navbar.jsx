@@ -4,13 +4,11 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
-import { useTheme } from './ThemeProvider';
 
 const Navbar = () => {
   const pathname = usePathname();
   const navRef = useRef(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, cycleTheme } = useTheme();
 
   useEffect(() => {
     gsap.fromTo(
@@ -35,18 +33,12 @@ const Navbar = () => {
           <Link href="/" className="emblem">/ˈtɑːruːn/</Link>
         </div>
 
-        {/* Desktop links + theme toggle */}
-        <div className="nav-right">
-          <div className="nav-items nav-items--desktop">
-            <Link href="/drumkit" className={navClass('/drumkit') + ' bonus'}>bonus</Link>
-            <Link href="/work" className={navClass('/work')}>work</Link>
-            <Link href="/resume" className={navClass('/resume')}>experience</Link>
-            <Link href="/" className={navClass('/')}>about</Link>
-          </div>
-          <button className="theme-toggle" onClick={cycleTheme} title="cycle theme">
-            <span className="theme-dot" />
-            <span>{theme}</span>
-          </button>
+        {/* Desktop links */}
+        <div className="nav-items nav-items--desktop">
+          <Link href="/drumkit" className={navClass('/drumkit') + ' bonus'}>bonus</Link>
+          <Link href="/work" className={navClass('/work')}>work</Link>
+          <Link href="/resume" className={navClass('/resume')}>experience</Link>
+          <Link href="/" className={navClass('/')}>about</Link>
         </div>
 
         {/* Mobile hamburger */}

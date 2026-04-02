@@ -196,33 +196,25 @@ body {
   left: 55%;
 }
 
-/* ── 3D Cube Background ───────────────────────────────────────────────────── */
+/* ── 3D Cube Background (interactive) ────────────────────────────────────── */
 .cube-scene {
   position: fixed;
-  right: 7%;
-  top: 50%;
-  translate: 0 -50%;
-  perspective: 600px;
   z-index: 0;
-  pointer-events: none;
+  pointer-events: all;
   opacity: 0.4;
+  touch-action: none;
+  transition: opacity 0.3s ease;
+  perspective: 600px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.cube-scene:hover {
+  opacity: 0.65;
 }
 
 @media (max-width: 900px) {
   .cube-scene { display: none; }
-}
-
-.cube-x-spin {
-  transform-style: preserve-3d;
-  animation: cube-spin-x 7s linear infinite;
-}
-.cube-y-spin {
-  transform-style: preserve-3d;
-  animation: cube-spin-y 11s linear infinite;
-}
-.cube-z-spin {
-  transform-style: preserve-3d;
-  animation: cube-spin-z 17s linear infinite;
 }
 
 .cube-3d {
@@ -230,6 +222,7 @@ body {
   width: 160px;
   height: 160px;
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .cube-face {
@@ -243,6 +236,12 @@ body {
     linear-gradient(45deg,  rgba(var(--accent-rgb), 0.05) 1px, transparent 1px),
     linear-gradient(-45deg, rgba(var(--accent-rgb), 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.cube-flash .cube-face {
+  border-color: rgba(var(--accent-rgb), 0.9);
+  background: rgba(var(--accent-rgb), 0.12);
 }
 
 .face-front  { transform: translateZ(80px); }
@@ -252,37 +251,31 @@ body {
 .face-top    { transform: translateY(-80px) rotateX(90deg); }
 .face-bottom { transform: translateY(80px)  rotateX(-90deg); }
 
-@keyframes cube-spin-x {
-  from { transform: rotateX(0deg); }
-  to   { transform: rotateX(360deg); }
-}
-@keyframes cube-spin-y {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
-}
-@keyframes cube-spin-z {
-  from { transform: rotateZ(0deg); }
-  to   { transform: rotateZ(360deg); }
-}
-
-/* ── Theme Toggle ─────────────────────────────────────────────────────────── */
+/* ── Theme Toggle (fixed bottom-right) ────────────────────────────────────── */
 .theme-toggle {
-  background: none;
-  border: none;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  background: rgba(var(--accent-rgb), 0.06);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
   cursor: pointer !important;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  color: rgba(var(--accent-rgb), 0.55);
+  gap: 0.4rem;
+  color: rgba(var(--accent-rgb), 0.6);
   font-family: "Work Sans", sans-serif;
   font-size: 0.72rem;
-  padding: 0.2rem 0.4rem;
-  transition: color 0.2s ease;
-  letter-spacing: 0.05em;
+  padding: 0.4rem 0.75rem;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  letter-spacing: 0.06em;
   text-transform: lowercase;
+  backdrop-filter: blur(8px);
 }
 .theme-toggle:hover {
   color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.12);
+  border-color: rgba(var(--accent-rgb), 0.4);
 }
 .theme-dot {
   width: 7px;
