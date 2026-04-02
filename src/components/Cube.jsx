@@ -14,6 +14,8 @@ export default function Cube() {
   const rafRef      = useRef(null);
   const dragRef     = useRef(null);
   const draggingRef = useRef(false);
+  const hoveredRef  = useRef(false);
+  const lastMouseRef = useRef({ x: 0, y: 0 });
   const wasDrag     = useRef(false);
   const rot         = useRef({ x: 20, y: 30, z: 0 });
   const extra       = useRef({ x: 0, y: 0 });
@@ -49,6 +51,16 @@ export default function Cube() {
   // Global pointermove + pointerup attached to window so drag works anywhere
   useEffect(() => {
     const onMove = (e) => {
+      // Hover spin nudge
+      if (hoveredRef.current && !draggingRef.current) {
+        const dx = e.clientX - lastMouseRef.current.x;
+        const dy = e.clientY - lastMouseRef.current.y;
+        extra.current.x += dy * 0.06;
+        extra.current.y += dx * 0.06;
+      }
+      lastMouseRef.current = { x: e.clientX, y: e.clientY };
+
+      // Drag to move
       if (!draggingRef.current || !dragRef.current) return;
       const { sx, sy, px, py } = dragRef.current;
       if (Math.abs(e.clientX - sx) > 3 || Math.abs(e.clientY - sy) > 3) {
@@ -95,6 +107,8 @@ export default function Cube() {
       className={`cube-scene${flashing ? ' cube-flash' : ''}${isDragging ? ' dragging' : ''}`}
       style={{ left: pos.x, top: pos.y }}
       onPointerDown={onPointerDown}
+      onPointerEnter={() => { hoveredRef.current = true; }}
+      onPointerLeave={() => { hoveredRef.current = false; }}
       onClick={onClick}
       aria-hidden="true"
     >
