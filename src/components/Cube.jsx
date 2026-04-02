@@ -3,25 +3,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const BASE_VEL = { x: 0.15, y: 0.25, z: 0.08 };
+const HIT = 220; // hit area size (px) — cube is 160, extra padding for easy grabbing
 
 export default function Cube() {
-  const [pos, setPos]         = useState(null);
+  const [pos, setPos]           = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [flashing, setFlashing]     = useState(false);
 
-  const cubeRef    = useRef(null);
-  const rafRef     = useRef(null);
-  const dragRef    = useRef(null);   // { sx, sy, px, py }
-  const draggingRef = useRef(false); // ref mirror of isDragging — no stale closure
-  const wasDrag    = useRef(false);
-  const rot        = useRef({ x: 20, y: 30, z: 0 });
-  const extra      = useRef({ x: 0, y: 0 });
+  const cubeRef     = useRef(null);
+  const rafRef      = useRef(null);
+  const dragRef     = useRef(null);
+  const draggingRef = useRef(false);
+  const wasDrag     = useRef(false);
+  const rot         = useRef({ x: 20, y: 30, z: 0 });
+  const extra       = useRef({ x: 0, y: 0 });
 
-  // Set initial position
+  // Initial position — centered on right side, accounting for hit area
   useEffect(() => {
     setPos({
-      x: window.innerWidth  * 0.88 - 80,
-      y: window.innerHeight * 0.50 - 80,
+      x: window.innerWidth  - HIT - 40,
+      y: window.innerHeight * 0.5 - HIT / 2,
     });
   }, []);
 
@@ -45,24 +46,7 @@ export default function Cube() {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  // Global mouse move → subtle rotation nudge
-  useEffect(() => {
-    let lx = 0, ly = 0;
-    const onMove = (e) => {
-      const dx = e.clientX - lx;
-      const dy = e.clientY - ly;
-      lx = e.clientX;
-      ly = e.clientY;
-      if (!draggingRef.current) {
-        extra.current.x += dy * 0.018;
-        extra.current.y += dx * 0.018;
-      }
-    };
-    window.addEventListener('mousemove', onMove, { passive: true });
-    return () => window.removeEventListener('mousemove', onMove);
-  }, []);
-
-  // Global pointermove + pointerup so drag works even if cursor leaves the element
+  // Global pointermove + pointerup attached to window so drag works anywhere
   useEffect(() => {
     const onMove = (e) => {
       if (!draggingRef.current || !dragRef.current) return;
@@ -108,12 +92,8 @@ export default function Cube() {
 
   return (
     <div
-      className={`cube-scene${flashing ? ' cube-flash' : ''}`}
-      style={{
-        left: pos.x,
-        top:  pos.y,
-        cursor: isDragging ? 'grabbing' : 'grab',
-      }}
+      className={`cube-scene${flashing ? ' cube-flash' : ''}${isDragging ? ' dragging' : ''}`}
+      style={{ left: pos.x, top: pos.y }}
       onPointerDown={onPointerDown}
       onClick={onClick}
       aria-hidden="true"

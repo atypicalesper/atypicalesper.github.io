@@ -199,7 +199,7 @@ body {
 /* ── 3D Cube Background (interactive) ────────────────────────────────────── */
 .cube-scene {
   position: fixed;
-  z-index: 0;
+  z-index: 2;
   pointer-events: all;
   opacity: 0.4;
   touch-action: none;
@@ -207,10 +207,21 @@ body {
   perspective: 600px;
   user-select: none;
   -webkit-user-select: none;
+  /* larger hit area than the cube itself */
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab !important;
 }
 
 .cube-scene:hover {
   opacity: 0.65;
+}
+
+.cube-scene.dragging {
+  cursor: grabbing !important;
 }
 
 @media (max-width: 900px) {
@@ -223,6 +234,7 @@ body {
   height: 160px;
   transform-style: preserve-3d;
   will-change: transform;
+  flex-shrink: 0;
 }
 
 .cube-face {
