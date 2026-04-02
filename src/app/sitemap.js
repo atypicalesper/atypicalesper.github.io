@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 const BASE = 'https://atypicalesper.github.io';
 
 export default function sitemap() {

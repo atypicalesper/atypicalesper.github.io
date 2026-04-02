@@ -2,8 +2,10 @@ import '../styles/normalize.css';
 import '../styles/main.css';
 import Navbar from '../components/Navbar';
 import Background from '../components/Background';
+import Cube from '../components/Cube';
 import PageWrapper from '../components/PageWrapper';
 import Cursor from '../components/Cursor';
+import { ThemeProvider } from '../components/ThemeProvider';
 
 export const metadata = {
   metadataBase: new URL('https://atypicalesper.github.io'),
@@ -46,14 +48,17 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body>
-        <Cursor />
-        <Background />
-        <div className="container">
-          <Navbar />
-          <main className="content">
-            <PageWrapper>{children}</PageWrapper>
-          </main>
-        </div>
+        <ThemeProvider>
+          <Cursor />
+          <Background />
+          <Cube />
+          <div className="container">
+            <Navbar />
+            <main className="content">
+              <PageWrapper>{children}</PageWrapper>
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
