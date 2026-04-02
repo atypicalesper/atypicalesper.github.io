@@ -5,18 +5,19 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 const BASE_VEL = { x: 0.15, y: 0.25, z: 0.08 };
 
 export default function Cube() {
-  const [pos, setPos]       = useState(null);
-  const [dragging, setDragging] = useState(false);
-  const [flashing, setFlashing] = useState(false);
+  const [pos, setPos]         = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [flashing, setFlashing]     = useState(false);
 
-  const cubeRef   = useRef(null);
-  const rafRef    = useRef(null);
-  const dragRef   = useRef(null);
-  const wasDrag   = useRef(false);
-  const rot       = useRef({ x: 20, y: 30, z: 0 });
-  const extra     = useRef({ x: 0, y: 0 }); // decaying extra velocity from interactions
+  const cubeRef    = useRef(null);
+  const rafRef     = useRef(null);
+  const dragRef    = useRef(null);   // { sx, sy, px, py }
+  const draggingRef = useRef(false); // ref mirror of isDragging — no stale closure
+  const wasDrag    = useRef(false);
+  const rot        = useRef({ x: 20, y: 30, z: 0 });
+  const extra      = useRef({ x: 0, y: 0 });
 
-  // Set initial position once we know viewport size
+  // Set initial position
   useEffect(() => {
     setPos({
       x: window.innerWidth  * 0.88 - 80,
@@ -24,7 +25,7 @@ export default function Cube() {
     });
   }, []);
 
-  // rAF rotation loop — runs for the life of the component
+  // rAF rotation loop
   useEffect(() => {
     const tick = () => {
       const r = rot.current;
@@ -44,7 +45,7 @@ export default function Cube() {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  // Global mouse move → subtle rotation nudge (haunted feeling)
+  // Global mouse move → subtle rotation nudge
   useEffect(() => {
     let lx = 0, ly = 0;
     const onMove = (e) => {
@@ -52,14 +53,37 @@ export default function Cube() {
       const dy = e.clientY - ly;
       lx = e.clientX;
       ly = e.clientY;
-      extra.current.x += dy * 0.018;
-      extra.current.y += dx * 0.018;
+      if (!draggingRef.current) {
+        extra.current.x += dy * 0.018;
+        extra.current.y += dx * 0.018;
+      }
     };
     window.addEventListener('mousemove', onMove, { passive: true });
     return () => window.removeEventListener('mousemove', onMove);
   }, []);
 
-  // ── Drag to move ──────────────────────────────────────────────────────────
+  // Global pointermove + pointerup so drag works even if cursor leaves the element
+  useEffect(() => {
+    const onMove = (e) => {
+      if (!draggingRef.current || !dragRef.current) return;
+      const { sx, sy, px, py } = dragRef.current;
+      if (Math.abs(e.clientX - sx) > 3 || Math.abs(e.clientY - sy) > 3) {
+        wasDrag.current = true;
+      }
+      setPos({ x: px + e.clientX - sx, y: py + e.clientY - sy });
+    };
+    const onUp = () => {
+      draggingRef.current = false;
+      setIsDragging(false);
+    };
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+    };
+  }, []);
+
   const onPointerDown = useCallback((e) => {
     if (e.button !== 0) return;
     wasDrag.current = false;
@@ -67,25 +91,11 @@ export default function Cube() {
       sx: e.clientX, sy: e.clientY,
       px: pos?.x ?? 0, py: pos?.y ?? 0,
     };
-    setDragging(true);
-    e.currentTarget.setPointerCapture(e.pointerId);
+    draggingRef.current = true;
+    setIsDragging(true);
     e.preventDefault();
   }, [pos]);
 
-  const onPointerMove = useCallback((e) => {
-    if (!dragging || !dragRef.current) return;
-    const { sx, sy, px, py } = dragRef.current;
-    if (Math.abs(e.clientX - sx) > 3 || Math.abs(e.clientY - sy) > 3) {
-      wasDrag.current = true;
-    }
-    setPos({ x: px + e.clientX - sx, y: py + e.clientY - sy });
-  }, [dragging]);
-
-  const onPointerUp = useCallback(() => {
-    setDragging(false);
-  }, []);
-
-  // ── Click → spin kick + flash ─────────────────────────────────────────────
   const onClick = useCallback(() => {
     if (wasDrag.current) return;
     extra.current.x += (Math.random() - 0.5) * 8;
@@ -94,7 +104,7 @@ export default function Cube() {
     setTimeout(() => setFlashing(false), 350);
   }, []);
 
-  if (!pos) return null; // don't render until we know viewport size (SSR-safe)
+  if (!pos) return null;
 
   return (
     <div
@@ -102,11 +112,9 @@ export default function Cube() {
       style={{
         left: pos.x,
         top:  pos.y,
-        cursor: dragging ? 'grabbing' : 'grab',
+        cursor: isDragging ? 'grabbing' : 'grab',
       }}
       onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
       onClick={onClick}
       aria-hidden="true"
     >
