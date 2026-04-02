@@ -18,6 +18,7 @@ export const metadata = {
     'Tarun Singh is a Software Developer based in Gurugram, India. Backend engineer specialising in NestJS, Node.js, microservices, and cloud architecture.',
   keywords: ['Tarun Singh', 'Software Developer', 'Backend Engineer', 'NestJS', 'Node.js', 'TypeScript', 'Microservices', 'AWS'],
   authors: [{ name: 'Tarun Singh', url: 'https://atypicalesper.github.io' }],
+  icons: { icon: '/favicon.png', shortcut: '/favicon.png' },
   openGraph: {
     type: 'website',
     url: 'https://atypicalesper.github.io',
