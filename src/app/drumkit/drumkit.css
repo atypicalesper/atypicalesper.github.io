@@ -6,10 +6,10 @@
 
 .drumkit-page h1 {
   font-size: 5rem;
-  color: #dbedf3;
+  color: var(--text);
   font-family: "Arvo", cursive;
-  text-shadow: 3px 0 #da0463;
-  margin: 0 0 0 0;
+  text-shadow: 3px 0 var(--accent);
+  margin: 0;
 }
 
 .set {
@@ -18,26 +18,33 @@
 
 .drum {
   outline: none;
-  border: 10px solid #b999ff;
+  border: 10px solid rgba(var(--accent-rgb), 0.5);
   font-size: 5rem;
   font-family: "Arvo", cursive;
   line-height: 2;
   font-weight: 900;
-  color: #8d62dc;
-  text-shadow: 3px 0 #dbedf3;
+  color: var(--accent);
+  text-shadow: 3px 0 rgba(var(--accent-rgb), 0.3);
   border-radius: 15px;
   display: inline-block;
   width: 150px;
   height: 150px;
   text-align: center;
   margin: 10px;
-  background-color: white;
+  background-color: rgba(var(--accent-rgb), 0.05);
   background-size: cover;
   background-position: center;
   cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.drum:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2);
 }
 
 .drum.pressed {
-  box-shadow: 0 3px 4px 0 #dbedf3;
-  opacity: 0.5;
+  box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.5), 0 3px 4px 0 rgba(var(--accent-rgb), 0.4);
+  opacity: 0.6;
+  border-color: var(--accent);
 }
