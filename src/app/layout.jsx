@@ -8,6 +8,7 @@ import Cursor from '../components/Cursor';
 import { ThemeProvider } from '../components/ThemeProvider';
 import ThemeToggle from '../components/ThemeToggle';
 import BgControls from '../components/BgControls';
+import BgPolygons from '../components/BgPolygons';
 
 export const metadata = {
   metadataBase: new URL('https://atypicalesper.github.io'),
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <Cursor />
           <Background />
+          <BgPolygons />
           <Cube />
           <div className="controls-bar">
             <BgControls />
