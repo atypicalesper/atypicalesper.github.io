@@ -29,9 +29,11 @@ export default function Cursor() {
     const shrink = () => gsap.to(ring.current, { scale: 1, opacity: 0.7, duration: 0.2 });
 
     const handleOver = (e) => {
+      if (e.relatedTarget?.closest('a, button')) return;
       if (e.target.closest('a, button')) expand();
     };
     const handleOut = (e) => {
+      if (e.relatedTarget?.closest('a, button')) return;
       if (e.target.closest('a, button')) shrink();
     };
 

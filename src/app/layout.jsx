@@ -7,6 +7,7 @@ import PageWrapper from '../components/PageWrapper';
 import Cursor from '../components/Cursor';
 import { ThemeProvider } from '../components/ThemeProvider';
 import ThemeToggle from '../components/ThemeToggle';
+import BgControls from '../components/BgControls';
 
 export const metadata = {
   metadataBase: new URL('https://atypicalesper.github.io'),
@@ -54,7 +55,10 @@ export default function RootLayout({ children }) {
           <Cursor />
           <Background />
           <Cube />
-          <ThemeToggle />
+          <div className="controls-bar">
+            <BgControls />
+            <ThemeToggle />
+          </div>
           <div className="container">
             <Navbar />
             <main className="content">

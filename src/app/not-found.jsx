@@ -170,7 +170,7 @@ export default function NotFound() {
         ease: 'none',
         stagger: 0.01,
       })
-      .to(digits, { skewX: 0, x: 0, color: '#ffffff', duration: 0.1, ease: 'power2.out' })
+      .to(digits, { skewX: 0, x: 0, clearProps: 'color', duration: 0.1, ease: 'power2.out' })
       .to(scanlineRef.current, { opacity: 1, duration: 0.04 }, '<')
       .to(scanlineRef.current, { opacity: 0, duration: 0.15 }, '+=0.04')
       .to(pulseRef.current, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, '+=0.02')
@@ -199,116 +199,24 @@ export default function NotFound() {
   const onLeave = () => gsap.to(btnWrapRef.current, { scale: 1,    duration: 0.2, ease: 'power2.out' });
 
   return (
-    <div style={s.page}>
-      <div ref={scanlineRef} style={s.scanline} />
+    <div className="nf-page">
+      <div ref={scanlineRef} className="nf-scanline" />
 
-      <div style={s.digits}>
-        <span ref={d1} style={s.digit}>4</span>
-        <span ref={d0} style={{ ...s.digit, color: '#b999ff', WebkitTextStroke: '2px #b999ff' }}>0</span>
-        <span ref={d2} style={s.digit}>4</span>
+      <div className="nf-digits">
+        <span ref={d1} className="nf-digit">4</span>
+        <span ref={d0} className="nf-digit nf-digit--accent">0</span>
+        <span ref={d2} className="nf-digit">4</span>
       </div>
 
-      <div ref={pulseRef} style={s.pulse} />
+      <div ref={pulseRef} className="nf-pulse" />
 
-      <p ref={taglineRef} style={s.tagline}>page not found</p>
+      <p ref={taglineRef} className="nf-tagline">page not found</p>
 
-      <p ref={subRef} style={s.sub}>{quip}</p>
+      <p ref={subRef} className="nf-sub">{quip}</p>
 
-      <div ref={btnWrapRef} onMouseEnter={onEnter} onMouseLeave={onLeave} style={s.btnWrap}>
-        <Link href="/" style={s.btn}>← beam me home</Link>
+      <div ref={btnWrapRef} onMouseEnter={onEnter} onMouseLeave={onLeave} className="nf-btn-wrap">
+        <Link href="/" className="nf-btn">← beam me home</Link>
       </div>
     </div>
   );
 }
-
-const s = {
-  page: {
-    minHeight: '72vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    padding: 'clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 5vw, 2rem)',
-    gap: 'clamp(0.8rem, 2vw, 1.2rem)',
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  scanline: {
-    position: 'absolute',
-    inset: 0,
-    background: 'repeating-linear-gradient(0deg, rgba(185,153,255,0.06) 0px, rgba(185,153,255,0.06) 1px, transparent 1px, transparent 4px)',
-    pointerEvents: 'none',
-    zIndex: 1,
-  },
-  digits: {
-    display: 'flex',
-    gap: '0.15rem',
-    alignItems: 'baseline',
-    position: 'relative',
-    zIndex: 2,
-  },
-  digit: {
-    display: 'inline-block',
-    fontFamily: 'Jost, sans-serif',
-    fontWeight: 900,
-    fontSize: 'clamp(5rem, 22vw, 11rem)',
-    lineHeight: 1,
-    color: '#ffffff',
-    WebkitTextStroke: '2px rgba(255,255,255,0.15)',
-    textShadow: '0 0 40px rgba(185,153,255,0.35)',
-    userSelect: 'none',
-  },
-  pulse: {
-    width: '48px',
-    height: '48px',
-    borderRadius: '50%',
-    border: '1.5px solid #b999ff',
-    boxShadow: '0 0 12px rgba(185,153,255,0.4)',
-    position: 'relative',
-    zIndex: 2,
-    flexShrink: 0,
-  },
-  tagline: {
-    fontFamily: 'Jost, sans-serif',
-    fontWeight: 600,
-    fontSize: 'clamp(1rem, 3.5vw, 1.6rem)',
-    color: 'rgba(255,255,255,0.55)',
-    margin: 0,
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    position: 'relative',
-    zIndex: 2,
-  },
-  sub: {
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: 300,
-    fontSize: 'clamp(0.85rem, 2.5vw, 1rem)',
-    color: 'rgba(255,255,255,0.5)',
-    margin: 0,
-    lineHeight: 1.75,
-    maxWidth: 'min(520px, 90vw)',
-    padding: '0 0.5rem',
-    position: 'relative',
-    zIndex: 2,
-  },
-  btnWrap: {
-    position: 'relative',
-    zIndex: 2,
-    marginTop: '0.6rem',
-  },
-  btn: {
-    display: 'inline-block',
-    padding: 'clamp(0.55rem, 2vw, 0.7rem) clamp(1.2rem, 4vw, 2rem)',
-    border: '1.5px solid #b999ff',
-    borderRadius: '6px',
-    color: '#b999ff',
-    fontFamily: 'Work Sans, sans-serif',
-    fontWeight: 300,
-    fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
-    letterSpacing: '0.04em',
-    textDecoration: 'none',
-    background: 'transparent',
-    WebkitTapHighlightColor: 'transparent',
-  },
-};

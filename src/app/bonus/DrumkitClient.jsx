@@ -17,7 +17,7 @@ function makeSound(key) {
   const match = keys.find((k) => k.key === key);
   if (!match) return;
   const audio = new Audio(match.sound);
-  audio.play();
+  audio.play().catch(() => {});
 }
 
 function buttonAnimation(key) {
