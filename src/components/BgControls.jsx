@@ -1,12 +1,7 @@
 'use client';
 
 import { useTheme } from './ThemeProvider';
-
-const PolyIcon = (
-  <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
-    <polygon points="5,0.5 9.5,3.5 8,8.5 2,8.5 0.5,3.5" />
-  </svg>
-);
+import { POLY_DEFS } from './BgPolygons';
 
 const SHAPES = ['dot', 'grid', 'diamond', 'square', 'wave', 'none'];
 
@@ -59,8 +54,44 @@ const Icons = {
   ),
 };
 
+function PolyPreview({ def }) {
+  const cx = 5, cy = 5, r = 4, inner = r * 0.42;
+  if (def.sides >= 24) {
+    return (
+      <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
+        <circle cx="5" cy="5" r="4" />
+      </svg>
+    );
+  }
+  let points;
+  if (def.star) {
+    const pts = def.sides * 2;
+    points = Array.from({ length: pts }, (_, i) => {
+      const rad   = i % 2 === 0 ? r : inner;
+      const angle = (i * Math.PI) / def.sides - Math.PI / 2;
+      return (cx + rad * Math.cos(angle)) + ',' + (cy + rad * Math.sin(angle));
+    }).join(' ');
+  } else {
+    points = Array.from({ length: def.sides }, (_, i) => {
+      const angle = (i * 2 * Math.PI) / def.sides - Math.PI / 2;
+      return (cx + r * Math.cos(angle)) + ',' + (cy + r * Math.sin(angle));
+    }).join(' ');
+  }
+  return (
+    <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
+      <polygon points={points} />
+    </svg>
+  );
+}
+
 export default function BgControls() {
-  const { bgShape, setBgShape, bgSize, setBgSize, showPolygons, setShowPolygons } = useTheme();
+  const {
+    bgShape, setBgShape,
+    bgSize, setBgSize,
+    showPolygons, setShowPolygons,
+    polyCount, setPolyCount,
+    polyTypes, togglePolyType,
+  } = useTheme();
 
   return (
     <div className="bg-controls" aria-label="Background controls">
@@ -68,7 +99,7 @@ export default function BgControls() {
         {SHAPES.map((id) => (
           <button
             key={id}
-            className={`bg-shape-btn${bgShape === id ? ' active' : ''}`}
+            className={'bg-shape-btn' + (bgShape === id ? ' active' : '')}
             onClick={() => setBgShape(id)}
             title={id}
             aria-pressed={bgShape === id}
@@ -77,7 +108,9 @@ export default function BgControls() {
           </button>
         ))}
       </div>
+
       <div className="bg-sep" />
+
       <div className="bg-density">
         <span className="bg-density-label">·</span>
         <input
@@ -88,20 +121,62 @@ export default function BgControls() {
           step={4}
           value={bgSize}
           onChange={(e) => setBgSize(Number(e.target.value))}
-          title={`density: ${Math.round(1440 / bgSize)} across`}
+          title={'density: ' + Math.round(1440 / bgSize) + ' across'}
           aria-label="background density"
         />
         <span className="bg-density-label">⠿</span>
       </div>
+
       <div className="bg-sep" />
+
       <button
-        className={`bg-shape-btn${showPolygons ? ' active' : ''}`}
+        className={'bg-shape-btn' + (showPolygons ? ' active' : '')}
         onClick={() => setShowPolygons(!showPolygons)}
         title="floating polygons"
         aria-pressed={showPolygons}
       >
-        {PolyIcon}
+        <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
+          <polygon points="5,0.5 9.5,3.5 8,8.5 2,8.5 0.5,3.5" />
+        </svg>
       </button>
+
+      {showPolygons && (
+        <>
+          <div className="bg-sep" />
+          <div className="bg-shapes">
+            {POLY_DEFS.map((def) => {
+              const active = polyTypes.includes(def.id);
+              return (
+                <button
+                  key={def.id}
+                  className={'bg-shape-btn' + (active ? ' active' : '')}
+                  onClick={() => togglePolyType(def.id)}
+                  title={def.id}
+                  aria-pressed={active}
+                >
+                  <PolyPreview def={def} />
+                </button>
+              );
+            })}
+          </div>
+          <div className="bg-sep" />
+          <div className="bg-density">
+            <span className="bg-density-label" style={{ fontSize: 9 }}>1</span>
+            <input
+              type="range"
+              className="bg-slider"
+              min={5}
+              max={60}
+              step={5}
+              value={polyCount}
+              onChange={(e) => setPolyCount(Number(e.target.value))}
+              title={'polygons: ' + polyCount}
+              aria-label="polygon count"
+            />
+            <span className="bg-density-label" style={{ fontSize: 9 }}>{polyCount}</span>
+          </div>
+        </>
+      )}
     </div>
   );
 }

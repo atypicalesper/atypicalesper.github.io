@@ -4,12 +4,15 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const THEMES = ['purple', 'midnight', 'matrix', 'crimson', 'aurora', 'amber'];
 const SHAPES = ['dot', 'grid', 'diamond', 'square', 'wave', 'none'];
+const ALL_POLY_IDS = ['triangle', 'square', 'pentagon', 'hexagon', 'heptagon', 'octagon', 'star5', 'star6', 'circle'];
 
 const ThemeContext = createContext({
   theme: 'purple',       cycleTheme:      () => {},
   bgShape: 'dot',        setBgShape:      () => {},
   bgSize: 36,            setBgSize:       () => {},
   showPolygons: false,   setShowPolygons: () => {},
+  polyCount: 20,         setPolyCount:    () => {},
+  polyTypes: ALL_POLY_IDS, togglePolyType: () => {},
 });
 
 export function ThemeProvider({ children }) {
@@ -36,6 +39,21 @@ export function ThemeProvider({ children }) {
     return localStorage.getItem('showPolygons') === 'true';
   });
 
+  const [polyCount, setPolyCountState] = useState(() => {
+    if (typeof window === 'undefined') return 20;
+    const saved = Number(localStorage.getItem('polyCount'));
+    return saved >= 5 && saved <= 60 ? saved : 20;
+  });
+
+  const [polyTypes, setPolyTypesState] = useState(() => {
+    if (typeof window === 'undefined') return ALL_POLY_IDS;
+    try {
+      const saved = JSON.parse(localStorage.getItem('polyTypes') || 'null');
+      if (Array.isArray(saved) && saved.length > 0) return saved;
+    } catch {}
+    return ALL_POLY_IDS;
+  });
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
@@ -47,7 +65,7 @@ export function ThemeProvider({ children }) {
   }, [bgShape]);
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--bg-grid-size', `${bgSize}px`);
+    document.documentElement.style.setProperty('--bg-grid-size', bgSize + 'px');
     localStorage.setItem('bgSize', String(bgSize));
   }, [bgSize]);
 
@@ -55,13 +73,36 @@ export function ThemeProvider({ children }) {
     localStorage.setItem('showPolygons', String(showPolygons));
   }, [showPolygons]);
 
+  useEffect(() => {
+    localStorage.setItem('polyCount', String(polyCount));
+  }, [polyCount]);
+
+  useEffect(() => {
+    localStorage.setItem('polyTypes', JSON.stringify(polyTypes));
+  }, [polyTypes]);
+
   const cycleTheme      = () => setTheme((t) => THEMES[(THEMES.indexOf(t) + 1) % THEMES.length]);
   const setBgShape      = (s) => SHAPES.includes(s) && setBgShapeState(s);
   const setBgSize       = (n) => n >= 16 && n <= 72 && setBgSizeState(n);
   const setShowPolygons = (v) => setShowPolygonsState(Boolean(v));
+  const setPolyCount    = (n) => n >= 5 && n <= 60 && setPolyCountState(n);
+  const togglePolyType  = (id) => {
+    setPolyTypesState(prev =>
+      prev.includes(id)
+        ? prev.length > 1 ? prev.filter(t => t !== id) : prev
+        : [...prev, id]
+    );
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, cycleTheme, bgShape, setBgShape, bgSize, setBgSize, showPolygons, setShowPolygons }}>
+    <ThemeContext.Provider value={{
+      theme, cycleTheme,
+      bgShape, setBgShape,
+      bgSize, setBgSize,
+      showPolygons, setShowPolygons,
+      polyCount, setPolyCount,
+      polyTypes, togglePolyType,
+    }}>
       {children}
     </ThemeContext.Provider>
   );
