@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useTheme } from './ThemeProvider';
 import { POLY_DEFS } from './BgPolygons';
 
@@ -8,42 +9,42 @@ const SHAPES = ['dot', 'grid', 'diamond', 'square', 'wave', 'none'];
 const Icons = {
   dot: (
     <svg width="13" height="13" viewBox="0 0 10 10" aria-hidden="true">
-      <circle cx="2"  cy="2"  r="1.5" fill="currentColor" />
-      <circle cx="8"  cy="2"  r="1.5" fill="currentColor" />
-      <circle cx="2"  cy="8"  r="1.5" fill="currentColor" />
-      <circle cx="8"  cy="8"  r="1.5" fill="currentColor" />
+      <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+      <circle cx="8" cy="2" r="1.5" fill="currentColor" />
+      <circle cx="2" cy="8" r="1.5" fill="currentColor" />
+      <circle cx="8" cy="8" r="1.5" fill="currentColor" />
     </svg>
   ),
   grid: (
     <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
       <line x1="0" y1="3.5" x2="10" y2="3.5" />
       <line x1="0" y1="6.5" x2="10" y2="6.5" />
-      <line x1="3.5" y1="0"  x2="3.5" y2="10" />
-      <line x1="6.5" y1="0"  x2="6.5" y2="10" />
+      <line x1="3.5" y1="0" x2="3.5" y2="10" />
+      <line x1="6.5" y1="0" x2="6.5" y2="10" />
     </svg>
   ),
   diamond: (
     <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
       <line x1="0" y1="10" x2="10" y2="0" />
-      <line x1="0" y1="0"  x2="10" y2="10" />
-      <line x1="5" y1="0"  x2="0"  y2="5" />
-      <line x1="5" y1="0"  x2="10" y2="5" />
-      <line x1="0" y1="5"  x2="5"  y2="10" />
-      <line x1="10" y1="5" x2="5"  y2="10" />
+      <line x1="0" y1="0" x2="10" y2="10" />
+      <line x1="5" y1="0" x2="0" y2="5" />
+      <line x1="5" y1="0" x2="10" y2="5" />
+      <line x1="0" y1="5" x2="5" y2="10" />
+      <line x1="10" y1="5" x2="5" y2="10" />
     </svg>
   ),
   square: (
     <svg width="13" height="13" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
-      <rect x="1"   y="1"   width="3" height="3" />
-      <rect x="6"   y="6"   width="3" height="3" />
-      <rect x="6"   y="1"   width="3" height="3" opacity="0.3" />
-      <rect x="1"   y="6"   width="3" height="3" opacity="0.3" />
+      <rect x="1" y="1" width="3" height="3" />
+      <rect x="6" y="6" width="3" height="3" />
+      <rect x="6" y="1" width="3" height="3" opacity="0.3" />
+      <rect x="1" y="6" width="3" height="3" opacity="0.3" />
     </svg>
   ),
   wave: (
     <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
       <line x1="0" y1="10" x2="10" y2="0" />
-      <line x1="0" y1="5"  x2="5"  y2="0" />
+      <line x1="0" y1="5" x2="5" y2="0" />
       <line x1="5" y1="10" x2="10" y2="5" />
     </svg>
   ),
@@ -89,7 +90,6 @@ const MESH_ICONS = {
 
 function PolyPreview({ def }) {
   if (def.mesh) return MESH_ICONS[def.id] ?? null;
-
   const cx = 5, cy = 5, r = 4, inner = r * 0.42;
   if (def.sides >= 24) {
     return (
@@ -119,7 +119,32 @@ function PolyPreview({ def }) {
   );
 }
 
+const SlidersIcon = (
+  <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
+    <line x1="1" y1="3" x2="9" y2="3" />
+    <line x1="1" y1="7" x2="9" y2="7" />
+    <circle cx="3.5" cy="3" r="1.3" fill="currentColor" stroke="none" />
+    <circle cx="6.5" cy="7" r="1.3" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+const ChevronIcon = (
+  <svg width="11" height="11" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+    <polyline points="7,2 4,5 7,8" />
+  </svg>
+);
+
 export default function BgControls() {
+  const [open, setOpen] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    const v = localStorage.getItem('controlsOpen');
+    return v === null ? true : v === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('controlsOpen', String(open));
+  }, [open]);
+
   const {
     bgShape, setBgShape,
     bgSize, setBgSize,
@@ -128,8 +153,60 @@ export default function BgControls() {
     polyTypes, togglePolyType,
   } = useTheme();
 
+  if (!open) {
+    return (
+      <div className="bg-controls" aria-label="Open controls">
+        <button className="bg-shape-btn" onClick={() => setOpen(true)} title="controls">
+          {SlidersIcon}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-controls" aria-label="Background controls">
+      {showPolygons && (
+        <div className="bg-poly-panel">
+          <div className="bg-poly-grid">
+            {POLY_DEFS.map((def) => {
+              const active = polyTypes.includes(def.id);
+              return (
+                <button
+                  key={def.id}
+                  className={'bg-shape-btn' + (active ? ' active' : '')}
+                  onClick={() => togglePolyType(def.id)}
+                  title={def.label ?? def.id}
+                  aria-pressed={active}
+                >
+                  <PolyPreview def={def} />
+                </button>
+              );
+            })}
+          </div>
+          <div className="bg-poly-count">
+            <span className="bg-density-label">n</span>
+            <input
+              type="range"
+              className="bg-slider bg-slider--wide"
+              min={5}
+              max={60}
+              step={5}
+              value={polyCount}
+              onChange={(e) => setPolyCount(Number(e.target.value))}
+              title={'count: ' + polyCount}
+              aria-label="polygon count"
+            />
+            <span className="bg-density-label">{polyCount}</span>
+          </div>
+        </div>
+      )}
+
+      <button className="bg-shape-btn" onClick={() => setOpen(false)} title="collapse" aria-label="Collapse controls">
+        {ChevronIcon}
+      </button>
+
+      <div className="bg-sep" />
+
       <div className="bg-shapes">
         {SHAPES.map((id) => (
           <button
@@ -167,51 +244,13 @@ export default function BgControls() {
       <button
         className={'bg-shape-btn' + (showPolygons ? ' active' : '')}
         onClick={() => setShowPolygons(!showPolygons)}
-        title="floating polygons"
+        title="floating shapes"
         aria-pressed={showPolygons}
       >
         <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
           <polygon points="5,0.5 9.5,3.5 8,8.5 2,8.5 0.5,3.5" />
         </svg>
       </button>
-
-      {showPolygons && (
-        <>
-          <div className="bg-sep" />
-          <div className="bg-shapes">
-            {POLY_DEFS.map((def) => {
-              const active = polyTypes.includes(def.id);
-              return (
-                <button
-                  key={def.id}
-                  className={'bg-shape-btn' + (active ? ' active' : '')}
-                  onClick={() => togglePolyType(def.id)}
-                  title={def.id}
-                  aria-pressed={active}
-                >
-                  <PolyPreview def={def} />
-                </button>
-              );
-            })}
-          </div>
-          <div className="bg-sep" />
-          <div className="bg-density">
-            <span className="bg-density-label" style={{ fontSize: 9 }}>1</span>
-            <input
-              type="range"
-              className="bg-slider"
-              min={5}
-              max={60}
-              step={5}
-              value={polyCount}
-              onChange={(e) => setPolyCount(Number(e.target.value))}
-              title={'polygons: ' + polyCount}
-              aria-label="polygon count"
-            />
-            <span className="bg-density-label" style={{ fontSize: 9 }}>{polyCount}</span>
-          </div>
-        </>
-      )}
     </div>
   );
 }
