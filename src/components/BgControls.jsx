@@ -165,6 +165,7 @@ export default function BgControls() {
 
   return (
     <div className="bg-controls" aria-label="Background controls">
+      {/* polygon shape picker panel — commented out, too noisy
       {showPolygons && (
         <div className="bg-poly-panel">
           <div className="bg-poly-grid">
@@ -200,6 +201,7 @@ export default function BgControls() {
           </div>
         </div>
       )}
+      */}
 
       <button className="bg-shape-btn" onClick={() => setOpen(false)} title="collapse" aria-label="Collapse controls">
         {ChevronIcon}
