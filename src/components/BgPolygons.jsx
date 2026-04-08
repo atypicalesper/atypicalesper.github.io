@@ -3,17 +3,96 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from './ThemeProvider';
 
+// ── 3D mesh definitions ───────────────────────────────────────────────────────
+
+const CUBE = {
+  verts: [
+    [-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],
+    [-1,-1, 1],[1,-1, 1],[1,1, 1],[-1,1, 1],
+  ],
+  edges: [
+    [0,1],[1,2],[2,3],[3,0],
+    [4,5],[5,6],[6,7],[7,4],
+    [0,4],[1,5],[2,6],[3,7],
+  ],
+};
+
+const TETRAHEDRON = {
+  verts: [
+    [0, 1, 0],
+    [ Math.sqrt(8 / 9), -1 / 3, 0],
+    [-Math.sqrt(2 / 9), -1 / 3,  Math.sqrt(2 / 3)],
+    [-Math.sqrt(2 / 9), -1 / 3, -Math.sqrt(2 / 3)],
+  ],
+  edges: [[0,1],[0,2],[0,3],[1,2],[2,3],[3,1]],
+};
+
+const OCTAHEDRON = {
+  verts: [
+    [0,1,0],[0,-1,0],
+    [1,0,0],[-1,0,0],
+    [0,0,1],[0,0,-1],
+  ],
+  edges: [
+    [0,2],[0,3],[0,4],[0,5],
+    [1,2],[1,3],[1,4],[1,5],
+    [2,4],[4,3],[3,5],[5,2],
+  ],
+};
+
+const ICOSAHEDRON = (() => {
+  const t = (1 + Math.sqrt(5)) / 2;
+  const raw = [
+    [-1, t,0],[1, t,0],[-1,-t,0],[1,-t,0],
+    [0,-1, t],[0,1, t],[0,-1,-t],[0,1,-t],
+    [ t,0,-1],[ t,0,1],[-t,0,-1],[-t,0,1],
+  ];
+  const verts = raw.map(([x,y,z]) => { const l = Math.hypot(x,y,z); return [x/l,y/l,z/l]; });
+  const edges = [
+    [0,1],[0,5],[0,7],[0,10],[0,11],
+    [1,5],[1,7],[1,8],[1,9],
+    [2,3],[2,4],[2,6],[2,10],[2,11],
+    [3,4],[3,6],[3,8],[3,9],
+    [4,5],[4,9],[4,11],
+    [5,9],[5,11],
+    [6,7],[6,8],[6,10],
+    [7,8],[7,10],
+    [8,9],[10,11],
+  ];
+  return { verts, edges };
+})();
+
+// ── shape catalog ─────────────────────────────────────────────────────────────
+
 export const POLY_DEFS = [
-  { id: 'triangle', label: 'tri',  sides: 3 },
-  { id: 'square',   label: 'sq',   sides: 4 },
-  { id: 'pentagon', label: 'pent', sides: 5 },
-  { id: 'hexagon',  label: 'hex',  sides: 6 },
-  { id: 'heptagon', label: 'hept', sides: 7 },
-  { id: 'octagon',  label: 'oct',  sides: 8 },
-  { id: 'star5',    label: 'str5', sides: 5, star: true },
-  { id: 'star6',    label: 'str6', sides: 6, star: true },
-  { id: 'circle',   label: 'circ', sides: 48 },
+  { id: 'triangle',    label: 'tri',  sides: 3 },
+  { id: 'square',      label: 'sq',   sides: 4 },
+  { id: 'pentagon',    label: 'pent', sides: 5 },
+  { id: 'hexagon',     label: 'hex',  sides: 6 },
+  { id: 'heptagon',    label: 'hept', sides: 7 },
+  { id: 'octagon',     label: 'oct',  sides: 8 },
+  { id: 'star5',       label: 'str5', sides: 5, star: true },
+  { id: 'star6',       label: 'str6', sides: 6, star: true },
+  { id: 'circle',      label: 'circ', sides: 48 },
+  { id: 'cube',        label: 'cube', mesh: CUBE },
+  { id: 'tetrahedron', label: 'tet',  mesh: TETRAHEDRON },
+  { id: 'octahedron',  label: 'octa', mesh: OCTAHEDRON },
+  { id: 'icosahedron', label: 'ico',  mesh: ICOSAHEDRON },
 ];
+
+// ── math ──────────────────────────────────────────────────────────────────────
+
+function rotVert([x, y, z], rx, ry, rz) {
+  const y1 = y * Math.cos(rx) - z * Math.sin(rx);
+  const z1 = y * Math.sin(rx) + z * Math.cos(rx);
+  const x2 =  x * Math.cos(ry) + z1 * Math.sin(ry);
+  const z2 = -x * Math.sin(ry) + z1 * Math.cos(ry);
+  const x3 = x2 * Math.cos(rz) - y1 * Math.sin(rz);
+  const y3 = x2 * Math.sin(rz) + y1 * Math.cos(rz);
+  return [x3, y3, z2];
+}
+
+// ── particle factory ──────────────────────────────────────────────────────────
 
 function randomDef(activeIds) {
   const pool = activeIds.length > 0 ? activeIds : POLY_DEFS.map(p => p.id);
@@ -22,21 +101,55 @@ function randomDef(activeIds) {
 }
 
 function initParticles(w, h, count, activeIds) {
-  return Array.from({ length: count }, () => ({
-    x:        Math.random() * w,
-    y:        Math.random() * h,
-    radius:   18 + Math.random() * 48,
-    def:      randomDef(activeIds),
-    rotation: Math.random() * Math.PI * 2,
-    rotSpeed: (0.0008 + Math.random() * 0.0022) * (Math.random() < 0.5 ? 1 : -1),
-    vx:       (Math.random() - 0.5) * 0.14,
-    vy:       (Math.random() - 0.5) * 0.14,
-    alpha:    0.04 + Math.random() * 0.055,
-  }));
+  return Array.from({ length: count }, () => {
+    const def  = randomDef(activeIds);
+    const base = {
+      x:      Math.random() * w,
+      y:      Math.random() * h,
+      radius: 18 + Math.random() * 48,
+      def,
+      vx:     (Math.random() - 0.5) * 0.14,
+      vy:     (Math.random() - 0.5) * 0.14,
+      alpha:  0.04 + Math.random() * 0.055,
+    };
+    if (def.mesh) {
+      return {
+        ...base,
+        rx:      Math.random() * Math.PI * 2,
+        ry:      Math.random() * Math.PI * 2,
+        rz:      Math.random() * Math.PI * 2,
+        rxSpeed: (0.003 + Math.random() * 0.007) * (Math.random() < 0.5 ? 1 : -1),
+        rySpeed: (0.004 + Math.random() * 0.008) * (Math.random() < 0.5 ? 1 : -1),
+        rzSpeed: (0.002 + Math.random() * 0.005) * (Math.random() < 0.5 ? 1 : -1),
+      };
+    }
+    return {
+      ...base,
+      rotation: Math.random() * Math.PI * 2,
+      rotSpeed: (0.0008 + Math.random() * 0.0022) * (Math.random() < 0.5 ? 1 : -1),
+    };
+  });
 }
+
+// ── draw ──────────────────────────────────────────────────────────────────────
 
 function drawPoly(ctx, p) {
   const { x, y, radius, rotation, def } = p;
+
+  if (def.mesh) {
+    const projected = def.mesh.verts.map(v => {
+      const [px, py] = rotVert(v, p.rx, p.ry, p.rz);
+      return [x + px * radius, y + py * radius];
+    });
+    for (const [a, b] of def.mesh.edges) {
+      ctx.beginPath();
+      ctx.moveTo(projected[a][0], projected[a][1]);
+      ctx.lineTo(projected[b][0], projected[b][1]);
+      ctx.stroke();
+    }
+    return;
+  }
+
   ctx.beginPath();
   if (def.star) {
     const inner = radius * 0.42;
@@ -83,7 +196,13 @@ export default function BgPolygons() {
         .getPropertyValue('--accent-rgb').trim() || '139,92,246';
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (const p of state.particles) {
-        p.rotation += p.rotSpeed;
+        if (p.def.mesh) {
+          p.rx += p.rxSpeed;
+          p.ry += p.rySpeed;
+          p.rz += p.rzSpeed;
+        } else {
+          p.rotation += p.rotSpeed;
+        }
         p.x += p.vx;
         p.y += p.vy;
         if (p.x < -p.radius)                p.x = canvas.width  + p.radius;

@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 const THEMES = ['purple', 'midnight', 'matrix', 'crimson', 'aurora', 'amber'];
 const SHAPES = ['dot', 'grid', 'diamond', 'square', 'wave', 'none'];
-const ALL_POLY_IDS = ['triangle', 'square', 'pentagon', 'hexagon', 'heptagon', 'octagon', 'star5', 'star6', 'circle'];
+const ALL_POLY_IDS = ['triangle', 'square', 'pentagon', 'hexagon', 'heptagon', 'octagon', 'star5', 'star6', 'circle', 'cube', 'tetrahedron', 'octahedron', 'icosahedron'];
 
 const ThemeContext = createContext({
   theme: 'purple',       cycleTheme:      () => {},

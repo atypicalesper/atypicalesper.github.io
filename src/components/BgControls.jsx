@@ -54,7 +54,42 @@ const Icons = {
   ),
 };
 
+const MESH_ICONS = {
+  cube: (
+    <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="0.9" aria-hidden="true">
+      <polygon points="5,1 9,3 5,5 1,3" />
+      <polygon points="5,5 9,3 9,7 5,9" />
+      <polygon points="5,5 1,3 1,7 5,9" />
+    </svg>
+  ),
+  tetrahedron: (
+    <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="0.9" aria-hidden="true">
+      <polygon points="5,1 9,8.5 1,8.5" />
+      <line x1="5" y1="1" x2="5" y2="8.5" />
+      <line x1="1" y1="8.5" x2="7" y2="4.5" />
+    </svg>
+  ),
+  octahedron: (
+    <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="0.9" aria-hidden="true">
+      <polygon points="5,1 9,5 5,9 1,5" />
+      <line x1="5" y1="1" x2="5" y2="9" />
+      <line x1="1" y1="5" x2="9" y2="5" />
+    </svg>
+  ),
+  icosahedron: (
+    <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="0.9" aria-hidden="true">
+      <polygon points="5,1 8.5,4 7,8.5 3,8.5 1.5,4" />
+      <polygon points="5,1 8.5,4 5,3.5 1.5,4" />
+      <line x1="5" y1="3.5" x2="5" y2="8.5" />
+      <line x1="3" y1="8.5" x2="5" y2="3.5" />
+      <line x1="7" y1="8.5" x2="5" y2="3.5" />
+    </svg>
+  ),
+};
+
 function PolyPreview({ def }) {
+  if (def.mesh) return MESH_ICONS[def.id] ?? null;
+
   const cx = 5, cy = 5, r = 4, inner = r * 0.42;
   if (def.sides >= 24) {
     return (
