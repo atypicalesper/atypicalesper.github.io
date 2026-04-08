@@ -203,21 +203,87 @@ export default function BgPolygons() {
         } else {
           p.rotation += p.rotSpeed;
         }
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < -p.radius)                p.x = canvas.width  + p.radius;
-        if (p.x > canvas.width  + p.radius) p.x = -p.radius;
-        if (p.y < -p.radius)                p.y = canvas.height + p.radius;
-        if (p.y > canvas.height + p.radius) p.y = -p.radius;
+        if (!p.dragging) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -p.radius)                p.x = canvas.width  + p.radius;
+          if (p.x > canvas.width  + p.radius) p.x = -p.radius;
+          if (p.y < -p.radius)                p.y = canvas.height + p.radius;
+          if (p.y > canvas.height + p.radius) p.y = -p.radius;
+        }
         ctx.save();
-        ctx.globalAlpha = p.alpha;
+        ctx.globalAlpha = p.dragging ? Math.min(p.alpha * 4, 0.4) : p.alpha;
         ctx.strokeStyle = 'rgb(' + accentRgb + ')';
-        ctx.lineWidth   = 1;
+        ctx.lineWidth   = p.dragging ? 1.5 : 1;
         drawPoly(ctx, p);
         ctx.restore();
       }
       state.animId = requestAnimationFrame(draw);
     }
+
+    // ── drag interaction ──────────────────────────────────────────────────────
+
+    const drag = { current: null };
+
+    function nearestParticle(mx, my) {
+      let nearest = null;
+      let nearestDist = Infinity;
+      for (const p of state.particles) {
+        const d = Math.hypot(p.x - mx, p.y - my);
+        if (d < p.radius + 12 && d < nearestDist) {
+          nearest = p;
+          nearestDist = d;
+        }
+      }
+      return nearest;
+    }
+
+    function getXY(e) {
+      const src = e.touches ? e.touches[0] : e;
+      return [src.clientX, src.clientY];
+    }
+
+    function onDown(e) {
+      const [mx, my] = getXY(e);
+      const p = nearestParticle(mx, my);
+      if (!p) return;
+      drag.current = { particle: p, prevX: mx, prevY: my, velX: 0, velY: 0 };
+      p.dragging = true;
+      canvas.style.cursor = 'grabbing';
+    }
+
+    function onMove(e) {
+      const [mx, my] = getXY(e);
+      if (drag.current) {
+        const d = drag.current;
+        d.velX = mx - d.prevX;
+        d.velY = my - d.prevY;
+        d.prevX = mx;
+        d.prevY = my;
+        d.particle.x = mx;
+        d.particle.y = my;
+      } else {
+        canvas.style.cursor = nearestParticle(mx, my) ? 'grab' : 'default';
+      }
+    }
+
+    function onUp() {
+      if (!drag.current) return;
+      const { particle, velX, velY } = drag.current;
+      particle.vx = velX * 0.5;
+      particle.vy = velY * 0.5;
+      particle.dragging = false;
+      drag.current = null;
+      canvas.style.cursor = 'default';
+    }
+
+    canvas.addEventListener('mousedown', onDown);
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseup', onUp);
+    canvas.addEventListener('mouseleave', onUp);
+    canvas.addEventListener('touchstart', onDown, { passive: true });
+    canvas.addEventListener('touchmove', onMove, { passive: true });
+    canvas.addEventListener('touchend', onUp);
 
     resize();
     window.addEventListener('resize', resize);
@@ -225,6 +291,13 @@ export default function BgPolygons() {
     return () => {
       cancelAnimationFrame(state.animId);
       window.removeEventListener('resize', resize);
+      canvas.removeEventListener('mousedown', onDown);
+      canvas.removeEventListener('mousemove', onMove);
+      canvas.removeEventListener('mouseup', onUp);
+      canvas.removeEventListener('mouseleave', onUp);
+      canvas.removeEventListener('touchstart', onDown);
+      canvas.removeEventListener('touchmove', onMove);
+      canvas.removeEventListener('touchend', onUp);
     };
   }, [showPolygons, theme, polyCount, polyTypes]);
 
@@ -233,7 +306,7 @@ export default function BgPolygons() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0 }}
+      style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', pointerEvents: 'auto', zIndex: 0 }}
     />
   );
 }
