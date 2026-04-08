@@ -277,6 +277,23 @@ export default function BgPolygons() {
       canvas.style.cursor = 'default';
     }
 
+    // ── spawn ─────────────────────────────────────────────────────────────────
+
+    function onSpawn(e) {
+      const sides = Math.max(3, Math.min(50, Number(e.detail.sides) || 6));
+      state.particles.push({
+        x:        canvas.width  / 2 + (Math.random() - 0.5) * 60,
+        y:        canvas.height / 2 + (Math.random() - 0.5) * 60,
+        radius:   32 + Math.random() * 16,
+        def:      { id: 'spawned', sides, star: false },
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: (0.001 + Math.random() * 0.002) * (Math.random() < 0.5 ? 1 : -1),
+        vx: 0, vy: 0,
+        alpha: 0.14,
+        dragging: false,
+      });
+    }
+
     canvas.addEventListener('mousedown', onDown);
     canvas.addEventListener('mousemove', onMove);
     canvas.addEventListener('mouseup', onUp);
@@ -284,6 +301,7 @@ export default function BgPolygons() {
     canvas.addEventListener('touchstart', onDown, { passive: true });
     canvas.addEventListener('touchmove', onMove, { passive: true });
     canvas.addEventListener('touchend', onUp);
+    window.addEventListener('spawn-shape', onSpawn);
 
     resize();
     window.addEventListener('resize', resize);
@@ -291,6 +309,7 @@ export default function BgPolygons() {
     return () => {
       cancelAnimationFrame(state.animId);
       window.removeEventListener('resize', resize);
+      window.removeEventListener('spawn-shape', onSpawn);
       canvas.removeEventListener('mousedown', onDown);
       canvas.removeEventListener('mousemove', onMove);
       canvas.removeEventListener('mouseup', onUp);

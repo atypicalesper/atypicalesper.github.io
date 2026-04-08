@@ -35,14 +35,15 @@ export function ThemeProvider({ children }) {
   });
 
   const [showPolygons, setShowPolygonsState] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return localStorage.getItem('showPolygons') === 'true';
+    if (typeof window === 'undefined') return true;
+    const v = localStorage.getItem('showPolygons');
+    return v === null ? true : v === 'true';
   });
 
   const [polyCount, setPolyCountState] = useState(() => {
-    if (typeof window === 'undefined') return 20;
+    if (typeof window === 'undefined') return 1;
     const saved = Number(localStorage.getItem('polyCount'));
-    return saved >= 5 && saved <= 60 ? saved : 20;
+    return saved >= 0 && saved <= 60 ? saved : 1;
   });
 
   const [polyTypes, setPolyTypesState] = useState(() => {
@@ -85,7 +86,7 @@ export function ThemeProvider({ children }) {
   const setBgShape      = (s) => SHAPES.includes(s) && setBgShapeState(s);
   const setBgSize       = (n) => n >= 16 && n <= 72 && setBgSizeState(n);
   const setShowPolygons = (v) => setShowPolygonsState(Boolean(v));
-  const setPolyCount    = (n) => n >= 5 && n <= 60 && setPolyCountState(n);
+  const setPolyCount    = (n) => n >= 0 && n <= 60 && setPolyCountState(n);
   const togglePolyType  = (id) => {
     setPolyTypesState(prev =>
       prev.includes(id)

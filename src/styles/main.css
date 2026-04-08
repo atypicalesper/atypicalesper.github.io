@@ -384,6 +384,27 @@ body[data-bg-shape="none"] {
   from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+.bg-spawn {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+.bg-sides-label {
+  font-size: 0.6rem;
+  font-variant-numeric: tabular-nums;
+  color: rgba(var(--accent-rgb), 0.6);
+  width: 16px;
+  text-align: center;
+  user-select: none;
+  line-height: 1;
+}
+.bg-spawn-btn {
+  margin-left: 0.1rem;
+  color: rgba(var(--accent-rgb), 0.6);
+}
+.bg-spawn-btn:hover {
+  color: var(--accent);
+}
 .bg-shapes {
   display: flex;
   align-items: center;

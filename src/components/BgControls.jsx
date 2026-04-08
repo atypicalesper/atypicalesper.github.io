@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTheme } from './ThemeProvider';
-import { POLY_DEFS } from './BgPolygons';
 
 const SHAPES = ['dot', 'grid', 'diamond', 'square', 'wave', 'none'];
 
@@ -134,12 +133,21 @@ const ChevronIcon = (
   </svg>
 );
 
+const SpawnIcon = (
+  <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
+    <circle cx="5" cy="5" r="4" />
+    <line x1="5" y1="2.5" x2="5" y2="7.5" />
+    <line x1="2.5" y1="5" x2="7.5" y2="5" />
+  </svg>
+);
+
 export default function BgControls() {
   const [open, setOpen] = useState(() => {
     if (typeof window === 'undefined') return true;
     const v = localStorage.getItem('controlsOpen');
     return v === null ? true : v === 'true';
   });
+  const [sides, setSides] = useState(6);
 
   useEffect(() => {
     localStorage.setItem('controlsOpen', String(open));
@@ -149,9 +157,12 @@ export default function BgControls() {
     bgShape, setBgShape,
     bgSize, setBgSize,
     showPolygons, setShowPolygons,
-    polyCount, setPolyCount,
-    polyTypes, togglePolyType,
   } = useTheme();
+
+  function spawn() {
+    if (!showPolygons) setShowPolygons(true);
+    window.dispatchEvent(new CustomEvent('spawn-shape', { detail: { sides } }));
+  }
 
   if (!open) {
     return (
@@ -243,16 +254,38 @@ export default function BgControls() {
 
       <div className="bg-sep" />
 
-      <button
-        className={'bg-shape-btn' + (showPolygons ? ' active' : '')}
-        onClick={() => setShowPolygons(!showPolygons)}
-        title="floating shapes"
-        aria-pressed={showPolygons}
-      >
-        <svg width="13" height="13" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
-          <polygon points="5,0.5 9.5,3.5 8,8.5 2,8.5 0.5,3.5" />
-        </svg>
-      </button>
+      <div className="bg-spawn">
+        <button
+          className="bg-shape-btn"
+          onClick={() => setSides(s => Math.max(3, s - 1))}
+          title="fewer sides"
+          aria-label="decrease sides"
+        >
+          <svg width="11" height="11" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+            <line x1="2.5" y1="5" x2="7.5" y2="5" />
+          </svg>
+        </button>
+        <span className="bg-sides-label">{sides}</span>
+        <button
+          className="bg-shape-btn"
+          onClick={() => setSides(s => Math.min(50, s + 1))}
+          title="more sides"
+          aria-label="increase sides"
+        >
+          <svg width="11" height="11" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+            <line x1="5" y1="2.5" x2="5" y2="7.5" />
+            <line x1="2.5" y1="5" x2="7.5" y2="5" />
+          </svg>
+        </button>
+        <button
+          className="bg-shape-btn bg-spawn-btn"
+          onClick={spawn}
+          title={'spawn ' + sides + '-sided polygon'}
+          aria-label="spawn shape"
+        >
+          {SpawnIcon}
+        </button>
+      </div>
     </div>
   );
 }
