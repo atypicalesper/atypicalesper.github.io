@@ -46,6 +46,8 @@ const Navbar = () => {
           className="nav-hamburger"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
         >
           {mobileOpen ? (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -64,7 +66,7 @@ const Navbar = () => {
 
       {/* Mobile dropdown */}
       {mobileOpen && (
-        <div className="nav-mobile-menu">
+        <div id="mobile-navigation" className="nav-mobile-menu">
           <Link href="/" className={navClass('/')} onClick={() => setMobileOpen(false)}>about</Link>
           <Link href="/work" className={navClass('/work')} onClick={() => setMobileOpen(false)}>work</Link>
           <Link href="/resume" className={navClass('/resume')} onClick={() => setMobileOpen(false)}>experience</Link>

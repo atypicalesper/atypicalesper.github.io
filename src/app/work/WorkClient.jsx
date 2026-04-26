@@ -80,47 +80,63 @@ export default function WorkClient() {
   return (
     <section className="work">
       <h1>Projects</h1>
-      <p>
-        <strong>
-          <a className="work-link" href="https://www.naukri.com/code360/profile/atypicalesper">Coding Ninjas&mdash;</a>
-          <a className="work-link" href="https://www.leetcode.com/atypicalesper/">leetcode&mdash;</a>
-        </strong>
+      <p className="work-intro">
+        A mix of playful builds, production-minded systems, and experiments that sharpen both engineering depth and product instincts.
       </p>
+      <div className="work-links">
+        <a className="work-link" href="https://www.naukri.com/code360/profile/atypicalesper">Coding Ninjas</a>
+        <a className="work-link" href="https://www.leetcode.com/atypicalesper/">leetcode</a>
+      </div>
 
       <AnimatedGrid className="grid">
         <Card
           title="Drumkit"
+          eyebrow="playful build"
+          summary="Keyboard-powered drum machine with instant feedback and a more fun-than-useful personality."
           description="A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments."
           link="/bonus"
           tags={['JavaScript', 'HTML', 'CSS', 'jQuery']}
+          ctaLabel="try demo"
         />
 
         <Card
           title="Finance Tracker"
+          eyebrow="backend api"
+          summary="Personal finance REST API with auth, caching, rate limiting, and solid developer docs."
           description="A personal finance REST API with JWT auth, RBAC, Redis caching, rate limiting, and Swagger docs. Backed by PostgreSQL."
           link="https://github.com/atypicalesper/finance-tracker"
           tags={['Node.js', 'Express', 'PostgreSQL', 'Redis', 'JWT', 'Swagger']}
+          ctaLabel="view repo"
         />
 
         <Card
           title="GameZone"
+          eyebrow="real-time platform"
+          summary="Multiplayer games, live chat, leaderboards, and JWT auth in a full-stack monorepo."
           description="Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo."
           link="https://github.com/atypicalesper/games-games"
           tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
+          ctaLabel="view repo"
         />
 
         <Card
           title="dev-atlas"
+          eyebrow="open source"
+          summary="Deep-dive engineering knowledge base built for developers who want understanding, not just snippets."
           description="Open-source developer knowledge base — deep-dive docs on JS internals, TypeScript, system design, databases, DevOps, and more. Built for engineers who want to actually understand the stack."
           link="https://atypicalesper.github.io/dev-atlas"
           tags={['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown']}
+          ctaLabel="open site"
         />
 
         <Card
           title="RAG Chat"
+          eyebrow="ai product"
+          summary="Multi-tenant RAG chat frontend with streaming responses, uploads, and tenant-isolated context."
           description="Multi-tenant RAG chatbot frontend with SSE streaming, document upload, and per-tenant context isolation. Paired with a FastAPI + LangChain + Chroma backend."
           link="https://github.com/atypicalesper/COMET-fy-q4-25-26"
           tags={['Next.js', 'React', 'TypeScript', 'Tailwind', 'SSE', 'FastAPI', 'LangChain']}
+          ctaLabel="view repo"
         />
       </AnimatedGrid>
 
@@ -129,17 +145,23 @@ export default function WorkClient() {
         <AnimatedList>
           {professionalProjects.map((p, i) => (
             <div key={p.title} className={`subsection exp-item${open === i ? ' exp-open' : ''}`}>
-              <div className="job-header" onClick={() => toggle(i)}>
-                <p className="title">
+              <button
+                type="button"
+                className="job-header"
+                onClick={() => toggle(i)}
+                aria-expanded={open === i}
+                aria-controls={`client-project-${i}`}
+              >
+                <span className="title">
                   {p.title}
                   <span className="client-domain-badge">{p.domain}</span>
-                </p>
-                <p className="date">
+                </span>
+                <span className="date">
                   <span className="exp-meta">{p.tags.join(' · ')}</span>
                   <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
-                </p>
-              </div>
-              <div className={`desc-collapse${open === i ? ' desc-collapse--open' : ''}`}>
+                </span>
+              </button>
+              <div id={`client-project-${i}`} className={`desc-collapse${open === i ? ' desc-collapse--open' : ''}`}>
                 <ul className="desc-list">
                   {p.points.map((point, idx) => (
                     <li key={idx}>{point}</li>

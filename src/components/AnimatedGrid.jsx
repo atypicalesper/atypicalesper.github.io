@@ -7,6 +7,8 @@ export default function AnimatedGrid({ children, className }) {
   const ref = useRef(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     gsap.fromTo(
       Array.from(ref.current.children),
       { opacity: 0, y: 36 },

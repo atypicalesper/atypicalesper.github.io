@@ -53,6 +53,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider>
+          <a href="#main-content" className="skip-link">Skip to content</a>
           <Cursor />
           <Background />
           <BgPolygons />
@@ -63,7 +64,7 @@ export default function RootLayout({ children }) {
           </div>
           <div className="container">
             <Navbar />
-            <main className="content">
+            <main id="main-content" className="content">
               <PageWrapper>{children}</PageWrapper>
             </main>
           </div>

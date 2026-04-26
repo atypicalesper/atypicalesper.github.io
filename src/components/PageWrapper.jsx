@@ -9,6 +9,8 @@ export default function PageWrapper({ children }) {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     gsap.fromTo(
       ref.current,
       { opacity: 0, y: 18 },
