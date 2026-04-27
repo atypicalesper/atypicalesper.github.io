@@ -12,6 +12,27 @@ const jsonLd = {
   ],
 };
 
+const featuredWork = [
+  {
+    title: 'Loan Management System',
+    label: 'fintech systems',
+    summary: 'Migrated a legacy loan platform into scalable NestJS microservices and built KYC-heavy verification flows for faster, compliant decisioning.',
+    impact: '~40% improvement in scalability, maintainability, and deployment efficiency.',
+  },
+  {
+    title: "That's My Jam",
+    label: 'real-time product',
+    summary: 'Built live bidding, slot scheduling, and payments infrastructure for music events with real-time WebSocket interactions.',
+    impact: 'Improved Stripe transaction reliability and contributed to a 20% revenue increase.',
+  },
+  {
+    title: 'First Fire',
+    label: 'iot alerting',
+    summary: 'Designed a real-time ingestion and alert pipeline for detecting fire incidents from truck sensor streams.',
+    impact: 'Enabled low-latency incident routing through MQTT, Twilio, and AWS SNS.',
+  },
+];
+
 export const metadata = {
   title: { absolute: 'Tarun Singh' },
   description:
@@ -96,6 +117,24 @@ const Home = () => {
               <span className="hero-proof">cloud deployments</span>
             </div>
           </aside>
+        </div>
+
+        <div className="home-featured section">
+          <h2>selected work</h2>
+          <p className="section-intro">
+            A few representative projects that show how I approach backend architecture, real-time systems, integrations, and outcome-oriented delivery.
+          </p>
+
+          <div className="featured-case-grid">
+            {featuredWork.map((item) => (
+              <article key={item.title} className="featured-case-card">
+                <span className="featured-case-label">{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.summary}</p>
+                <p className="featured-case-impact">{item.impact}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </>

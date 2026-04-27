@@ -8,6 +8,8 @@ const professionalProjects = [
   {
     title: 'Loan Management System',
     domain: 'fintech',
+    result: 'Legacy PHP platform migrated into NestJS microservices with roughly 40% better scalability and deployment efficiency.',
+    scope: 'Architecture migration, KYC orchestration, secure user management, cloud deployment, performance optimization.',
     tags: ['NestJS', 'MySQL', 'TypeORM', 'Redis', 'AWS', 'Docker', 'Microservices'],
     points: [
       'Migrated legacy PHP monolith to a NestJS-based microservices architecture, improving scalability, maintainability, and deployment efficiency by ~40%.',
@@ -19,6 +21,8 @@ const professionalProjects = [
   {
     title: "That's My Jam",
     domain: 'entertainment',
+    result: 'Real-time bidding and payments workflow that helped improve transaction reliability and contributed to a 20% revenue increase.',
+    scope: 'Live event mechanics, websockets, role-aware APIs, analytics, Stripe payment flows.',
     tags: ['Node.js', 'WebSocket', 'Stripe', 'NodeCron'],
     points: [
       'Built a real-time event-driven bidding platform using WebSockets, enabling live song requests, slot scheduling, and competitive battle modes for DJs and bands.',
@@ -30,6 +34,8 @@ const professionalProjects = [
   {
     title: 'First Fire',
     domain: 'IoT',
+    result: 'Low-latency alerting pipeline for fire incidents detected from live truck sensor data.',
+    scope: 'MQTT/EMQX ingestion, event processing, alert orchestration, multi-channel notifications, AWS deployment.',
     tags: ['Node.js', 'MQTT', 'EMQX', 'PostgreSQL', 'AWS SNS', 'Twilio'],
     points: [
       'Built a real-time IoT alerting system using MQTT and EMQX to process sensor data from garbage trucks and detect fire incidents.',
@@ -41,6 +47,8 @@ const professionalProjects = [
   {
     title: 'Direct Care Staffing',
     domain: 'healthcare',
+    result: 'Secure backend systems for sensitive staffing workflows with strong data modeling and compliance-minded API design.',
+    scope: 'Healthcare data modeling, encrypted API layers, credential management, PostGIS-based location analytics.',
     tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'PostGIS'],
     points: [
       'Designed and optimized data models and schemas to manage complex healthcare records, credentials, and certifications.',
@@ -52,6 +60,8 @@ const professionalProjects = [
   {
     title: 'Dave Steel Company',
     domain: 'construction',
+    result: 'Modernized HRMS with faster query performance and better integration into operational workflows.',
+    scope: 'Legacy refactors, performance tuning, schema/query optimization, infrastructure setup, third-party integration.',
     tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'AWS EC2', 'Nginx'],
     points: [
       'Modernized and optimized a construction-focused HRMS, improving scalability, performance, and third-party tool integrations.',
@@ -63,6 +73,8 @@ const professionalProjects = [
   {
     title: 'Biotech Imaging Platform',
     domain: 'biotech',
+    result: 'Research-facing data platform with faster frontend builds and scalable cloud-backed biological data processing.',
+    scope: 'React/Vite frontend, Flask APIs, biological data visualization, cloud services, auth and observability.',
     tags: ['React', 'TypeScript', 'Vite', 'MUI', 'Plotly.js', 'Python', 'Flask', 'GCP'],
     points: [
       'Built a React 18 + TypeScript frontend for visualizing cell sorting and imaging data, migrated from Create React App to Vite for significantly faster builds and HMR.',
@@ -86,6 +98,13 @@ export default function WorkClient() {
       <div className="work-links">
         <a className="work-link" href="https://www.naukri.com/code360/profile/atypicalesper">Coding Ninjas</a>
         <a className="work-link" href="https://www.leetcode.com/atypicalesper/">leetcode</a>
+      </div>
+
+      <div className="section featured-work-section">
+        <h2>featured work</h2>
+        <p className="section-intro">
+          A quick read on the projects that best show product thinking, backend depth, and the kind of systems work I like to own.
+        </p>
       </div>
 
       <AnimatedGrid className="grid">
@@ -142,6 +161,9 @@ export default function WorkClient() {
 
       <div className="section client-work-section">
         <h2>client work</h2>
+        <p className="section-intro">
+          Selected delivery across fintech, healthcare, IoT, construction, and biotech, framed around scope and outcomes instead of just stack names.
+        </p>
         <AnimatedList>
           {professionalProjects.map((p, i) => (
             <div key={p.title} className={`subsection exp-item${open === i ? ' exp-open' : ''}`}>
@@ -161,6 +183,8 @@ export default function WorkClient() {
                   <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
                 </span>
               </button>
+              <p className="client-result">{p.result}</p>
+              <p className="client-scope"><strong>Scope:</strong> {p.scope}</p>
               <div id={`client-project-${i}`} className={`desc-collapse${open === i ? ' desc-collapse--open' : ''}`}>
                 <ul className="desc-list">
                   {p.points.map((point, idx) => (
