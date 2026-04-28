@@ -7,6 +7,8 @@ export default function AnimatedList({ children, className, delay = 0.1 }) {
   const ref = useRef(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     gsap.fromTo(
       Array.from(ref.current.children),
       { opacity: 0, y: 20 },

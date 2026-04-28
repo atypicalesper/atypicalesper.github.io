@@ -159,6 +159,12 @@ export default function WorkClient() {
         />
       </AnimatedGrid>
 
+      <div className="section side-projects-note">
+        <p className="section-intro">
+          These side projects are where I tend to explore developer experience, real-time interaction, and product ideas with a bit more playfulness.
+        </p>
+      </div>
+
       <div className="section client-work-section">
         <h2>client work</h2>
         <p className="section-intro">

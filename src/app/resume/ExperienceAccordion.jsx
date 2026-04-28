@@ -9,6 +9,7 @@ const experience = [
     company: 'Crownstack Technologies',
     period: 'Jan 2026 – Present',
     location: 'Noida, UP',
+    summary: 'Own backend delivery for enterprise applications, with emphasis on scalable architectures and production-ready execution.',
     points: [
       'Build and ship backend features for high-traffic enterprise applications, owning delivery from design to production.',
       'Design service architectures and APIs optimized for performance-critical, scalable workflows.',
@@ -21,6 +22,7 @@ const experience = [
     company: 'Kasar Credit and Capital Pvt. Ltd.',
     period: 'Jul 2025 – Dec 2025',
     location: 'Delhi',
+    summary: 'Led modernization and verification-heavy backend work in a fintech environment with strong compliance and security needs.',
     points: [
       'Migrated legacy PHP monolith to NestJS microservices, improving scalability and maintainability by 40%.',
       'Built KYC and risk-assessment services integrating Aadhaar eKYC, PAN, Account Aggregator, and bank statement analysis for instant, compliant loan decisioning.',
@@ -33,6 +35,7 @@ const experience = [
     company: 'Copper Digital India Pvt. Ltd.',
     period: 'Dec 2022 – May 2025',
     location: 'Gurugram, HR',
+    summary: 'Delivered across multiple client domains, shipping real-time systems, secure APIs, cloud integrations, and mentoring support.',
     points: [
       'Integrated Stripe into a real-time song-bidding platform, improving transaction reliability and driving a 20% revenue increase.',
       'Built MQTT/EMQX pub/sub pipelines to process real-time IoT sensor data and trigger fire incident alerts from garbage trucks.',
@@ -47,6 +50,7 @@ const experience = [
     company: 'Copper Digital India Pvt. Ltd.',
     period: 'Sept 2022 – Dec 2022',
     location: 'Gurugram, HR',
+    summary: 'Built early API and collaboration fundamentals while working closely with design, QA, and engineering teams.',
     points: [
       'Built RESTful APIs alongside dev, design, and QA teams; documented with Swagger and Postman.',
       'Participated in code reviews, sprint planning, and standups; maintained Git workflows for team collaboration.',
@@ -85,6 +89,7 @@ export default function ExperienceAccordion() {
             </button>
 
             <div id={`experience-item-${i}`} className={`desc-collapse${open === i ? ' desc-collapse--open' : ''}`}>
+              <p className="experience-summary">{job.summary}</p>
               <ul className="desc-list">
                 {job.points.map((p, idx) => (
                   <li key={idx}>{p}</li>

@@ -18,18 +18,21 @@ const featuredWork = [
     label: 'fintech systems',
     summary: 'Migrated a legacy loan platform into scalable NestJS microservices and built KYC-heavy verification flows for faster, compliant decisioning.',
     impact: '~40% improvement in scalability, maintainability, and deployment efficiency.',
+    href: '/work/',
   },
   {
     title: "That's My Jam",
     label: 'real-time product',
     summary: 'Built live bidding, slot scheduling, and payments infrastructure for music events with real-time WebSocket interactions.',
     impact: 'Improved Stripe transaction reliability and contributed to a 20% revenue increase.',
+    href: '/work/',
   },
   {
     title: 'First Fire',
     label: 'iot alerting',
     summary: 'Designed a real-time ingestion and alert pipeline for detecting fire incidents from truck sensor streams.',
     impact: 'Enabled low-latency incident routing through MQTT, Twilio, and AWS SNS.',
+    href: '/work/',
   },
 ];
 
@@ -132,6 +135,7 @@ const Home = () => {
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
                 <p className="featured-case-impact">{item.impact}</p>
+                <a href={item.href} className="featured-case-link">see full work</a>
               </article>
             ))}
           </div>

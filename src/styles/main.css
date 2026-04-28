@@ -1173,6 +1173,13 @@ a:has(> .card-shell) {
   color: var(--text-muted);
 }
 
+.experience-summary {
+  margin: 0.75rem 0 0;
+  max-width: 100%;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
 .client-result,
 .client-scope {
   margin: 0.55rem 0 0;
@@ -1492,6 +1499,60 @@ a:has(> .card-shell) {
   text-transform: lowercase;
 }
 
+.resume-hero {
+  margin-bottom: 0.5rem;
+}
+
+.resume-hero-kicker {
+  color: rgba(var(--accent-rgb), 0.72);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+}
+
+.resume-title {
+  margin: 0.65rem 0 0;
+  font-family: "Jost", sans-serif;
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 0.98;
+  font-weight: 600;
+  max-width: 16ch;
+}
+
+.resume-intro {
+  margin-top: 1rem;
+}
+
+.resume-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.resume-summary-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.14);
+  border-radius: 1.15rem;
+  background:
+    linear-gradient(180deg, rgba(var(--accent-rgb), 0.06), rgba(var(--accent-rgb), 0.02)),
+    rgba(var(--accent-rgb), 0.015);
+}
+
+.resume-summary-value {
+  color: var(--accent);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.resume-summary-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
 .home-featured {
   margin-top: 4.5rem;
 }
@@ -1542,6 +1603,22 @@ a:has(> .card-shell) {
   color: var(--accent);
 }
 
+.featured-case-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
+  padding-bottom: 0.1rem;
+}
+
+.featured-case-link:hover {
+  color: var(--text);
+  border-bottom-color: rgba(var(--accent-rgb), 0.75);
+}
+
 .content .about-link {
   display: inline-flex;
   align-items: center;
@@ -1576,6 +1653,7 @@ a:has(> .card-shell) {
     gap: 1.4rem;
   }
 
+  .resume-summary-grid,
   .featured-case-grid {
     grid-template-columns: 1fr;
   }
