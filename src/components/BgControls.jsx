@@ -143,9 +143,9 @@ const SpawnIcon = (
 
 export default function BgControls() {
   const [open, setOpen] = useState(() => {
-    if (typeof window === 'undefined') return true;
+    if (typeof window === 'undefined') return false;
     const v = localStorage.getItem('controlsOpen');
-    return v === null ? true : v === 'true';
+    return v === null ? false : v === 'true';
   });
   const [sides, setSides] = useState(6);
 
