@@ -15,6 +15,7 @@ const professionalProjects = [
       'Migrated legacy PHP monolith to a NestJS-based microservices architecture, improving scalability, maintainability, and deployment efficiency by ~40%.',
       'Built KYC and risk assessment services integrating Aadhaar eKYC, PAN verification, Account Aggregator, and bank statement analysis for instant, compliant loan decisioning.',
       'Designed and implemented a secure User Management Service (UMS) with RBAC, custom authentication/authorization, session management, and audit logging.',
+      'Delivered digital verification workflows across PAN, Aadhaar eKYC, and Digilocker integrations for high-trust onboarding journeys.',
       'Deployed and scaled services on AWS using Docker, leveraging Redis for caching and performance optimization in high-traffic financial workflows.',
     ],
   },
@@ -41,6 +42,7 @@ const professionalProjects = [
       'Built a real-time IoT alerting system using MQTT and EMQX to process sensor data from garbage trucks and detect fire incidents.',
       'Implemented automated multi-channel notifications via Twilio (SMS/Calls) and AWS SNS for instant incident response.',
       'Designed backend services for event processing, alert orchestration, and incident logging using Node.js and PostgreSQL.',
+      'Automated operational notification flows and background jobs that reduced manual coordination overhead during incident handling.',
       'Deployed and monitored services on AWS, ensuring high availability and low-latency alert delivery.',
     ],
   },
@@ -81,6 +83,19 @@ const professionalProjects = [
       'Developed REST APIs using Python Flask, integrated with Google App Engine Flex, Cloud Endpoints, and Cloud Run for scalable cell data processing.',
       'Implemented interactive biological data visualizations using a custom Plotly.js bundle, enabling researchers to explore large-scale imaging datasets with minimal bundle overhead.',
       'Integrated Auth0 authentication and Datadog observability, enforcing secure access control and real-time performance monitoring across the platform.',
+    ],
+  },
+  {
+    title: 'RAG Chatbot POC',
+    domain: 'ai',
+    result: 'Internal proof of concept that combined document ingestion, retrieval, and LLM responses into a usable question-answering workflow.',
+    scope: 'Document ingestion, vector retrieval, prompt orchestration, backend API design, early product validation.',
+    tags: ['Node.js', 'Pinecone', 'LLM', 'RAG', 'Document Ingestion'],
+    points: [
+      'Shipped a RAG chatbot proof of concept to answer questions over uploaded content using retrieval-augmented generation patterns.',
+      'Built the document ingestion and retrieval flow to support grounded responses instead of generic model output.',
+      'Used vector search infrastructure to connect chunked knowledge sources with query-time context assembly.',
+      'Turned backend AI experimentation into a product-shaped workflow that could be tested with real use cases.',
     ],
   },
 ];
@@ -159,6 +174,16 @@ export default function WorkClient() {
         />
 
         <Card
+          title="Music Analyzer"
+          eyebrow="music product"
+          summary="Spotify-powered listening dashboard with taste profiles, compatibility matching, recommendations, and public listener pages."
+          description="A music discovery and listening analysis product built around Spotify data. Includes Spotify sign-in, personal listening dashboards, top tracks and artists, audio feature summaries, recommendations, public listener profiles, taste matchmaking, and an explore experience for discovering other listeners."
+          link="https://github.com/atypicalesper/spotify-dashboard"
+          tags={['Next.js', 'TypeScript', 'NextAuth', 'Prisma', 'Spotify API', 'React']}
+          ctaLabel="view repo"
+        />
+
+        <Card
           title="GameZone"
           eyebrow="real-time platform"
           summary="Multiplayer games, live chat, leaderboards, and JWT auth in a full-stack monorepo."
@@ -188,7 +213,7 @@ export default function WorkClient() {
       <div className="section client-work-section">
         <h2>client work</h2>
         <p className="section-intro">
-          Selected delivery across fintech, healthcare, IoT, construction, and biotech, framed around scope and outcomes instead of just stack names.
+          Selected delivery across fintech, healthcare, IoT, construction, biotech, and applied AI, framed around scope and outcomes instead of just stack names.
         </p>
         <AnimatedList>
           {professionalProjects.map((p, i) => (
