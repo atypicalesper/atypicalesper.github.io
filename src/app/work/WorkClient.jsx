@@ -119,26 +119,6 @@ export default function WorkClient() {
         />
 
         <Card
-          title="Finance Tracker"
-          eyebrow="backend api"
-          summary="Personal finance REST API with auth, caching, rate limiting, and solid developer docs."
-          description="A personal finance REST API with JWT auth, RBAC, Redis caching, rate limiting, and Swagger docs. Backed by PostgreSQL."
-          link="https://github.com/atypicalesper/finance-tracker"
-          tags={['Node.js', 'Express', 'PostgreSQL', 'Redis', 'JWT', 'Swagger']}
-          ctaLabel="view repo"
-        />
-
-        <Card
-          title="GameZone"
-          eyebrow="real-time platform"
-          summary="Multiplayer games, live chat, leaderboards, and JWT auth in a full-stack monorepo."
-          description="Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo."
-          link="https://github.com/atypicalesper/games-games"
-          tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
-          ctaLabel="view repo"
-        />
-
-        <Card
           title="dev-atlas"
           eyebrow="open source"
           summary="Deep-dive engineering knowledge base built for developers who want understanding, not just snippets."
@@ -155,6 +135,46 @@ export default function WorkClient() {
           description="Multi-tenant RAG chatbot frontend with SSE streaming, document upload, and per-tenant context isolation. Paired with a FastAPI + LangChain + Chroma backend."
           link="https://github.com/atypicalesper/COMET-fy-q4-25-26"
           tags={['Next.js', 'React', 'TypeScript', 'Tailwind', 'SSE', 'FastAPI', 'LangChain']}
+          ctaLabel="view repo"
+        />
+
+        <Card
+          title="Prompt Lab"
+          eyebrow="llm tooling"
+          summary="On-device prompt engineering and observability dashboard for comparing local models, A/B testing prompts, and tracking token economics."
+          description="A local LLM observability and prompt engineering dashboard running entirely on-device via Ollama. Includes single-run streaming, side-by-side model comparison, A/B prompt testing, token/cost tracking, hardware monitoring, saved prompts, and persisted request history."
+          link="https://github.com/atypicalesper/prompt-lab"
+          tags={['NestJS', 'Next.js 15', 'Ollama', 'SQLite', 'SSE', 'React']}
+          ctaLabel="view repo"
+        />
+
+        <Card
+          title="GenLea"
+          eyebrow="agentic pipeline"
+          summary="Automated B2B lead generation engine that combines scraping, enrichment, scoring, and LLM-assisted workflows in a microservices setup."
+          description="A lead generation platform for software-services outreach that discovers companies, enriches hiring and contact signals, estimates Indian-origin team presence, scores leads against a strict ICP, and exports only the strongest prospects. Built as a microservices monorepo with queue-based workers, a Fastify API, and a Python microservice."
+          link="https://github.com/atypicalesper/genlea"
+          tags={['Node.js', 'BullMQ', 'MongoDB', 'Redis', 'Fastify', 'Python']}
+          ctaLabel="view repo"
+        />
+
+        <Card
+          title="GameZone"
+          eyebrow="real-time platform"
+          summary="Multiplayer games, live chat, leaderboards, and JWT auth in a full-stack monorepo."
+          description="Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo."
+          link="https://github.com/atypicalesper/games-games"
+          tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
+          ctaLabel="view repo"
+        />
+
+        <Card
+          title="VectorLens"
+          eyebrow="learning lab"
+          summary="Browser-only semantic search lab for exploring retrieval, embeddings, indexing strategies, and latency-versus-recall tradeoffs."
+          description="A tiny local semantic search playground built to teach vector retrieval internals through hands-on experimentation. Covers embedding tradeoffs, similarity metrics, chunking, ANN strategies, metadata filtering, hybrid retrieval, and evaluation without requiring API keys or external services."
+          link="https://github.com/atypicalesper/understanding-embeddings-semantic-retrieval"
+          tags={['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser']}
           ctaLabel="view repo"
         />
       </AnimatedGrid>
