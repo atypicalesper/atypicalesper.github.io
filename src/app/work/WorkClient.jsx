@@ -4,6 +4,108 @@ import Card from '../../components/Card';
 import AnimatedGrid from '../../components/AnimatedGrid';
 import AnimatedList from '../../components/AnimatedList';
 
+const featuredClientWork = [
+  {
+    title: 'Loan Management System',
+    label: 'high-trust fintech',
+    summary: 'Migrated a legacy lending platform into scalable NestJS microservices while rebuilding verification-heavy onboarding and user-management workflows.',
+    impact: '~40% improvement in scalability, maintainability, and deployment efficiency.',
+    details: ['Microservices migration', 'KYC + verification flows', 'AWS + Redis scaling'],
+  },
+  {
+    title: "That's My Jam",
+    label: 'real-time product',
+    summary: 'Shipped live bidding, scheduling, and payment infrastructure for event-driven music experiences with strong real-time interaction requirements.',
+    impact: 'Improved transaction reliability and contributed to a 20% revenue increase.',
+    details: ['WebSockets', 'Stripe flows', 'Role-aware APIs'],
+  },
+  {
+    title: 'First Fire',
+    label: 'iot alerting',
+    summary: 'Built an ingestion and alert pipeline that converted live truck sensor data into fast incident-response notifications.',
+    impact: 'Enabled low-latency fire detection and multi-channel operational alerting.',
+    details: ['MQTT + EMQX', 'Twilio + AWS SNS', 'Background job automation'],
+  },
+];
+
+const flagshipProjects = [
+  {
+    title: 'dev-atlas',
+    eyebrow: 'open source',
+    summary: 'Deep-dive engineering knowledge base built for developers who want understanding, not just snippets.',
+    description: 'Open-source developer knowledge base — deep-dive docs on JS internals, TypeScript, system design, databases, DevOps, and more. Built for engineers who want to actually understand the stack.',
+    link: 'https://atypicalesper.github.io/dev-atlas',
+    tags: ['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown'],
+    ctaLabel: 'open site',
+  },
+  {
+    title: 'Prompt Lab',
+    eyebrow: 'llm tooling',
+    summary: 'On-device prompt engineering and observability dashboard for comparing local models, A/B testing prompts, and tracking token economics.',
+    description: 'A local LLM observability and prompt engineering dashboard running entirely on-device via Ollama. Includes single-run streaming, side-by-side model comparison, A/B prompt testing, token/cost tracking, hardware monitoring, saved prompts, and persisted request history.',
+    link: 'https://github.com/atypicalesper/prompt-lab',
+    tags: ['NestJS', 'Next.js 15', 'Ollama', 'SQLite', 'SSE', 'React'],
+    ctaLabel: 'view repo',
+  },
+  {
+    title: 'GenLea',
+    eyebrow: 'agentic pipeline',
+    summary: 'Automated B2B lead generation engine that combines scraping, enrichment, scoring, and LLM-assisted workflows in a microservices setup.',
+    description: 'A lead generation platform for software-services outreach that discovers companies, enriches hiring and contact signals, estimates Indian-origin team presence, scores leads against a strict ICP, and exports only the strongest prospects. Built as a microservices monorepo with queue-based workers, a Fastify API, and a Python microservice.',
+    link: 'https://github.com/atypicalesper/genlea',
+    tags: ['Node.js', 'BullMQ', 'MongoDB', 'Redis', 'Fastify', 'Python'],
+    ctaLabel: 'view repo',
+  },
+  {
+    title: 'RAG Chat',
+    eyebrow: 'ai product',
+    summary: 'Multi-tenant RAG chat frontend with streaming responses, uploads, and tenant-isolated context.',
+    description: 'Multi-tenant RAG chatbot frontend with SSE streaming, document upload, and per-tenant context isolation. Paired with a FastAPI + LangChain + Chroma backend.',
+    link: 'https://github.com/atypicalesper/COMET-fy-q4-25-26',
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'SSE', 'FastAPI', 'LangChain'],
+    ctaLabel: 'view repo',
+  },
+];
+
+const exploratoryProjects = [
+  {
+    title: 'Music Analyzer',
+    eyebrow: 'music product',
+    summary: 'Spotify-powered listening dashboard with taste profiles, compatibility matching, recommendations, and public listener pages.',
+    description: 'A music discovery and listening analysis product built around Spotify data. Includes Spotify sign-in, personal listening dashboards, top tracks and artists, audio feature summaries, recommendations, public listener profiles, taste matchmaking, and an explore experience for discovering other listeners.',
+    link: 'https://github.com/atypicalesper/spotify-dashboard',
+    tags: ['Next.js', 'TypeScript', 'NextAuth', 'Prisma', 'Spotify API', 'React'],
+    ctaLabel: 'view repo',
+  },
+  {
+    title: 'GameZone',
+    eyebrow: 'real-time platform',
+    summary: 'Multiplayer games, live chat, leaderboards, and JWT auth in a full-stack monorepo.',
+    description: 'Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo.',
+    link: 'https://github.com/atypicalesper/games-games',
+    tags: ['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind'],
+    ctaLabel: 'view repo',
+  },
+  {
+    title: 'VectorLens',
+    eyebrow: 'learning lab',
+    summary: 'Browser-only semantic search lab for exploring retrieval, embeddings, indexing strategies, and latency-versus-recall tradeoffs.',
+    description: 'A tiny local semantic search playground built to teach vector retrieval internals through hands-on experimentation. Covers embedding tradeoffs, similarity metrics, chunking, ANN strategies, metadata filtering, hybrid retrieval, and evaluation without requiring API keys or external services.',
+    link: 'https://github.com/atypicalesper/understanding-embeddings-semantic-retrieval',
+    tags: ['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser'],
+    ctaLabel: 'view repo',
+  },
+  {
+    title: 'Drumkit',
+    eyebrow: 'playful build',
+    summary: 'Keyboard-powered drum machine with instant feedback and a more fun-than-useful personality.',
+    description: 'A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments.',
+    link: '/bonus',
+    tags: ['JavaScript', 'HTML', 'CSS', 'jQuery'],
+    ctaLabel: 'try demo',
+  },
+];
+
 const professionalProjects = [
   {
     title: 'Loan Management System',
@@ -120,101 +222,68 @@ export default function WorkClient() {
         <p className="section-intro">
           A quick read on the projects that best show product thinking, backend depth, and the kind of systems work I like to own.
         </p>
+        <div className="work-chip-row" aria-label="Project categories">
+          <span className="work-chip">real-time systems</span>
+          <span className="work-chip">high-trust workflows</span>
+          <span className="work-chip">agentic tooling</span>
+          <span className="work-chip">consumer product ideas</span>
+        </div>
+      </div>
+
+      <div className="featured-client-grid">
+        {featuredClientWork.map((item) => (
+          <article key={item.title} className="featured-client-card">
+            <span className="featured-client-label">{item.label}</span>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+            <p className="featured-client-impact">{item.impact}</p>
+            <div className="featured-client-details">
+              {item.details.map((detail) => (
+                <span key={detail} className="featured-client-detail">{detail}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="section project-group-section">
+        <h2>flagship builds</h2>
+        <p className="section-intro">
+          The strongest self-directed work for recruiters and hiring teams who want a fast read on architecture, product sense, and technical range.
+        </p>
       </div>
 
       <AnimatedGrid className="grid">
-        <Card
-          title="Drumkit"
-          eyebrow="playful build"
-          summary="Keyboard-powered drum machine with instant feedback and a more fun-than-useful personality."
-          description="A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments."
-          link="/bonus"
-          tags={['JavaScript', 'HTML', 'CSS', 'jQuery']}
-          ctaLabel="try demo"
-        />
-
-        <Card
-          title="dev-atlas"
-          eyebrow="open source"
-          summary="Deep-dive engineering knowledge base built for developers who want understanding, not just snippets."
-          description="Open-source developer knowledge base — deep-dive docs on JS internals, TypeScript, system design, databases, DevOps, and more. Built for engineers who want to actually understand the stack."
-          link="https://atypicalesper.github.io/dev-atlas"
-          tags={['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown']}
-          ctaLabel="open site"
-        />
-
-        <Card
-          title="RAG Chat"
-          eyebrow="ai product"
-          summary="Multi-tenant RAG chat frontend with streaming responses, uploads, and tenant-isolated context."
-          description="Multi-tenant RAG chatbot frontend with SSE streaming, document upload, and per-tenant context isolation. Paired with a FastAPI + LangChain + Chroma backend."
-          link="https://github.com/atypicalesper/COMET-fy-q4-25-26"
-          tags={['Next.js', 'React', 'TypeScript', 'Tailwind', 'SSE', 'FastAPI', 'LangChain']}
-          ctaLabel="view repo"
-        />
-
-        <Card
-          title="Prompt Lab"
-          eyebrow="llm tooling"
-          summary="On-device prompt engineering and observability dashboard for comparing local models, A/B testing prompts, and tracking token economics."
-          description="A local LLM observability and prompt engineering dashboard running entirely on-device via Ollama. Includes single-run streaming, side-by-side model comparison, A/B prompt testing, token/cost tracking, hardware monitoring, saved prompts, and persisted request history."
-          link="https://github.com/atypicalesper/prompt-lab"
-          tags={['NestJS', 'Next.js 15', 'Ollama', 'SQLite', 'SSE', 'React']}
-          ctaLabel="view repo"
-        />
-
-        <Card
-          title="GenLea"
-          eyebrow="agentic pipeline"
-          summary="Automated B2B lead generation engine that combines scraping, enrichment, scoring, and LLM-assisted workflows in a microservices setup."
-          description="A lead generation platform for software-services outreach that discovers companies, enriches hiring and contact signals, estimates Indian-origin team presence, scores leads against a strict ICP, and exports only the strongest prospects. Built as a microservices monorepo with queue-based workers, a Fastify API, and a Python microservice."
-          link="https://github.com/atypicalesper/genlea"
-          tags={['Node.js', 'BullMQ', 'MongoDB', 'Redis', 'Fastify', 'Python']}
-          ctaLabel="view repo"
-        />
-
-        <Card
-          title="Music Analyzer"
-          eyebrow="music product"
-          summary="Spotify-powered listening dashboard with taste profiles, compatibility matching, recommendations, and public listener pages."
-          description="A music discovery and listening analysis product built around Spotify data. Includes Spotify sign-in, personal listening dashboards, top tracks and artists, audio feature summaries, recommendations, public listener profiles, taste matchmaking, and an explore experience for discovering other listeners."
-          link="https://github.com/atypicalesper/spotify-dashboard"
-          tags={['Next.js', 'TypeScript', 'NextAuth', 'Prisma', 'Spotify API', 'React']}
-          ctaLabel="view repo"
-        />
-
-        <Card
-          title="GameZone"
-          eyebrow="real-time platform"
-          summary="Multiplayer games, live chat, leaderboards, and JWT auth in a full-stack monorepo."
-          description="Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo."
-          link="https://github.com/atypicalesper/games-games"
-          tags={['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind']}
-          ctaLabel="view repo"
-        />
-
-        <Card
-          title="VectorLens"
-          eyebrow="learning lab"
-          summary="Browser-only semantic search lab for exploring retrieval, embeddings, indexing strategies, and latency-versus-recall tradeoffs."
-          description="A tiny local semantic search playground built to teach vector retrieval internals through hands-on experimentation. Covers embedding tradeoffs, similarity metrics, chunking, ANN strategies, metadata filtering, hybrid retrieval, and evaluation without requiring API keys or external services."
-          link="https://github.com/atypicalesper/understanding-embeddings-semantic-retrieval"
-          tags={['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser']}
-          ctaLabel="view repo"
-        />
+        {flagshipProjects.map((project) => (
+          <Card key={project.title} {...project} />
+        ))}
       </AnimatedGrid>
 
       <div className="section side-projects-note">
+        <h2>explorations</h2>
         <p className="section-intro">
-          These side projects are where I tend to explore developer experience, real-time interaction, and product ideas with a bit more playfulness.
+          These are lighter, more exploratory builds where I test product ideas, interaction patterns, and system concepts with a bit more playfulness.
         </p>
       </div>
+
+      <AnimatedGrid className="grid grid--compact">
+        {exploratoryProjects.map((project) => (
+          <Card key={project.title} {...project} />
+        ))}
+      </AnimatedGrid>
 
       <div className="section client-work-section">
         <h2>client work</h2>
         <p className="section-intro">
           Selected delivery across fintech, healthcare, IoT, construction, biotech, and applied AI, framed around scope and outcomes instead of just stack names.
         </p>
+        <div className="work-chip-row" aria-label="Client work categories">
+          <span className="work-chip">fintech</span>
+          <span className="work-chip">healthcare</span>
+          <span className="work-chip">iot</span>
+          <span className="work-chip">biotech</span>
+          <span className="work-chip">applied ai</span>
+        </div>
         <AnimatedList>
           {professionalProjects.map((p, i) => (
             <div key={p.title} className={`subsection exp-item${open === i ? ' exp-open' : ''}`}>
