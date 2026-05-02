@@ -294,13 +294,15 @@ export default function WorkClient() {
                 aria-expanded={open === i}
                 aria-controls={`client-project-${i}`}
               >
-                <span className="title">
-                  {p.title}
-                  <span className="client-domain-badge">{p.domain}</span>
-                </span>
-                <span className="date">
-                  <span className="exp-meta">{p.tags.join(' · ')}</span>
-                  <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
+                <span className="job-header-inner">
+                  <span className="title">
+                    {p.title}
+                    <span className="client-domain-badge">{p.domain}</span>
+                  </span>
+                  <span className="job-header-meta">
+                    <span className="exp-meta">{p.tags.join(' · ')}</span>
+                    <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
+                  </span>
                 </span>
               </button>
               <p className="client-result">{p.result}</p>

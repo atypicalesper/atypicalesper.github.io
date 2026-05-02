@@ -77,19 +77,21 @@ export default function ExperienceAccordion() {
               aria-expanded={open === i}
               aria-controls={`experience-item-${i}`}
             >
-              <span className="title">
-                {i === 0 && <span className="current-dot" />}
-                {job.company}
-                <span className="exp-role-badge">{job.role}</span>
-              </span>
-              <span className="date">
-                <span className="exp-meta">{job.period} · {job.location}</span>
-                <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
+              <span className="job-header-inner">
+                <span className="title">
+                  {i === 0 && <span className="current-dot" />}
+                  {job.company}
+                  <span className="exp-role-badge">{job.role}</span>
+                </span>
+                <span className="job-header-meta">
+                  <span className="exp-meta">{job.period} · {job.location}</span>
+                  <span className={`exp-chevron${open === i ? ' exp-chevron--open' : ''}`}>›</span>
+                </span>
               </span>
             </button>
 
+            <p className="experience-summary">{job.summary}</p>
             <div id={`experience-item-${i}`} className={`desc-collapse${open === i ? ' desc-collapse--open' : ''}`}>
-              <p className="experience-summary">{job.summary}</p>
               <ul className="desc-list">
                 {job.points.map((p, idx) => (
                   <li key={idx}>{p}</li>

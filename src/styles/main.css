@@ -858,13 +858,21 @@ input:focus-visible {
 
 /* experience accordion */
 .exp-item {
-  border-left: 1px solid rgba(var(--accent-rgb), 0.08);
-  padding-left: 1rem;
+  border-left: 1px solid rgba(var(--accent-rgb), 0.1);
+  padding: 0.85rem 0 0.85rem 1.1rem;
   transition: border-color 0.25s ease;
+}
+.exp-item + .exp-item {
+  border-top: 1px solid rgba(var(--accent-rgb), 0.06);
 }
 .exp-item.exp-open,
 .exp-item:hover {
-  border-left-color: rgba(var(--accent-rgb), 0.3);
+  border-left-color: rgba(var(--accent-rgb), 0.35);
+}
+.exp-item.exp-open {
+  background: rgba(var(--accent-rgb), 0.025);
+  border-radius: 0 0.85rem 0.85rem 0;
+  padding-bottom: 1.1rem;
 }
 
 .job-header {
@@ -875,26 +883,55 @@ input:focus-visible {
   text-align: left;
   color: inherit;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.job-header:hover {
-  opacity: 1;
+  transition: opacity 0.2s ease;
 }
 .job-header:hover .title,
 .job-header:focus-visible .title {
   color: var(--accent-hover);
 }
 
+.job-header-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.job-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
 .exp-meta {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
+  color: rgba(var(--accent-rgb), 0.65);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .job-header-inner {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .job-header-meta {
+    padding-top: 0;
+  }
+  .exp-meta {
+    white-space: normal;
+    font-size: 0.8rem;
+  }
 }
 
 .exp-chevron {
   font-size: 1.1rem;
-  color: rgba(var(--accent-rgb), 0.5);
+  color: rgba(var(--accent-rgb), 0.4);
   transition: transform 0.25s ease, color 0.2s ease;
   display: inline-block;
   line-height: 1;
+  flex-shrink: 0;
 }
 .exp-chevron--open {
   transform: rotate(90deg);
@@ -910,7 +947,8 @@ input:focus-visible {
 .desc-collapse--open {
   grid-template-rows: 1fr;
 }
-.desc-collapse > ul {
+.desc-collapse > ul,
+.desc-collapse > div {
   overflow: hidden;
 }
 
@@ -1162,6 +1200,7 @@ a:has(> .card-shell) {
 .exp-role-badge {
   font-size: 0.72rem;
   padding: 3px 9px;
+  border-radius: 0.25rem;
   border: 1px solid rgba(var(--accent-rgb), 0.45);
   background: rgba(var(--accent-rgb), 0.08);
   color: rgba(var(--accent-rgb), 0.9);
@@ -1175,6 +1214,7 @@ a:has(> .card-shell) {
 .client-domain-badge {
   font-size: 0.68rem;
   padding: 2px 7px;
+  border-radius: 0.25rem;
   border: 1px solid rgba(var(--accent-rgb), 0.2);
   color: rgba(var(--accent-rgb), 0.55);
   letter-spacing: 0.04em;
@@ -1217,22 +1257,25 @@ a:has(> .card-shell) {
 .experience-summary {
   margin: 0.75rem 0 0;
   max-width: 100%;
-  font-size: 0.95rem;
-  color: var(--text);
-}
-
-.client-result,
-.client-scope {
-  margin: 0.55rem 0 0;
-  max-width: 100%;
-  font-size: 0.95rem;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--text-muted);
 }
 
 .client-result {
+  margin: 0.6rem 0 0;
+  max-width: 100%;
+  font-size: 0.93rem;
+  line-height: 1.55;
   color: var(--text);
+  font-style: italic;
 }
 
 .client-scope {
+  margin: 0.35rem 0 0;
+  max-width: 100%;
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: var(--text-muted);
 }
 
@@ -1547,6 +1590,18 @@ a:has(> .card-shell) {
   margin-top: 1.5rem;
 }
 
+@media (max-width: 900px) {
+  .featured-client-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .featured-client-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .featured-client-card {
   display: grid;
   gap: 0.75rem;
@@ -1638,6 +1693,18 @@ a:has(> .card-shell) {
   margin-top: 1.5rem;
 }
 
+@media (max-width: 800px) {
+  .resume-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .resume-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .resume-summary-card {
   display: grid;
   gap: 0.35rem;
@@ -1670,6 +1737,18 @@ a:has(> .card-shell) {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   width: 100%;
+}
+
+@media (max-width: 900px) {
+  .featured-case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .featured-case-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .featured-case-card {
