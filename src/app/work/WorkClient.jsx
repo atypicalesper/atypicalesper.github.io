@@ -28,16 +28,7 @@ const featuredClientWork = [
   },
 ];
 
-const flagshipProjects = [
-  {
-    title: 'dev-atlas',
-    eyebrow: 'open source',
-    summary: 'Deep-dive engineering knowledge base built for developers who want understanding, not just snippets.',
-    description: 'Open-source developer knowledge base — deep-dive docs on JS internals, TypeScript, system design, databases, DevOps, and more. Built for engineers who want to actually understand the stack.',
-    link: 'https://atypicalesper.github.io/dev-atlas',
-    tags: ['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown'],
-    ctaLabel: 'open site',
-  },
+const aiProjects = [
   {
     title: 'Prompt Lab',
     eyebrow: 'llm tooling',
@@ -57,17 +48,33 @@ const flagshipProjects = [
     ctaLabel: 'view repo',
   },
   {
-    title: 'RAG Chat',
-    eyebrow: 'ai product',
-    summary: 'Multi-tenant RAG chat frontend with streaming responses, uploads, and tenant-isolated context.',
-    description: 'Multi-tenant RAG chatbot frontend with SSE streaming, document upload, and per-tenant context isolation. Paired with a FastAPI + LangChain + Chroma backend.',
-    link: 'https://github.com/atypicalesper/COMET-fy-q4-25-26',
-    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'SSE', 'FastAPI', 'LangChain'],
+    title: 'VectorLens',
+    eyebrow: 'learning lab',
+    summary: 'Browser-only semantic search lab for exploring retrieval, embeddings, indexing strategies, and latency-versus-recall tradeoffs.',
+    description: 'A tiny local semantic search playground built to teach vector retrieval internals through hands-on experimentation. Covers embedding tradeoffs, similarity metrics, chunking, ANN strategies, metadata filtering, hybrid retrieval, and evaluation without requiring API keys or external services.',
+    link: 'https://github.com/atypicalesper/understanding-embeddings-semantic-retrieval',
+    tags: ['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser'],
     ctaLabel: 'view repo',
   },
 ];
 
-const exploratoryProjects = [
+const flagshipProjects = [
+  {
+    title: 'dev-atlas',
+    eyebrow: 'open source',
+    summary: 'Deep-dive engineering knowledge base built for developers who want understanding, not just snippets.',
+    description: 'Open-source developer knowledge base — deep-dive docs on JS internals, TypeScript, system design, databases, DevOps, and more. Built for engineers who want to actually understand the stack.',
+    link: 'https://atypicalesper.github.io/dev-atlas',
+    tags: ['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown'],
+    ctaLabel: 'open site',
+  },
+  {
+    title: 'Direct Care Staffing',
+    eyebrow: 'healthcare platform',
+    summary: 'Scheduling and staffing platform where nurses can discover shifts, manage patient-facing workflows, and work inside a compliance-heavy environment.',
+    description: 'A healthcare staffing platform focused on matching nurses with shifts and patient care workflows. I worked on secure backend systems around staffing records, credentials, and sensitive healthcare data, including HIPAA-minded access control and encryption-oriented API design.',
+    tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'PostGIS', 'HIPAA', 'Encryption'],
+  },
   {
     title: 'Music Analyzer',
     eyebrow: 'music product',
@@ -77,6 +84,9 @@ const exploratoryProjects = [
     tags: ['Next.js', 'TypeScript', 'NextAuth', 'Prisma', 'Spotify API', 'React'],
     ctaLabel: 'view repo',
   },
+];
+
+const exploratoryProjects = [
   {
     title: 'GameZone',
     eyebrow: 'real-time platform',
@@ -84,15 +94,6 @@ const exploratoryProjects = [
     description: 'Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo.',
     link: 'https://github.com/atypicalesper/games-games',
     tags: ['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind'],
-    ctaLabel: 'view repo',
-  },
-  {
-    title: 'VectorLens',
-    eyebrow: 'learning lab',
-    summary: 'Browser-only semantic search lab for exploring retrieval, embeddings, indexing strategies, and latency-versus-recall tradeoffs.',
-    description: 'A tiny local semantic search playground built to teach vector retrieval internals through hands-on experimentation. Covers embedding tradeoffs, similarity metrics, chunking, ANN strategies, metadata filtering, hybrid retrieval, and evaluation without requiring API keys or external services.',
-    link: 'https://github.com/atypicalesper/understanding-embeddings-semantic-retrieval',
-    tags: ['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser'],
     ctaLabel: 'view repo',
   },
   {
@@ -218,39 +219,35 @@ export default function WorkClient() {
       </div>
 
       <div className="section featured-work-section">
-        <h2>featured work</h2>
+        <h2>ai systems</h2>
         <p className="section-intro">
-          A quick read on the projects that best show product thinking, backend depth, and the kind of systems work I like to own.
+          The AI-heavy work comes first here: retrieval, prompt tooling, agentic workflows, and product-shaped experiments built around modern LLM systems.
         </p>
         <div className="work-chip-row" aria-label="Project categories">
-          <span className="work-chip">real-time systems</span>
-          <span className="work-chip">high-trust workflows</span>
-          <span className="work-chip">agentic tooling</span>
-          <span className="work-chip">consumer product ideas</span>
+          <span className="work-chip">rag systems</span>
+          <span className="work-chip">prompt tooling</span>
+          <span className="work-chip">agentic workflows</span>
+          <span className="work-chip">local llm experiments</span>
         </div>
       </div>
 
-      <div className="featured-client-grid">
-        {featuredClientWork.map((item) => (
-          <article key={item.title} className="featured-client-card">
-            <span className="featured-client-label">{item.label}</span>
-            <h3>{item.title}</h3>
-            <p>{item.summary}</p>
-            <p className="featured-client-impact">{item.impact}</p>
-            <div className="featured-client-details">
-              {item.details.map((detail) => (
-                <span key={detail} className="featured-client-detail">{detail}</span>
-              ))}
-            </div>
-          </article>
+      <AnimatedGrid className="grid">
+        {aiProjects.map((project) => (
+          <Card key={project.title} {...project} />
         ))}
-      </div>
+      </AnimatedGrid>
 
       <div className="section project-group-section">
-        <h2>flagship builds</h2>
+        <h2>projects</h2>
         <p className="section-intro">
-          The strongest self-directed work for recruiters and hiring teams who want a fast read on architecture, product sense, and technical range.
+          Broader product, platform, and open-source work across healthcare, music, education, gaming, and frontend-heavy explorations.
         </p>
+        <div className="work-chip-row" aria-label="Project categories">
+          <span className="work-chip">healthcare platform</span>
+          <span className="work-chip">consumer product</span>
+          <span className="work-chip">open source</span>
+          <span className="work-chip">real-time interaction</span>
+        </div>
       </div>
 
       <AnimatedGrid className="grid">
@@ -262,7 +259,7 @@ export default function WorkClient() {
       <div className="section side-projects-note">
         <h2>explorations</h2>
         <p className="section-intro">
-          These are lighter, more exploratory builds where I test product ideas, interaction patterns, and system concepts with a bit more playfulness.
+          These are lighter experiments where I test interaction patterns, real-time mechanics, and playful product ideas.
         </p>
       </div>
 
@@ -277,6 +274,21 @@ export default function WorkClient() {
         <p className="section-intro">
           Selected delivery across fintech, healthcare, IoT, construction, biotech, and applied AI, framed around scope and outcomes instead of just stack names.
         </p>
+        <div className="featured-client-grid">
+          {featuredClientWork.map((item) => (
+            <article key={item.title} className="featured-client-card">
+              <span className="featured-client-label">{item.label}</span>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <p className="featured-client-impact">{item.impact}</p>
+              <div className="featured-client-details">
+                {item.details.map((detail) => (
+                  <span key={detail} className="featured-client-detail">{detail}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
         <div className="work-chip-row" aria-label="Client work categories">
           <span className="work-chip">fintech</span>
           <span className="work-chip">healthcare</span>
