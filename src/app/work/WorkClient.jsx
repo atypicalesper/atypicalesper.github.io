@@ -24,7 +24,7 @@ const featuredClientWork = [
     label: 'iot alerting',
     summary: 'Built an ingestion and alert pipeline that converted live truck sensor data into fast incident-response notifications.',
     impact: 'Enabled low-latency fire detection and multi-channel operational alerting.',
-    details: ['MQTT + EMQX', 'Twilio + AWS SNS', 'Background job automation'],
+    details: ['MQTT ingestion', 'Twilio + AWS SNS', 'Background job automation'],
   },
 ];
 
@@ -56,9 +56,18 @@ const aiProjects = [
     tags: ['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser'],
     ctaLabel: 'view repo',
   },
+  {
+    title: 'RAG',
+    eyebrow: 'retrieval system',
+    summary: 'Production-style retrieval augmented generation knowledge base with ingestion, chunking, vector search, evaluation, and API workflows.',
+    description: 'A complete RAG learning and implementation project covering concepts, architecture, ingestion pipelines, chunking strategies, vector databases, evaluation, and advanced retrieval patterns. Includes Python services, FastAPI endpoints, streaming query support, source-grounded answers, and a React + Vite frontend.',
+    link: 'https://github.com/atypicalesper/RAG',
+    tags: ['Python', 'FastAPI', 'ChromaDB', 'LangChain', 'RAG', 'SSE'],
+    ctaLabel: 'view repo',
+  },
 ];
 
-const flagshipProjects = [
+const projects = [
   {
     title: 'dev-atlas',
     eyebrow: 'open source',
@@ -69,13 +78,6 @@ const flagshipProjects = [
     ctaLabel: 'open site',
   },
   {
-    title: 'Direct Care Staffing',
-    eyebrow: 'healthcare platform',
-    summary: 'Scheduling and staffing platform where nurses can discover shifts, manage patient-facing workflows, and work inside a compliance-heavy environment.',
-    description: 'A healthcare staffing platform focused on matching nurses with shifts and patient care workflows. I worked on secure backend systems around staffing records, credentials, and sensitive healthcare data, including HIPAA-minded access control and encryption-oriented API design.',
-    tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'PostGIS', 'HIPAA', 'Encryption'],
-  },
-  {
     title: 'Music Analyzer',
     eyebrow: 'music product',
     summary: 'Spotify-powered listening dashboard with taste profiles, compatibility matching, recommendations, and public listener pages.',
@@ -84,9 +86,6 @@ const flagshipProjects = [
     tags: ['Next.js', 'TypeScript', 'NextAuth', 'Prisma', 'Spotify API', 'React'],
     ctaLabel: 'view repo',
   },
-];
-
-const exploratoryProjects = [
   {
     title: 'GameZone',
     eyebrow: 'real-time platform',
@@ -139,10 +138,10 @@ const professionalProjects = [
     title: 'First Fire',
     domain: 'IoT',
     result: 'Low-latency alerting pipeline for fire incidents detected from live truck sensor data.',
-    scope: 'MQTT/EMQX ingestion, event processing, alert orchestration, multi-channel notifications, AWS deployment.',
-    tags: ['Node.js', 'MQTT', 'EMQX', 'PostgreSQL', 'AWS SNS', 'Twilio'],
+    scope: 'MQTT ingestion, event processing, alert orchestration, multi-channel notifications, AWS deployment.',
+    tags: ['Node.js', 'MQTT', 'PostgreSQL', 'AWS SNS', 'Twilio'],
     points: [
-      'Built a real-time IoT alerting system using MQTT and EMQX to process sensor data from garbage trucks and detect fire incidents.',
+      'Built a real-time IoT alerting system using MQTT to process sensor data from garbage trucks and detect fire incidents.',
       'Implemented automated multi-channel notifications via Twilio (SMS/Calls) and AWS SNS for instant incident response.',
       'Designed backend services for event processing, alert orchestration, and incident logging using Node.js and PostgreSQL.',
       'Automated operational notification flows and background jobs that reduced manual coordination overhead during incident handling.',
@@ -152,12 +151,13 @@ const professionalProjects = [
   {
     title: 'Direct Care Staffing',
     domain: 'healthcare',
-    result: 'Secure backend systems for sensitive staffing workflows with strong data modeling and compliance-minded API design.',
-    scope: 'Healthcare data modeling, encrypted API layers, credential management, PostGIS-based location analytics.',
-    tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'PostGIS'],
+    result: 'Healthcare staffing platform where nurses could discover shifts, join patient care workflows, and operate inside a secure compliance-heavy system.',
+    scope: 'Shift matching, patient workflow support, encrypted API layers, credential management, HIPAA-minded access control.',
+    tags: ['Node.js', 'PostgreSQL', 'Sequelize', 'PostGIS', 'Encryption'],
     points: [
-      'Designed and optimized data models and schemas to manage complex healthcare records, credentials, and certifications.',
-      'Implemented secure API layers with encryption and access controls to ensure HIPAA-compliant handling of sensitive data.',
+      'Designed backend data models for nurses, shifts, credentials, certifications, patient assignments, and staffing workflows.',
+      'Implemented secure API layers with encryption and access controls to support HIPAA-compliant handling of sensitive healthcare data.',
+      'Built shift discovery and matching flows so nurses could find available work and join patient care workflows.',
       'Leveraged PostGIS for location-aware workforce deployment and staffing analytics.',
       'Built scalable backend services using Node.js, Sequelize, and PostgreSQL to support high-volume staffing operations.',
     ],
@@ -213,10 +213,6 @@ export default function WorkClient() {
       <p className="work-intro">
         A mix of playful builds, production-minded systems, and experiments that sharpen both engineering depth and product instincts.
       </p>
-      <div className="work-links">
-        <a className="work-link" href="https://www.naukri.com/code360/profile/atypicalesper">Coding Ninjas</a>
-        <a className="work-link" href="https://www.leetcode.com/atypicalesper/">leetcode</a>
-      </div>
 
       <div className="section featured-work-section">
         <h2>ai systems</h2>
@@ -240,31 +236,18 @@ export default function WorkClient() {
       <div className="section project-group-section">
         <h2>projects</h2>
         <p className="section-intro">
-          Broader product, platform, and open-source work across healthcare, music, education, gaming, and frontend-heavy explorations.
+          Broader product, platform, open-source, and playful work across music, education, gaming, and frontend-heavy experiments.
         </p>
         <div className="work-chip-row" aria-label="Project categories">
-          <span className="work-chip">healthcare platform</span>
           <span className="work-chip">consumer product</span>
           <span className="work-chip">open source</span>
           <span className="work-chip">real-time interaction</span>
+          <span className="work-chip">playful builds</span>
         </div>
       </div>
 
       <AnimatedGrid className="grid">
-        {flagshipProjects.map((project) => (
-          <Card key={project.title} {...project} />
-        ))}
-      </AnimatedGrid>
-
-      <div className="section side-projects-note">
-        <h2>explorations</h2>
-        <p className="section-intro">
-          These are lighter experiments where I test interaction patterns, real-time mechanics, and playful product ideas.
-        </p>
-      </div>
-
-      <AnimatedGrid className="grid grid--compact">
-        {exploratoryProjects.map((project) => (
+        {projects.map((project) => (
           <Card key={project.title} {...project} />
         ))}
       </AnimatedGrid>

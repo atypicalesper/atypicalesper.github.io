@@ -89,6 +89,14 @@ const Home = () => {
               <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/atypicalesper" className="about-link">instagram</a>
               <a target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/user/0c7fr56muocq15feajc03kgh3" className="about-link">spotify</a>
             </div>
+
+            <div className="coding-profiles" aria-label="Coding profiles">
+              <span className="coding-profiles-label">coding profiles</span>
+              <div className="coding-profiles-links">
+                <a target="_blank" rel="noopener noreferrer" href="https://www.naukri.com/code360/profile/atypicalesper" className="about-link">coding ninjas</a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.leetcode.com/atypicalesper/" className="about-link">leetcode</a>
+              </div>
+            </div>
           </div>
 
           <aside className="hero-panel" aria-label="Quick recruiter summary">

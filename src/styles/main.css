@@ -745,25 +745,6 @@ input:focus-visible {
     max-width: 100%;
   }
 }
-.work-link {
-  color: var(--accent);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.75rem;
-  padding: 0.55rem 0.95rem;
-  font-size: 0.95rem;
-  text-decoration: none;
-  text-transform: lowercase;
-  border: 1px solid rgba(var(--accent-rgb), 0.2);
-  border-radius: 999px;
-  background: rgba(var(--accent-rgb), 0.045);
-}
-.work-link:hover {
-  color: var(--text);
-  border-color: rgba(var(--accent-rgb), 0.45);
-  background: rgba(var(--accent-rgb), 0.11);
-}
 .content .section h2,
 .content .section h3 {
   font-weight: 100;
@@ -1104,10 +1085,6 @@ a:has(> .card-shell) {
   gap: 1.5rem;
   align-items: stretch;
   margin-top: 2rem;
-}
-
-.grid--compact {
-  gap: 1.15rem;
 }
 
 .card-tags {
@@ -1480,12 +1457,30 @@ a:has(> .card-shell) {
   text-transform: lowercase;
 }
 
-.about-links,
-.work-links {
+.about-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 0.8rem;
+}
+
+.coding-profiles {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.coding-profiles-label {
+  color: rgba(var(--accent-rgb), 0.62);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.coding-profiles-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
 }
 
 .hero-panel {
@@ -1846,8 +1841,7 @@ a:has(> .card-shell) {
     grid-template-columns: 1fr;
   }
 
-  .grid,
-  .grid--compact {
+  .grid {
     gap: 1rem;
   }
 
@@ -1864,8 +1858,7 @@ a:has(> .card-shell) {
     line-height: 1.5;
   }
 
-  .about-links,
-  .work-links {
+  .about-links {
     gap: 0.6rem;
   }
 

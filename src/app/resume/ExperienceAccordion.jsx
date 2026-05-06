@@ -38,7 +38,7 @@ const experience = [
     summary: 'Delivered across multiple client domains, shipping real-time systems, secure APIs, cloud integrations, and mentoring support.',
     points: [
       'Integrated Stripe into a real-time song-bidding platform, improving transaction reliability and driving a 20% revenue increase.',
-      'Built MQTT/EMQX pub/sub pipelines to process real-time IoT sensor data and trigger fire incident alerts from garbage trucks.',
+      'Built MQTT pub/sub pipelines to process real-time IoT sensor data and trigger fire incident alerts from garbage trucks.',
       'Enforced HIPAA compliance through encrypted APIs and access controls across a healthcare staffing platform.',
       'Shipped a RAG chatbot POC — document ingestion pipeline backed by Pinecone vector search and LLM-driven responses.',
       'Automated notifications, backups, and data sync via cron jobs with Twilio and AWS SNS, cutting manual overhead by 30%.',
