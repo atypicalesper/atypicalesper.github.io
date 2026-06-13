@@ -5,7 +5,7 @@ import ExperienceAccordion from './ExperienceAccordion'
 export const metadata = {
   title: 'Experience',
   description:
-    'Software Developer with experience building fintech, healthcare, IoT, and entertainment platforms at Copper Digital. NestJS, Node.js, PostgreSQL, AWS.',
+    'Software Engineer with 3.5+ years across fintech, healthcare, and B2B SaaS — NestJS microservices, full-stack delivery, and production GenAI/RAG. Node.js, TypeScript, PostgreSQL, AWS, GCP.',
   alternates: { canonical: '/resume/' },
   openGraph: { url: 'https://atypicalesper.github.io/resume/' },
 };
@@ -15,23 +15,23 @@ export default function ResumePage() {
     <section className="resume">
       <div className="resume-hero section">
         <div className="resume-hero-kicker">experience snapshot</div>
-        <h1 className="resume-title">Backend engineer with hands-on delivery across high-trust and real-time systems.</h1>
+        <h1 className="resume-title">Backend &amp; full-stack engineer delivering across fintech, SaaS, and high-trust systems.</h1>
         <p className="section-intro resume-intro">
-          Experience building fintech, healthcare, IoT, biotech, and consumer-facing systems with a focus on scalable APIs, integrations, architecture quality, and production ownership.
+          3.5+ years building scalable backend and full-stack systems for fintech, healthcare, and B2B SaaS — with a focus on secure APIs, microservices, cloud architecture, and production GenAI.
         </p>
 
         <div className="resume-summary-grid" aria-label="Resume highlights">
           <article className="resume-summary-card">
             <span className="resume-summary-value">Node.js + NestJS</span>
-            <span className="resume-summary-label">Core backend stack across product and platform work</span>
+            <span className="resume-summary-label">Core stack, with TypeScript and Python across the codebase</span>
           </article>
           <article className="resume-summary-card">
-            <span className="resume-summary-value">5 domains</span>
-            <span className="resume-summary-label">Fintech, healthcare, IoT, entertainment, and biotech delivery</span>
+            <span className="resume-summary-value">Fintech &amp; SaaS</span>
+            <span className="resume-summary-label">Plus healthcare, IoT, and biotech delivery</span>
           </article>
           <article className="resume-summary-card">
-            <span className="resume-summary-value">Architecture to production</span>
-            <span className="resume-summary-label">Comfortable owning design, implementation, rollout, and iteration</span>
+            <span className="resume-summary-value">GenAI in production</span>
+            <span className="resume-summary-label">RAG, embeddings, and Pinecone shipped in real products</span>
           </article>
         </div>
       </div>

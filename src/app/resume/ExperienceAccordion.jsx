@@ -7,53 +7,41 @@ const experience = [
   {
     role: 'Senior Software Engineer',
     company: 'Crownstack Technologies',
-    period: 'Jan 2026 – Present',
+    period: 'Jan 2026 – May 2026',
     location: 'Noida, UP',
-    summary: 'Own backend delivery for enterprise applications, with emphasis on scalable architectures and production-ready execution.',
+    summary: 'Delivered backend and full-stack features across a bioinformatics platform, a multi-tenant credential SaaS, and workflow-automation services.',
     points: [
-      'Build and ship backend features for high-traffic enterprise applications, owning delivery from design to production.',
-      'Design service architectures and APIs optimized for performance-critical, scalable workflows.',
-      'Drive engineering quality through code reviews, system optimization, and technical standards.',
-      'Collaborate with product and design to translate business requirements into clean, production-ready implementations.',
+      'Built async data pipelines on GCP (Cloud Functions, Cloud Run, Pub/Sub) for high-volume lab-data ingestion, run-status updates, and image export on Deepcell, a bioinformatics cell-analysis platform.',
+      'Managed infrastructure as code with Terraform across a dual deployment model — GCP App Engine Flex for SaaS and a Docker/Nginx stack for customer-managed on-prem environments.',
+      'Shipped QuickCertify’s public credential-verification experience end-to-end — shareable, no-login pages backed by secure REST APIs with URL-enumeration protection and optimized client-side caching.',
+      'Built an immutable audit-log module with JSONB before/after snapshots and indexed actor/target/action lookups, plus a full-stack credential Design module covered by Playwright e2e specs.',
+      'Implemented fine-grained RBAC across backend guards and frontend navigation, and a FastAPI webhook service that auto-provisions Basecamp projects from Apparatix order events.',
     ],
   },
   {
     role: 'Software Engineer',
-    company: 'Kasar Credit and Capital Pvt. Ltd.',
+    company: 'Raghavi Finance (Surya Loan)',
     period: 'Jul 2025 – Dec 2025',
     location: 'Delhi',
     summary: 'Led modernization and verification-heavy backend work in a fintech environment with strong compliance and security needs.',
     points: [
-      'Migrated legacy PHP monolith to NestJS microservices, improving scalability and maintainability by 40%.',
-      'Built KYC and risk-assessment services integrating Aadhaar eKYC, PAN, Account Aggregator, and bank statement analysis for instant, compliant loan decisioning.',
-      'Designed a User Management Service (UMS) with RBAC, custom auth/session logic, and audit logging for high-trust financial operations.',
-      'Delivered digital verification pipelines covering PAN, Aadhaar eKYC, and Digilocker integrations.',
+      'Migrated a legacy PHP monolith to a NestJS microservices architecture (MySQL, TypeORM, Redis, AWS), improving scalability and maintainability by ~40% for a high-volume digital lending platform.',
+      'Built KYC and risk-assessment microservices integrating Aadhaar eKYC, PAN verification, Account Aggregator, and bank-statement analysis for instant, compliant loan decisioning.',
+      'Architected a User Management Service (UMS) with RBAC, custom auth/authorization, and audit logs for high-trust financial operations.',
     ],
   },
   {
     role: 'Software Developer',
     company: 'Copper Digital India Pvt. Ltd.',
-    period: 'Dec 2022 – May 2025',
+    period: 'Sept 2022 – May 2025',
     location: 'Gurugram, HR',
-    summary: 'Delivered across multiple client domains, shipping real-time systems, secure APIs, cloud integrations, and mentoring support.',
+    summary: 'Delivered across multiple client domains, shipping AI features, real-time systems, secure APIs, cloud integrations, and mentoring support.',
     points: [
+      'Delivered a RAG-based AI chatbot framework for context-aware document Q&A using OpenAI LLMs, embeddings, and Pinecone vector storage.',
       'Integrated Stripe into a real-time song-bidding platform, improving transaction reliability and driving a 20% revenue increase.',
-      'Built MQTT pub/sub pipelines to process real-time IoT sensor data and trigger fire incident alerts from garbage trucks.',
-      'Enforced HIPAA compliance through encrypted APIs and access controls across a healthcare staffing platform.',
-      'Shipped a RAG chatbot POC — document ingestion pipeline backed by Pinecone vector search and LLM-driven responses.',
-      'Automated notifications, backups, and data sync via cron jobs with Twilio and AWS SNS, cutting manual overhead by 30%.',
-      'Mentored junior engineers; led code reviews and drove cross-functional delivery across multiple client projects.',
-    ],
-  },
-  {
-    role: 'Software Development Intern',
-    company: 'Copper Digital India Pvt. Ltd.',
-    period: 'Sept 2022 – Dec 2022',
-    location: 'Gurugram, HR',
-    summary: 'Built early API and collaboration fundamentals while working closely with design, QA, and engineering teams.',
-    points: [
-      'Built RESTful APIs alongside dev, design, and QA teams; documented with Swagger and Postman.',
-      'Participated in code reviews, sprint planning, and standups; maintained Git workflows for team collaboration.',
+      'Built MQTT pub/sub pipelines to process real-time IoT sensor data and trigger fire-incident alerts from garbage-truck sensors.',
+      'Enforced HIPAA compliance through encrypted APIs and access controls on a healthcare staffing platform; used PostGIS for location-aware workforce deployment.',
+      'Automated notifications, backups, and data sync via cron jobs with Twilio and AWS SNS, cutting manual overhead by ~30%; mentored junior engineers and led code reviews.',
     ],
   },
 ]
@@ -79,7 +67,6 @@ export default function ExperienceAccordion() {
             >
               <span className="job-header-inner">
                 <span className="title">
-                  {i === 0 && <span className="current-dot" />}
                   {job.company}
                   <span className="exp-role-badge">{job.role}</span>
                 </span>

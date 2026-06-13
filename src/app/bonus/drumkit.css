@@ -1,56 +1,133 @@
-@import url("https://fonts.googleapis.com/css?family=Arvo");
-
 .drumkit-page {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 4rem);
+  padding-top: clamp(1rem, 4vw, 2.5rem);
 }
 
-.drumkit-page h1 {
-  font-size: 5rem;
+.dk-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.dk-kicker {
+  color: rgba(var(--accent-rgb), 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+}
+
+.drumkit-page .dk-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   color: var(--text);
-  font-family: "Arvo", cursive;
-  text-shadow: 3px 0 var(--accent);
   margin: 0;
+  text-transform: lowercase;
+}
+
+.dk-hint {
+  font-size: 0.95rem !important;
+  color: var(--text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  max-width: 42ch;
+}
+
+.dk-hint kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  padding: 0.1rem 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  border-radius: 6px;
 }
 
 .set {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: flex-start;
+  gap: clamp(6px, 1.4vw, 18px);
+  margin: 0 auto;
+}
+
+.drum-cell {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: clamp(4px, 1vw, 14px);
-  margin: 5% auto;
+  gap: 0.6rem;
 }
 
 .drum {
   outline: none;
-  border: clamp(2px, 0.8vw, 10px) solid rgba(var(--accent-rgb), 0.5);
-  font-size: clamp(0.95rem, 4.5vw, 5rem);
-  font-family: "Arvo", cursive;
-  font-weight: 900;
-  color: var(--accent);
-  text-shadow: 3px 0 rgba(var(--accent-rgb), 0.3);
-  border-radius: clamp(6px, 1vw, 15px);
+  border: clamp(2px, 0.7vw, 7px) solid rgba(var(--accent-rgb), 0.4);
+  font-size: clamp(0.95rem, 4.2vw, 3.4rem);
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  border-radius: clamp(8px, 1.4vw, 18px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: clamp(30px, 12vw, 150px);
-  height: clamp(30px, 12vw, 150px);
+  width: clamp(34px, 12vw, 132px);
+  height: clamp(34px, 12vw, 132px);
   text-align: center;
   background-color: rgba(var(--accent-rgb), 0.05);
   background-size: cover;
   background-position: center;
   cursor: pointer;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  text-transform: uppercase;
+  box-shadow: 0 12px 30px var(--shadow-soft), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 }
 
 .drum:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px var(--shadow), 0 0 24px rgba(var(--accent-rgb), 0.25);
 }
 
 .drum.pressed {
-  box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.5), 0 3px 4px 0 rgba(var(--accent-rgb), 0.4);
-  opacity: 0.6;
+  transform: translateY(2px) scale(0.96);
+  box-shadow: 0 0 36px rgba(var(--accent-rgb), 0.6);
+  opacity: 0.7;
   border-color: var(--accent);
+}
+
+.drum-cap {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+}
+
+.dk-back {
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
+  padding-bottom: 0.12rem;
+}
+.dk-back:hover {
+  color: var(--text);
+  border-bottom-color: rgba(var(--accent-rgb), 0.75);
 }
