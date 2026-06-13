@@ -9,8 +9,16 @@ const jsonLd = {
     'https://github.com/atypicalesper',
     'https://www.instagram.com/atypicalesper',
     'https://open.spotify.com/user/0c7fr56muocq15feajc03kgh3',
+    'https://music.apple.com/profile/atypicalesper',
   ],
 };
+
+const stats = [
+  { value: '3+ yrs', label: 'production backend engineering' },
+  { value: '5 domains', label: 'fintech · healthcare · iot · biotech · real-time' },
+  { value: '~40%', label: 'scalability gained in legacy modernization' },
+  { value: 'node · nestjs', label: 'plus aws, postgres, redis, microservices' },
+];
 
 const featuredWork = [
   {
@@ -51,43 +59,39 @@ const Home = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="about">
-        <div className="hero-shell">
-          <div className="hero-main">
-            <div className="hero-kicker">software developer • backend systems • creative problem solver</div>
+      <section className="about home-editorial">
+        <header className="lede">
+          <p className="lede-kicker">software developer — backend systems — gurugram, india</p>
 
-            <h1 className="hero-title">
-              Tarun builds backend systems that stay calm under real-world complexity.
-            </h1>
+          <h1 className="display-name" aria-label="Tarun Singh">
+            <span className="display-name-line">Tarun</span>
+            <span className="display-name-line display-name-line--outline">Singh</span>
+          </h1>
 
-            <p className="hero-copy">
-              Hi, I&apos;m <strong>Tarun Singh</strong> (he/him), a developer based in <strong>Gurugram, India</strong>.
-              I enjoy designing reliable APIs, scalable services, and the kind of engineering foundations teams can keep building on.
-            </p>
+          <p className="lede-statement">
+            Hi, I&apos;m Tarun — I build backend systems that stay <em>calm</em> under real-world complexity.
+          </p>
 
-            <p className="hero-copy hero-copy--muted">
-              Most of my energy goes into <strong>Node.js</strong>, <strong>NestJS</strong>, microservices, cloud workflows, and product-minded backend engineering.
-              Outside work, I&apos;m usually chasing good music and side projects with personality.
-            </p>
+          <p className="lede-copy">
+            A developer based in Gurugram, India. Most of my energy goes into <strong>Node.js</strong>,{' '}
+            <strong>NestJS</strong>, microservices, and cloud workflows — reliable APIs and the kind of
+            foundations teams can keep building on. Off the clock, usually chasing good music and side
+            projects with personality.
+          </p>
 
-            <div className="hero-highlights" aria-label="Highlights">
-              <span className="hero-pill">backend engineering</span>
-              <span className="hero-pill">microservices</span>
-              <span className="hero-pill">aws + cloud infra</span>
-              <span className="hero-pill">node.js / nestjs</span>
-            </div>
+          <div className="hero-actions" aria-label="Primary actions">
+            <a href="/work/" className="hero-action hero-action--primary">view work</a>
+            <a href="/resume/" className="hero-action">experience</a>
+            <a href="mailto:atypicalesper@gmail.com" className="hero-action">contact</a>
+          </div>
 
-            <div className="hero-actions" aria-label="Primary actions">
-              <a href="/work/" className="hero-action hero-action--primary">view work</a>
-              <a href="/resume/" className="hero-action">see experience</a>
-              <a href="mailto:atypicalesper@gmail.com" className="hero-action">contact</a>
-            </div>
-
+          <div className="lede-meta">
             <div className="about-links" aria-label="Contact and social links">
               <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/atypicalesper/" className="about-link">linkedin</a>
               <a target="_blank" rel="noopener noreferrer" href="https://www.github.com/atypicalesper" className="about-link">github</a>
               <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/atypicalesper" className="about-link">instagram</a>
               <a target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/user/0c7fr56muocq15feajc03kgh3" className="about-link">spotify</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://music.apple.com/profile/atypicalesper" className="about-link">apple music</a>
             </div>
 
             <div className="coding-profiles" aria-label="Coding profiles">
@@ -98,55 +102,36 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </header>
 
-          <aside className="hero-panel" aria-label="Quick recruiter summary">
-            <div className="hero-panel-label">quick read</div>
-            <h2 className="hero-panel-title">For recruiters and hiring teams</h2>
-            <p className="hero-panel-copy">
-              Backend-focused engineer with production experience across fintech, healthcare, IoT, biotech, and real-time consumer products.
-            </p>
-
-            <div className="hero-metrics">
-              <div className="hero-metric">
-                <span className="hero-metric-value">40%</span>
-                <span className="hero-metric-label">improvement delivered in legacy modernization and performance work</span>
-              </div>
-              <div className="hero-metric">
-                <span className="hero-metric-value">5 domains</span>
-                <span className="hero-metric-label">fintech, healthcare, IoT, entertainment, biotech</span>
-              </div>
-              <div className="hero-metric">
-                <span className="hero-metric-value">Node.js + NestJS</span>
-                <span className="hero-metric-label">plus microservices, AWS, PostgreSQL, Redis, and integrations</span>
-              </div>
+        <div className="quiet-stats" aria-label="At a glance">
+          {stats.map((stat) => (
+            <div key={stat.value} className="quiet-stat">
+              <span className="quiet-stat-value">{stat.value}</span>
+              <span className="quiet-stat-label">{stat.label}</span>
             </div>
-
-            <div className="hero-proof-list" aria-label="Selected proof points">
-              <span className="hero-proof">microservices migration</span>
-              <span className="hero-proof">secure KYC workflows</span>
-              <span className="hero-proof">real-time systems</span>
-              <span className="hero-proof">cloud deployments</span>
-            </div>
-          </aside>
+          ))}
         </div>
 
         <div className="home-featured section">
           <h2>selected work</h2>
-          <p className="section-intro">
-            A few representative projects that show how I approach backend architecture, real-time systems, integrations, and outcome-oriented delivery.
-          </p>
-
-          <div className="featured-case-grid">
-            {featuredWork.map((item) => (
-              <article key={item.title} className="featured-case-card">
-                <span className="featured-case-label">{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.summary}</p>
-                <p className="featured-case-impact">{item.impact}</p>
-                <a href={item.href} className="featured-case-link">see full work</a>
-              </article>
+          <ol className="featured-index">
+            {featuredWork.map((item, i) => (
+              <li key={item.title}>
+                <a className="featured-row" href={item.href}>
+                  <span className="featured-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="featured-row-body">
+                    <span className="featured-row-label">{item.label}</span>
+                    <span className="featured-row-title">{item.title}</span>
+                    <span className="featured-row-summary">{item.summary}</span>
+                    <span className="featured-row-impact">{item.impact}</span>
+                  </span>
+                  <span className="featured-row-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
             ))}
-          </div>
+          </ol>
+          <a href="/work/" className="featured-all">all projects ↗</a>
         </div>
       </section>
     </>
