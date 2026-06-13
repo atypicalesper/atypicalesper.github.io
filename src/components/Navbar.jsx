@@ -30,7 +30,10 @@ const Navbar = () => {
     <div className="nav-wrapper" ref={navRef}>
       <div className="nav">
         <div>
-          <Link href="/" className="emblem">/ˈtɑːruːn/</Link>
+          <Link href="/" className="emblem" aria-label="Home — Tarun Singh">
+            <span className="emblem-mark" aria-hidden="true">✦</span>
+            <span className="emblem-name">tarun singh</span>
+          </Link>
         </div>
 
         {/* Desktop links */}

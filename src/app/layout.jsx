@@ -6,9 +6,7 @@ import Cube from '../components/Cube';
 import PageWrapper from '../components/PageWrapper';
 import Cursor from '../components/Cursor';
 import { ThemeProvider } from '../components/ThemeProvider';
-import ThemeToggle from '../components/ThemeToggle';
-import BgControls from '../components/BgControls';
-import BgPolygons from '../components/BgPolygons';
+import ControlsPanel from '../components/ControlsPanel';
 
 export const metadata = {
   metadataBase: new URL('https://atypicalesper.github.io'),
@@ -56,11 +54,9 @@ export default function RootLayout({ children }) {
           <a href="#main-content" className="skip-link">Skip to content</a>
           <Cursor />
           <Background />
-          <BgPolygons />
           <Cube />
           <div className="controls-bar">
-            <BgControls />
-            <ThemeToggle />
+            <ControlsPanel />
           </div>
           <div className="container">
             <Navbar />

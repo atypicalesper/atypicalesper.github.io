@@ -219,12 +219,6 @@ export default function WorkClient() {
         <p className="section-intro">
           The AI-heavy work comes first here: retrieval, prompt tooling, agentic workflows, and product-shaped experiments built around modern LLM systems.
         </p>
-        <div className="work-chip-row" aria-label="Project categories">
-          <span className="work-chip">rag systems</span>
-          <span className="work-chip">prompt tooling</span>
-          <span className="work-chip">agentic workflows</span>
-          <span className="work-chip">local llm experiments</span>
-        </div>
       </div>
 
       <AnimatedGrid className="grid">
@@ -238,12 +232,6 @@ export default function WorkClient() {
         <p className="section-intro">
           Broader product, platform, open-source, and playful work across music, education, gaming, and frontend-heavy experiments.
         </p>
-        <div className="work-chip-row" aria-label="Project categories">
-          <span className="work-chip">consumer product</span>
-          <span className="work-chip">open source</span>
-          <span className="work-chip">real-time interaction</span>
-          <span className="work-chip">playful builds</span>
-        </div>
       </div>
 
       <AnimatedGrid className="grid">
@@ -271,13 +259,6 @@ export default function WorkClient() {
               </div>
             </article>
           ))}
-        </div>
-        <div className="work-chip-row" aria-label="Client work categories">
-          <span className="work-chip">fintech</span>
-          <span className="work-chip">healthcare</span>
-          <span className="work-chip">iot</span>
-          <span className="work-chip">biotech</span>
-          <span className="work-chip">applied ai</span>
         </div>
         <AnimatedList>
           {professionalProjects.map((p, i) => (
