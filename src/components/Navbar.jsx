@@ -38,7 +38,6 @@ const Navbar = () => {
 
         {/* Desktop links */}
         <div className="nav-items nav-items--desktop">
-          <Link href="/bonus" className={navClass('/bonus') + ' bonus'}>bonus</Link>
           <Link href="/work" className={navClass('/work')}>work</Link>
           <Link href="/resume" className={navClass('/resume')}>experience</Link>
           <Link href="/" className={navClass('/')}>about</Link>
@@ -73,7 +72,6 @@ const Navbar = () => {
           <Link href="/" className={navClass('/')} onClick={() => setMobileOpen(false)}>about</Link>
           <Link href="/work" className={navClass('/work')} onClick={() => setMobileOpen(false)}>work</Link>
           <Link href="/resume" className={navClass('/resume')} onClick={() => setMobileOpen(false)}>experience</Link>
-          <Link href="/bonus" className={navClass('/bonus') + ' bonus'} onClick={() => setMobileOpen(false)}>bonus</Link>
         </div>
       )}
     </div>

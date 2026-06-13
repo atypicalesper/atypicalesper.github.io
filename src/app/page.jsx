@@ -3,7 +3,7 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Tarun Singh',
   url: 'https://atypicalesper.github.io',
-  jobTitle: 'Software Developer',
+  jobTitle: 'Software Engineer',
   sameAs: [
     'https://www.linkedin.com/in/atypicalesper/',
     'https://github.com/atypicalesper',
@@ -14,10 +14,10 @@ const jsonLd = {
 };
 
 const stats = [
-  { value: '3+ yrs', label: 'production backend engineering' },
-  { value: '5 domains', label: 'fintech · healthcare · iot · biotech · real-time' },
-  { value: '~40%', label: 'scalability gained in legacy modernization' },
-  { value: 'node · nestjs', label: 'plus aws, postgres, redis, microservices' },
+  { value: '3.5+ yrs', label: 'backend & full-stack engineering' },
+  { value: 'fintech · saas', label: 'plus healthcare, iot, and biotech delivery' },
+  { value: '~40%', label: 'scalability gained in a monolith → microservices migration' },
+  { value: 'genai · rag', label: 'embeddings, pinecone, and langchain in production' },
 ];
 
 const featuredWork = [
@@ -47,7 +47,7 @@ const featuredWork = [
 export const metadata = {
   title: { absolute: 'Tarun Singh' },
   description:
-    'Tarun Singh is a Software Developer based in Gurugram, India. Backend engineer specialising in NestJS, Node.js, microservices, and cloud architecture.',
+    'Tarun Singh is a Software Engineer based in Faridabad, India. Backend & full-stack engineer specialising in NestJS, Node.js, TypeScript, microservices, cloud, and production GenAI/RAG.',
   alternates: { canonical: '/' },
   openGraph: { url: 'https://atypicalesper.github.io' },
 };
@@ -61,7 +61,7 @@ const Home = () => {
       />
       <section className="about home-editorial">
         <header className="lede">
-          <p className="lede-kicker">software developer — backend systems — gurugram, india</p>
+          <p className="lede-kicker">software engineer — backend & full-stack — faridabad, india</p>
 
           <h1 className="display-name" aria-label="Tarun Singh">
             <span className="display-name-line">Tarun</span>
@@ -73,10 +73,11 @@ const Home = () => {
           </p>
 
           <p className="lede-copy">
-            A developer based in Gurugram, India. Most of my energy goes into <strong>Node.js</strong>,{' '}
-            <strong>NestJS</strong>, microservices, and cloud workflows — reliable APIs and the kind of
-            foundations teams can keep building on. Off the clock, usually chasing good music and side
-            projects with personality.
+            A software engineer based in Faridabad, India. I spend most days deep in <strong>Node.js</strong>,{' '}
+            <strong>NestJS</strong>, <strong>TypeScript</strong>, and Python — shaping APIs, microservices, and
+            cloud systems that are easy to reason about and hard to break, lately with a real focus on production
+            GenAI and RAG. After hours, I&apos;m usually digging through new music or building side projects with
+            a bit of personality.
           </p>
 
           <div className="hero-actions" aria-label="Primary actions">

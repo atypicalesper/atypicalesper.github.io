@@ -1,11 +1,12 @@
 import AnimatedList from '../../components/AnimatedList'
 
 const skills = [
-  { label: 'backend', items: ['Node.js', 'NestJS', 'Express', 'TypeScript', 'Python', 'Django'] },
-  { label: 'databases', items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Supabase', 'Pinecone'] },
-  { label: 'cloud / devops', items: ['AWS', 'GCP', 'Docker', 'Nginx', 'PM2', 'RabbitMQ', 'MQTT'] },
-  { label: 'auth / testing', items: ['JWT', 'OAuth2', 'Bcrypt', 'Jest', 'Mocha', 'Selenium'] },
-  { label: 'architecture', items: ['Microservices', 'Event-Driven Systems', 'System Design', 'REST APIs', 'Scalable APIs'] },
+  { label: 'backend', items: ['Node.js', 'NestJS', 'Express', 'TypeScript', 'Python', 'FastAPI', 'Flask'] },
+  { label: 'ai / genai', items: ['RAG', 'OpenAI', 'Embeddings', 'Pinecone', 'LangChain', 'LangSmith', 'Ollama'] },
+  { label: 'databases', items: ['PostgreSQL', 'PostGIS', 'MySQL', 'MongoDB', 'Redis', 'BigQuery'] },
+  { label: 'frontend', items: ['Next.js', 'React', 'React Query', 'Zustand', 'Redux Toolkit', 'Tailwind'] },
+  { label: 'cloud / devops', items: ['AWS', 'GCP', 'Docker', 'Terraform', 'CI/CD', 'RabbitMQ', 'MQTT'] },
+  { label: 'auth / testing', items: ['JWT', 'OAuth2', 'RBAC', 'Jest', 'pytest', 'Playwright'] },
 ]
 
 export default function Skills() {

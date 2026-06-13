@@ -15,22 +15,22 @@ export const metadata = {
     template: '%s — Tarun Singh',
   },
   description:
-    'Tarun Singh is a Software Developer based in Gurugram, India. Backend engineer specialising in NestJS, Node.js, microservices, and cloud architecture.',
-  keywords: ['Tarun Singh', 'Software Developer', 'Backend Engineer', 'NestJS', 'Node.js', 'TypeScript', 'Microservices', 'AWS'],
+    'Tarun Singh is a Software Engineer based in Faridabad, India. Backend & full-stack engineer specialising in NestJS, Node.js, TypeScript, microservices, cloud, and production GenAI/RAG.',
+  keywords: ['Tarun Singh', 'Software Engineer', 'Backend Engineer', 'Full-Stack', 'NestJS', 'Node.js', 'TypeScript', 'Python', 'Microservices', 'GenAI', 'RAG', 'AWS'],
   authors: [{ name: 'Tarun Singh', url: 'https://atypicalesper.github.io' }],
   icons: { icon: '/favicon.png', shortcut: '/favicon.png' },
   openGraph: {
     type: 'website',
     url: 'https://atypicalesper.github.io',
     siteName: 'Tarun Singh',
-    title: 'Tarun Singh — Software Developer',
-    description: 'Backend engineer specialising in NestJS, Node.js, microservices, and cloud architecture.',
+    title: 'Tarun Singh — Software Engineer',
+    description: 'Backend & full-stack engineer specialising in NestJS, Node.js, TypeScript, microservices, cloud, and production GenAI/RAG.',
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary',
-    title: 'Tarun Singh — Software Developer',
-    description: 'Backend engineer specialising in NestJS, Node.js, microservices, and cloud architecture.',
+    title: 'Tarun Singh — Software Engineer',
+    description: 'Backend & full-stack engineer specialising in NestJS, Node.js, TypeScript, microservices, cloud, and production GenAI/RAG.',
   },
   robots: { index: true, follow: true },
 };

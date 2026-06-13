@@ -1,11 +1,13 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const BASE_VEL = { x: 0.15, y: 0.25, z: 0.08 };
 const HIT = 220; // hit area size (px) — cube is 160, extra padding for easy grabbing
 
 export default function Cube() {
+  const router = useRouter();
   const [pos, setPos]           = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [flashing, setFlashing]     = useState(false);
@@ -92,13 +94,14 @@ export default function Cube() {
     e.preventDefault();
   }, [pos]);
 
+  // A genuine tap (not a drag) flashes the cube, then slips into the hidden drum kit
   const onClick = useCallback(() => {
     if (wasDrag.current) return;
-    extra.current.x += (Math.random() - 0.5) * 8;
-    extra.current.y += (Math.random() - 0.5) * 8;
+    extra.current.x += (Math.random() - 0.5) * 12;
+    extra.current.y += (Math.random() - 0.5) * 12;
     setFlashing(true);
-    setTimeout(() => setFlashing(false), 350);
-  }, []);
+    setTimeout(() => router.push('/bonus'), 260);
+  }, [router]);
 
   if (!pos) return null;
 
