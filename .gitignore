@@ -34,3 +34,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# playwright-mcp screenshots/snapshots (tooling artifacts)
+.playwright-mcp/
