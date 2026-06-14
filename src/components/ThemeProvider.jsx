@@ -11,18 +11,24 @@ const ThemeContext = createContext({
 });
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'paper';
+  // Always start on the default so server and first client render match;
+  // the saved theme is applied after mount to avoid a hydration mismatch.
+  const [theme, setTheme] = useState('paper');
+
+  useEffect(() => {
     const saved = localStorage.getItem('theme');
-    return saved && THEMES.includes(saved) ? saved : 'paper';
-  });
+    if (saved && THEMES.includes(saved)) setTheme(saved);
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const selectTheme = (t) => THEMES.includes(t) && setTheme(t);
+  const selectTheme = (t) => {
+    if (!THEMES.includes(t)) return;
+    setTheme(t);
+    localStorage.setItem('theme', t);
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, themes: THEMES, setTheme: selectTheme }}>
