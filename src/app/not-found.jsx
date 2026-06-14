@@ -17,12 +17,13 @@ const QUIPS = [
   'The page is missing, but at least the error handling showed up.',
 ];
 
-function getRandom() {
-  return QUIPS[Math.floor(Math.random() * QUIPS.length)];
-}
-
 export default function NotFound() {
-  const [quip] = useState(getRandom);
+  // Pick the quip after mount so the static HTML and first client render
+  // agree (Math.random() in render would cause a hydration mismatch).
+  const [quip, setQuip] = useState(QUIPS[0]);
+  useEffect(() => {
+    setQuip(QUIPS[Math.floor(Math.random() * QUIPS.length)]);
+  }, []);
 
   const d1 = useRef(null);
   const d0 = useRef(null);
