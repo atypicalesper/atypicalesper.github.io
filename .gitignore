@@ -37,3 +37,6 @@ lerna-debug.log*
 
 # playwright-mcp screenshots/snapshots (tooling artifacts)
 .playwright-mcp/
+
+# claude local overrides (machine-specific)
+.claude/settings.local.json
