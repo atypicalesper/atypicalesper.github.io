@@ -73,12 +73,29 @@ const Home = () => {
           </p>
 
           <p className="lede-copy">
-            A software engineer based in Faridabad, India. I spend most days deep in <strong>Node.js</strong>,{' '}
-            <strong>NestJS</strong>, <strong>TypeScript</strong>, and Python — shaping APIs, microservices, and
-            cloud systems that are easy to reason about and hard to break, lately with a real focus on production
-            GenAI and RAG. After hours, I&apos;m usually digging through new music or building side projects with
-            a bit of personality.
+            A software engineer based in Faridabad, India. I spend my days shaping APIs, microservices, and cloud
+            systems &mdash; the kind that stay calm under load and don&apos;t wake you at 3am. Most of that work
+            lives in TypeScript and Python, lately pointed at production GenAI and RAG.
           </p>
+
+          <dl className="stack-strip" aria-label="Core stack">
+            <div className="stack-group">
+              <dt>languages</dt>
+              <dd>TypeScript · Python</dd>
+            </div>
+            <div className="stack-group">
+              <dt>backend</dt>
+              <dd>Node.js · NestJS · FastAPI</dd>
+            </div>
+            <div className="stack-group">
+              <dt>data &amp; cloud</dt>
+              <dd>PostgreSQL · Redis · Docker · AWS · GCP</dd>
+            </div>
+            <div className="stack-group">
+              <dt>genai</dt>
+              <dd>LangChain · Pinecone · RAG</dd>
+            </div>
+          </dl>
 
           <div className="hero-actions" aria-label="Primary actions">
             <a href="/work/" className="hero-action hero-action--primary">view work</a>
