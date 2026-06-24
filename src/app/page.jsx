@@ -74,8 +74,10 @@ const Home = () => {
 
           <p className="lede-copy">
             A software engineer based in Faridabad, India. I spend my days shaping APIs, microservices, and cloud
-            systems &mdash; the kind that stay calm under load and don&apos;t wake you at 3am. Most of that work
-            lives in TypeScript and Python, lately pointed at production GenAI and RAG.
+            systems &mdash; the kind that stay calm under load and <span className="hl">don&apos;t wake you at
+            3am</span>. Most of that work lives in <span className="hl">TypeScript and Python</span>, lately
+            pointed at <span className="hl">production GenAI and RAG</span>. After hours, I&apos;m usually deep in
+            new music or building side projects with a bit of personality.
           </p>
 
           <dl className="stack-strip" aria-label="Core stack">
