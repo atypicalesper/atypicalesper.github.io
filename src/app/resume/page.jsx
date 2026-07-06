@@ -36,8 +36,8 @@ export default function ResumePage() {
         </div>
       </div>
 
-      <ExperienceAccordion />
       <Skills />
+      <ExperienceAccordion />
       <Education />
     </section>
   )
