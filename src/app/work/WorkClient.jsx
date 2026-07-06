@@ -52,7 +52,7 @@ const aiProjects = [
     eyebrow: 'learning lab',
     summary: 'Browser-only semantic search lab for exploring retrieval, embeddings, indexing strategies, and latency-versus-recall tradeoffs.',
     description: 'A tiny local semantic search playground built to teach vector retrieval internals through hands-on experimentation. Covers embedding tradeoffs, similarity metrics, chunking, ANN strategies, metadata filtering, hybrid retrieval, and evaluation without requiring API keys or external services.',
-    link: 'https://github.com/atypicalesper/understanding-embeddings-semantic-retrieval',
+    link: 'https://github.com/atypicalesper/vector-lens',
     tags: ['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser'],
     ctaLabel: 'view repo',
   },
