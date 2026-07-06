@@ -21,16 +21,25 @@ export default function Skills() {
             <span className="skill-label">{label}</span>
 
             <span className="skill-items">
-              {items.map((s) => (
-                <span className="skill-tag" key={s}>
-                  {skillIcons[s] && (
-                    <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d={skillIcons[s]} />
-                    </svg>
-                  )}
-                  {s}
-                </span>
-              ))}
+              {items.map((s) => {
+                const icon = skillIcons[s]
+                return (
+                  <span className="skill-tag" key={s}>
+                    {icon && icon.type === 'raster' && (
+                      <img className="skill-icon skill-icon--raster" src={icon.src} alt="" aria-hidden="true" />
+                    )}
+                    {icon && icon.type !== 'raster' && (
+                      <svg
+                        className={`skill-icon skill-icon--${icon.type}`}
+                        viewBox={icon.viewBox}
+                        aria-hidden="true"
+                        dangerouslySetInnerHTML={{ __html: icon.body }}
+                      />
+                    )}
+                    {s}
+                  </span>
+                )
+              })}
             </span>
           </div>
         ))}

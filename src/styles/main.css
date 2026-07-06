@@ -1094,10 +1094,31 @@ a:has(> .card-shell) {
 }
 
 .skill-icon {
-  width: 0.9rem;
   height: 0.9rem;
-  fill: currentColor;
+  width: auto;
   flex-shrink: 0;
+}
+
+.skill-icon--fill {
+  fill: currentColor;
+}
+
+.skill-icon--stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.skill-icon--raster {
+  filter: none;
+}
+
+[data-theme="noir"] .skill-icon--raster,
+[data-theme="midnight"] .skill-icon--raster,
+[data-theme="ember"] .skill-icon--raster {
+  filter: invert(1);
 }
 
 .exp-role-badge {
