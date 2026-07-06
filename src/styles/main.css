@@ -1078,6 +1078,9 @@ a:has(> .card-shell) {
 }
 
 .skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.8rem;
   color: var(--text-muted);
   border: 1px solid rgba(var(--text-rgb), 0.14);
@@ -1088,6 +1091,13 @@ a:has(> .card-shell) {
 .skill-tag:hover {
   border-color: rgba(var(--accent-rgb), 0.4);
   color: var(--accent-hover);
+}
+
+.skill-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 .exp-role-badge {

@@ -1,4 +1,5 @@
 import AnimatedList from '../../components/AnimatedList'
+import { skillIcons } from '../../components/skillIcons'
 
 const skills = [
   { label: 'backend', items: ['Node.js', 'NestJS', 'Express', 'TypeScript', 'Python', 'FastAPI', 'Flask'] },
@@ -22,6 +23,11 @@ export default function Skills() {
             <span className="skill-items">
               {items.map((s) => (
                 <span className="skill-tag" key={s}>
+                  {skillIcons[s] && (
+                    <svg className="skill-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d={skillIcons[s]} />
+                    </svg>
+                  )}
                   {s}
                 </span>
               ))}
