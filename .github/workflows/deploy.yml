@@ -30,6 +30,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_CLARITY_ID: ${{ secrets.NEXT_PUBLIC_CLARITY_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
