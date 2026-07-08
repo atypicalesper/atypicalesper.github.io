@@ -13,6 +13,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // TEMP DIAGNOSTIC — bundles dev React so the live hydration error shows
+  // real component names/content instead of a minified code. Revert after
+  // reading the console error on the redeployed site.
+  experimental: {
+    allowDevelopmentBuild: true,
+  },
 };
 
 export default nextConfig;
