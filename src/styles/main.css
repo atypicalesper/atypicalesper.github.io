@@ -1,10 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap");
-
 /* ── Shared design tokens ──────────────────────────────────────────────────── */
+/* Font families come from next/font variables set on <html> in layout.jsx */
 :root {
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-body:    "Work Sans", sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-body:    var(--font-work-sans), sans-serif;
 }
 
 /* ── Themes ──────────────────────────────────────────────────────────────── */
@@ -474,7 +472,7 @@ body {
   z-index: 2;
 }
 .nf-sub {
-  font-family: 'Work Sans', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: clamp(0.85rem, 2.5vw, 1rem);
   color: var(--text-muted);
@@ -504,7 +502,7 @@ body {
   border: 1.5px solid var(--accent);
   border-radius: 6px;
   color: var(--accent);
-  font-family: 'Work Sans', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: clamp(0.85rem, 2.5vw, 0.95rem);
   letter-spacing: 0.04em;
@@ -569,7 +567,7 @@ input:focus-visible {
   top: 0;
   width: 100%;
   z-index: 100;
-  font-family: "Work Sans", sans-serif;
+  font-family: var(--font-body);
   backdrop-filter: blur(14px);
 }
 
@@ -643,7 +641,7 @@ input:focus-visible {
   width: min(1120px, calc(100% - 3rem));
   margin: 0 auto;
   padding: 3rem 0 5rem;
-  font-family: "Work Sans", sans-serif;
+  font-family: var(--font-body);
 }
 @media (max-width: 800px) {
   .content {

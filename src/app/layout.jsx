@@ -1,5 +1,6 @@
 import '../styles/normalize.css';
 import '../styles/main.css';
+import { Work_Sans, Fraunces } from 'next/font/google';
 import Navbar from '../components/Navbar';
 import Background from '../components/Background';
 import Cube from '../components/Cube';
@@ -37,9 +38,23 @@ export const metadata = {
 
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
+const workSans = Work_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-work-sans',
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  axes: ['opsz'],
+  display: 'swap',
+  variable: '--font-fraunces',
+});
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${workSans.variable} ${fraunces.variable}`}>
       <head>
         {CLARITY_ID && (
           <script
