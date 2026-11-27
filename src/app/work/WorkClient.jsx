@@ -7,22 +7,22 @@ import AnimatedList from '../../components/AnimatedList';
 const featuredClientWork = [
   {
     title: 'Loan Management System',
-    label: 'high-trust fintech',
-    summary: 'Migrated a legacy lending platform into scalable NestJS microservices while rebuilding verification-heavy onboarding and user-management workflows.',
+    label: 'fintech platform',
+    summary: 'Moved a legacy lending platform to NestJS microservices and rebuilt its KYC, onboarding, and user-management flows.',
     impact: '~40% improvement in scalability, maintainability, and deployment efficiency.',
     details: ['Microservices migration', 'KYC + verification flows', 'AWS + Redis scaling'],
   },
   {
     title: "That's My Jam",
     label: 'real-time product',
-    summary: 'Shipped live bidding, scheduling, and payment infrastructure for event-driven music experiences with strong real-time interaction requirements.',
+    summary: 'Built live bidding, scheduling, and payment flows for music events where every update had to arrive in real time.',
     impact: 'Improved transaction reliability and contributed to a 20% revenue increase.',
     details: ['WebSockets', 'Stripe flows', 'Role-aware APIs'],
   },
   {
     title: 'First Fire',
     label: 'iot alerting',
-    summary: 'Built an ingestion and alert pipeline that converted live truck sensor data into fast incident-response notifications.',
+    summary: 'Turned live truck sensor data into fire alerts delivered through SMS, calls, and AWS SNS.',
     impact: 'Enabled low-latency fire detection and multi-channel operational alerting.',
     details: ['MQTT ingestion', 'Twilio + AWS SNS', 'Background job automation'],
   },
@@ -32,8 +32,8 @@ const aiProjects = [
   {
     title: 'Prompt Lab',
     eyebrow: 'llm tooling',
-    summary: 'On-device prompt engineering and observability dashboard for comparing local models, A/B testing prompts, and tracking token economics.',
-    description: 'A local LLM observability and prompt engineering dashboard running entirely on-device via Ollama. Includes single-run streaming, side-by-side model comparison, A/B prompt testing, token/cost tracking, hardware monitoring, saved prompts, and persisted request history.',
+    summary: 'A local dashboard for comparing Ollama models, testing prompts, and seeing where the tokens and time go.',
+    description: 'Prompt Lab runs entirely on-device with Ollama. It streams responses, compares models side by side, supports A/B prompt tests, and tracks tokens, cost estimates, hardware use, saved prompts, and request history.',
     link: 'https://github.com/atypicalesper/prompt-lab',
     tags: ['NestJS', 'Next.js 15', 'Ollama', 'SQLite', 'SSE', 'React'],
     ctaLabel: 'view repo',
@@ -41,8 +41,8 @@ const aiProjects = [
   {
     title: 'GenLea',
     eyebrow: 'agentic pipeline',
-    summary: 'Automated B2B lead generation engine that combines scraping, enrichment, scoring, and LLM-assisted workflows in a microservices setup.',
-    description: 'A lead generation platform for software-services outreach that discovers companies, enriches hiring and contact signals, estimates Indian-origin team presence, scores leads against a strict ICP, and exports only the strongest prospects. Built as a microservices monorepo with queue-based workers, a Fastify API, and a Python microservice.',
+    summary: 'A B2B lead pipeline that finds companies, enriches them, and scores them against a defined customer profile.',
+    description: 'GenLea finds companies for software-services outreach, checks hiring and contact signals, estimates Indian-origin team presence, and exports the leads that match its ICP. It uses queue-based workers, a Fastify API, and a small Python service in a microservices monorepo.',
     link: 'https://github.com/atypicalesper/genlea',
     tags: ['Node.js', 'BullMQ', 'MongoDB', 'Redis', 'Fastify', 'Python'],
     ctaLabel: 'view repo',
@@ -50,8 +50,8 @@ const aiProjects = [
   {
     title: 'VectorLens',
     eyebrow: 'learning lab',
-    summary: 'Browser-only semantic search lab for exploring retrieval, embeddings, indexing strategies, and latency-versus-recall tradeoffs.',
-    description: 'A tiny local semantic search playground built to teach vector retrieval internals through hands-on experimentation. Covers embedding tradeoffs, similarity metrics, chunking, ANN strategies, metadata filtering, hybrid retrieval, and evaluation without requiring API keys or external services.',
+    summary: 'A browser-only lab for seeing how embeddings, indexing choices, and retrieval settings affect search results.',
+    description: 'VectorLens is a small semantic-search playground for experimenting with similarity metrics, chunking, ANN strategies, metadata filters, hybrid retrieval, and evaluation. It runs locally without API keys or external services.',
     link: 'https://github.com/atypicalesper/vector-lens',
     tags: ['JavaScript', 'Semantic Search', 'Embeddings', 'ANN', 'Browser'],
     ctaLabel: 'view repo',
@@ -59,8 +59,8 @@ const aiProjects = [
   {
     title: 'RAG',
     eyebrow: 'retrieval system',
-    summary: 'Production-style retrieval augmented generation knowledge base with ingestion, chunking, vector search, evaluation, and API workflows.',
-    description: 'A complete RAG learning and implementation project covering concepts, architecture, ingestion pipelines, chunking strategies, vector databases, evaluation, and advanced retrieval patterns. Includes Python services, FastAPI endpoints, streaming query support, source-grounded answers, and a React + Vite frontend.',
+    summary: 'A working RAG knowledge base with document ingestion, chunking, vector search, evaluation, and streaming queries.',
+    description: 'This project covers the full RAG path from document ingestion and chunking to vector search, evaluation, and source-backed answers. It includes Python services, FastAPI endpoints, streaming query support, and a React + Vite frontend.',
     link: 'https://github.com/atypicalesper/RAG',
     tags: ['Python', 'FastAPI', 'ChromaDB', 'LangChain', 'RAG', 'SSE'],
     ctaLabel: 'view repo',
@@ -71,8 +71,8 @@ const projects = [
   {
     title: 'dev-atlas',
     eyebrow: 'open source',
-    summary: 'Deep-dive engineering knowledge base built for developers who want understanding, not just snippets.',
-    description: 'Open-source developer knowledge base — deep-dive docs on JS internals, TypeScript, system design, databases, DevOps, and more. Built for engineers who want to actually understand the stack.',
+    summary: 'Engineering notes on JavaScript internals, TypeScript, system design, databases, and DevOps.',
+    description: 'An open-source knowledge base where I write down the concepts I want to understand properly, including JavaScript internals, TypeScript, system design, databases, and DevOps.',
     link: 'https://atypicalesper.github.io/dev-atlas',
     tags: ['Next.js', 'TypeScript', 'GSAP', 'Tailwind', 'Markdown'],
     ctaLabel: 'open site',
@@ -80,8 +80,8 @@ const projects = [
   {
     title: 'Music Analyzer',
     eyebrow: 'music product',
-    summary: 'Spotify-powered listening dashboard with taste profiles, compatibility matching, recommendations, and public listener pages.',
-    description: 'A music discovery and listening analysis product built around Spotify data. Includes Spotify sign-in, personal listening dashboards, top tracks and artists, audio feature summaries, recommendations, public listener profiles, taste matchmaking, and an explore experience for discovering other listeners.',
+    summary: 'A Spotify dashboard for exploring listening habits, recommendations, and music compatibility with other users.',
+    description: 'Music Analyzer turns Spotify data into personal listening dashboards, top tracks and artists, audio summaries, recommendations, public profiles, and taste matching with other listeners.',
     link: 'https://github.com/atypicalesper/spotify-dashboard',
     tags: ['Next.js', 'TypeScript', 'NextAuth', 'Prisma', 'Spotify API', 'React'],
     ctaLabel: 'view repo',
@@ -89,8 +89,8 @@ const projects = [
   {
     title: 'GameZone',
     eyebrow: 'real-time platform',
-    summary: 'Multiplayer games, live chat, leaderboards, and JWT auth in a full-stack monorepo.',
-    description: 'Real-time multiplayer gaming platform with Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz. Live chat, global leaderboards, and JWT auth in an Nx monorepo.',
+    summary: 'A multiplayer games app with live chat, leaderboards, and JWT authentication.',
+    description: 'GameZone includes Rock Paper Scissors, Tic Tac Toe, and Trivia Quiz, with live chat and global leaderboards in an Nx monorepo.',
     link: 'https://github.com/atypicalesper/games-games',
     tags: ['NestJS', 'Next.js', 'Socket.io', 'Prisma', 'TypeScript', 'Nx', 'Tailwind'],
     ctaLabel: 'view repo',
@@ -98,8 +98,8 @@ const projects = [
   {
     title: 'Drumkit',
     eyebrow: 'playful build',
-    summary: 'Keyboard-powered drum machine with instant feedback and a more fun-than-useful personality.',
-    description: 'A time-killer drum machine — map keyboard keys to drum sounds and make cool drumrolls for trolls and thug-life moments.',
+    summary: 'A keyboard-controlled drum machine built mostly because making noise in the browser is fun.',
+    description: 'Map keyboard keys to drum sounds and use them to make questionable drumrolls on demand.',
     link: '/bonus',
     tags: ['JavaScript', 'HTML', 'CSS', 'jQuery'],
     ctaLabel: 'try demo',
@@ -117,8 +117,8 @@ const professionalProjects = [
       'Migrated legacy PHP monolith to a NestJS-based microservices architecture, improving scalability, maintainability, and deployment efficiency by ~40%.',
       'Built KYC and risk assessment services integrating Aadhaar eKYC, PAN verification, Account Aggregator, and bank statement analysis for instant, compliant loan decisioning.',
       'Designed and implemented a secure User Management Service (UMS) with RBAC, custom authentication/authorization, session management, and audit logging.',
-      'Delivered digital verification workflows across PAN, Aadhaar eKYC, and Digilocker integrations for high-trust onboarding journeys.',
-      'Deployed and scaled services on AWS using Docker, leveraging Redis for caching and performance optimization in high-traffic financial workflows.',
+      'Built digital verification flows using PAN, Aadhaar eKYC, and Digilocker for customer onboarding.',
+      'Ran the services on AWS with Docker and used Redis to reduce repeated work in busy financial workflows.',
     ],
   },
   {
@@ -159,7 +159,7 @@ const professionalProjects = [
       'Implemented secure API layers with encryption and access controls to support HIPAA-compliant handling of sensitive healthcare data.',
       'Built shift discovery and matching flows so nurses could find available work and join patient care workflows.',
       'Leveraged PostGIS for location-aware workforce deployment and staffing analytics.',
-      'Built scalable backend services using Node.js, Sequelize, and PostgreSQL to support high-volume staffing operations.',
+      'Built the staffing backend with Node.js, Sequelize, and PostgreSQL.',
     ],
   },
   {
@@ -172,18 +172,18 @@ const professionalProjects = [
       'Modernized and optimized a construction-focused HRMS, improving scalability, performance, and third-party tool integrations.',
       'Refactored legacy modules and optimized database queries and indexing, achieving a 40% performance improvement.',
       'Integrated Tekla Structures with HRMS workflows to synchronize project assignments and approval pipelines.',
-      'Deployed and maintained the application on AWS EC2, configuring Nginx for scalable and reliable production environments.',
+      'Deployed the application on AWS EC2 and configured Nginx for production traffic.',
     ],
   },
   {
     title: 'Biotech Imaging Platform',
     domain: 'biotech',
-    result: 'Research-facing data platform with faster frontend builds and scalable cloud-backed biological data processing.',
+    result: 'A research platform with faster frontend builds and cloud-backed processing for biological data.',
     scope: 'React/Vite frontend, Flask APIs, biological data visualization, cloud services, auth and observability.',
     tags: ['React', 'TypeScript', 'Vite', 'MUI', 'Plotly.js', 'Python', 'Flask', 'GCP'],
     points: [
       'Built a React 18 + TypeScript frontend for visualizing cell sorting and imaging data, migrated from Create React App to Vite for significantly faster builds and HMR.',
-      'Developed REST APIs using Python Flask, integrated with Google App Engine Flex, Cloud Endpoints, and Cloud Run for scalable cell data processing.',
+      'Developed Flask REST APIs using Google App Engine Flex, Cloud Endpoints, and Cloud Run to process cell data.',
       'Implemented interactive biological data visualizations using a custom Plotly.js bundle, enabling researchers to explore large-scale imaging datasets with minimal bundle overhead.',
       'Integrated Auth0 authentication and Datadog observability, enforcing secure access control and real-time performance monitoring across the platform.',
     ],
@@ -196,9 +196,9 @@ const professionalProjects = [
     tags: ['Node.js', 'Pinecone', 'LLM', 'RAG', 'Document Ingestion'],
     points: [
       'Shipped a RAG chatbot proof of concept to answer questions over uploaded content using retrieval-augmented generation patterns.',
-      'Built the document ingestion and retrieval flow to support grounded responses instead of generic model output.',
+      'Built the document ingestion and retrieval flow so responses could cite information from the uploaded content.',
       'Used vector search infrastructure to connect chunked knowledge sources with query-time context assembly.',
-      'Turned backend AI experimentation into a product-shaped workflow that could be tested with real use cases.',
+      'Wrapped the retrieval pipeline in a usable flow that the team could test with real documents and questions.',
     ],
   },
 ];
@@ -211,13 +211,13 @@ export default function WorkClient() {
     <section className="work">
       <h1>Projects</h1>
       <p className="work-intro">
-        A mix of playful builds, production-minded systems, and experiments that sharpen both engineering depth and product instincts.
+        Things I&apos;ve built for work, for learning, and occasionally just because the idea was fun.
       </p>
 
       <div className="section featured-work-section">
         <h2>ai systems</h2>
         <p className="section-intro">
-          The AI-heavy work comes first here: retrieval, prompt tooling, agentic workflows, and product-shaped experiments built around modern LLM systems.
+          RAG, prompt tooling, local models, and a few experiments built to understand how LLM systems behave outside a demo.
         </p>
       </div>
 
@@ -230,7 +230,7 @@ export default function WorkClient() {
       <div className="section project-group-section">
         <h2>projects</h2>
         <p className="section-intro">
-          Broader product, platform, open-source, and playful work across music, education, gaming, and frontend-heavy experiments.
+          Side projects across developer education, music, games, and browser experiments.
         </p>
       </div>
 
@@ -243,7 +243,7 @@ export default function WorkClient() {
       <div className="section client-work-section">
         <h2>client work</h2>
         <p className="section-intro">
-          Selected delivery across fintech, healthcare, IoT, construction, biotech, and applied AI, framed around scope and outcomes instead of just stack names.
+          Client projects across fintech, healthcare, IoT, construction, biotech, and applied AI. Open a project for the technical details.
         </p>
         <div className="featured-client-grid">
           {featuredClientWork.map((item) => (

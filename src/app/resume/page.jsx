@@ -5,7 +5,7 @@ import ExperienceAccordion from './ExperienceAccordion'
 export const metadata = {
   title: 'Experience',
   description:
-    'Software Engineer with 3.5+ years across fintech, healthcare, and B2B SaaS — NestJS microservices, full-stack delivery, and production GenAI/RAG. Node.js, TypeScript, PostgreSQL, AWS, GCP.',
+    'Software Engineer with 3.5+ years building NestJS microservices, full-stack products, and RAG systems across fintech, healthcare, and B2B SaaS.',
   alternates: { canonical: '/resume/' },
   openGraph: { url: 'https://atypicalesper.github.io/resume/' },
 };
@@ -15,23 +15,23 @@ export default function ResumePage() {
     <section className="resume">
       <div className="resume-hero section">
         <div className="resume-hero-kicker">experience snapshot</div>
-        <h1 className="resume-title">Backend &amp; full-stack engineer delivering across fintech, SaaS, and high-trust systems.</h1>
+        <h1 className="resume-title">Backend and full-stack engineer working across fintech, SaaS, and systems that handle sensitive data.</h1>
         <p className="section-intro resume-intro">
-          3.5+ years building scalable backend and full-stack systems for fintech, healthcare, and B2B SaaS — with a focus on secure APIs, microservices, cloud architecture, and production GenAI.
+          I&apos;ve spent 3.5+ years building APIs, microservices, cloud workflows, and full-stack products for fintech, healthcare, and B2B SaaS. My recent work also includes production RAG and GenAI systems.
         </p>
 
         <div className="resume-summary-grid" aria-label="Resume highlights">
           <article className="resume-summary-card">
             <span className="resume-summary-value">Node.js + NestJS</span>
-            <span className="resume-summary-label">Core stack, with TypeScript and Python across the codebase</span>
+            <span className="resume-summary-label">My main stack, alongside TypeScript and Python</span>
           </article>
           <article className="resume-summary-card">
             <span className="resume-summary-value">Fintech &amp; SaaS</span>
-            <span className="resume-summary-label">Plus healthcare, IoT, and biotech delivery</span>
+            <span className="resume-summary-label">With projects in healthcare, IoT, and biotech</span>
           </article>
           <article className="resume-summary-card">
             <span className="resume-summary-value">GenAI in production</span>
-            <span className="resume-summary-label">RAG, embeddings, and Pinecone shipped in real products</span>
+            <span className="resume-summary-label">RAG, embeddings, and Pinecone used in working products</span>
           </article>
         </div>
       </div>

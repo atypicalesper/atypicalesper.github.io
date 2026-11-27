@@ -15,30 +15,30 @@ const jsonLd = {
 
 const stats = [
   { value: '3.5+ yrs', label: 'backend & full-stack engineering' },
-  { value: 'fintech · saas', label: 'plus healthcare, iot, and biotech delivery' },
-  { value: '~40%', label: 'scalability gained in a monolith → microservices migration' },
-  { value: 'genai · rag', label: 'embeddings, pinecone, and langchain in production' },
+  { value: 'fintech · saas', label: 'also healthcare, iot, and biotech' },
+  { value: '~40%', label: 'improvement after a monolith-to-microservices migration' },
+  { value: 'genai · rag', label: 'embeddings, pinecone, and langchain' },
 ];
 
 const featuredWork = [
   {
     title: 'Loan Management System',
     label: 'fintech systems',
-    summary: 'Migrated a legacy loan platform into scalable NestJS microservices and built KYC-heavy verification flows for faster, compliant decisioning.',
+    summary: 'Moved a legacy loan platform to NestJS microservices and built its KYC and verification flows.',
     impact: '~40% improvement in scalability, maintainability, and deployment efficiency.',
     href: '/work/',
   },
   {
     title: "That's My Jam",
     label: 'real-time product',
-    summary: 'Built live bidding, slot scheduling, and payments infrastructure for music events with real-time WebSocket interactions.',
+    summary: 'Built live bidding, slot scheduling, and Stripe payments for music events using WebSockets.',
     impact: 'Improved Stripe transaction reliability and contributed to a 20% revenue increase.',
     href: '/work/',
   },
   {
     title: 'First Fire',
     label: 'iot alerting',
-    summary: 'Designed a real-time ingestion and alert pipeline for detecting fire incidents from truck sensor streams.',
+    summary: 'Built a pipeline that turned live truck sensor data into fire alerts for operations teams.',
     impact: 'Enabled low-latency incident routing through MQTT, Twilio, and AWS SNS.',
     href: '/work/',
   },
@@ -69,15 +69,15 @@ const Home = () => {
           </h1>
 
           <p className="lede-statement">
-            Hi, I&apos;m Tarun — I build backend systems that stay <em>calm</em> under real-world complexity.
+            Hi, I&apos;m Tarun. I build backend systems for products where reliability actually matters.
           </p>
 
           <p className="lede-copy">
-            A software engineer based in Faridabad, India. I spend my days shaping APIs, microservices, and cloud
-            systems &mdash; the kind that stay calm under load and <span className="hl">don&apos;t wake you at
-            3am</span>. Most of that work lives in <span className="hl">TypeScript and Python</span>, lately
-            pointed at <span className="hl">production GenAI and RAG</span>. After hours, I&apos;m usually deep in
-            new music or building side projects with a bit of personality.
+            I&apos;m a software engineer based in Faridabad, India. Most days I&apos;m working on APIs, microservices,
+            and cloud systems in <span className="hl">TypeScript and Python</span>, with the occasional deep dive
+            into <span className="hl">GenAI and RAG</span>. I care about readable code, useful logs, and systems
+            that <span className="hl">don&apos;t wake you at 3am</span>. Outside work, I&apos;m usually finding new music
+            or building side projects that are a little less serious.
           </p>
 
           <dl className="stack-strip" aria-label="Core stack">

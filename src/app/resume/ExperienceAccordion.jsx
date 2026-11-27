@@ -9,11 +9,11 @@ const experience = [
     company: 'Crownstack Technologies',
     period: 'Jan 2026 – May 2026',
     location: 'Noida, UP',
-    summary: 'Delivered backend and full-stack features across a bioinformatics platform, a multi-tenant credential SaaS, and workflow-automation services.',
+    summary: 'Worked across a bioinformatics platform, a multi-tenant credential product, and API-based workflow automation.',
     points: [
       'Built async data pipelines on GCP (Cloud Functions, Cloud Run, Pub/Sub) for high-volume lab-data ingestion, run-status updates, and image export on Deepcell, a bioinformatics cell-analysis platform.',
-      'Managed infrastructure as code with Terraform across a dual deployment model — GCP App Engine Flex for SaaS and a Docker/Nginx stack for customer-managed on-prem environments.',
-      'Shipped QuickCertify’s public credential-verification experience end-to-end — shareable, no-login pages backed by secure REST APIs with URL-enumeration protection and optimized client-side caching.',
+      'Managed infrastructure with Terraform for two deployment models: GCP App Engine Flex for SaaS and Docker/Nginx for customer-managed environments.',
+      'Built QuickCertify’s public credential-verification flow, including shareable no-login pages, secure REST APIs, URL-enumeration protection, and client-side caching.',
       'Built an immutable audit-log module with JSONB before/after snapshots and indexed actor/target/action lookups, plus a full-stack credential Design module covered by Playwright e2e specs.',
       'Implemented fine-grained RBAC across backend guards and frontend navigation, and a FastAPI webhook service that auto-provisions Basecamp projects from Apparatix order events.',
     ],
@@ -23,11 +23,11 @@ const experience = [
     company: 'Raghavi Finance (Surya Loan)',
     period: 'Jul 2025 – Dec 2025',
     location: 'Delhi',
-    summary: 'Led modernization and verification-heavy backend work in a fintech environment with strong compliance and security needs.',
+    summary: 'Modernized a lending platform and built the KYC, authorization, and audit flows around it.',
     points: [
       'Migrated a legacy PHP monolith to a NestJS microservices architecture (MySQL, TypeORM, Redis, AWS), improving scalability and maintainability by ~40% for a high-volume digital lending platform.',
       'Built KYC and risk-assessment microservices integrating Aadhaar eKYC, PAN verification, Account Aggregator, and bank-statement analysis for instant, compliant loan decisioning.',
-      'Architected a User Management Service (UMS) with RBAC, custom auth/authorization, and audit logs for high-trust financial operations.',
+      'Architected a User Management Service (UMS) with RBAC, custom authorization, and audit logs for sensitive financial operations.',
     ],
   },
   {
@@ -35,7 +35,7 @@ const experience = [
     company: 'Copper Digital India Pvt. Ltd.',
     period: 'Sept 2022 – May 2025',
     location: 'Gurugram, HR',
-    summary: 'Delivered across multiple client domains, shipping AI features, real-time systems, secure APIs, cloud integrations, and mentoring support.',
+    summary: 'Built backend systems for healthcare, IoT, payments, and AI projects across several client teams.',
     points: [
       'Delivered a RAG-based AI chatbot framework for context-aware document Q&A using OpenAI LLMs, embeddings, and Pinecone vector storage.',
       'Integrated Stripe into a real-time song-bidding platform, improving transaction reliability and driving a 20% revenue increase.',
